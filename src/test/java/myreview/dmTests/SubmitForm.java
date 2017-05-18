@@ -24,6 +24,6 @@ public class SubmitForm extends BaseTestForDm {
 
         departmentPage.submitForm();
         Assert.assertEquals(USER_FORMS_STATUS_IN_PROGRESS, sqlQueries.select("status", "user_forms", "user_id", EPTESTER_1_ID));
-        sqlQueries.changeStatusOfUserForm(sqlQueries.USER_FORMS_STATUS_IN_PROGRESS);
+        sqlQueries.changeStatusOfUserForm(USER_FORMS_STATUS_IN_PROGRESS);
     }
 }

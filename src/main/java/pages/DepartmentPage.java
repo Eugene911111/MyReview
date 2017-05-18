@@ -2,37 +2,34 @@ package pages;
 
 import org.openqa.selenium.By;
 
+import static core.Configuration.PASSWORD;
 import static helpers.sqlQueries.EPTESTER_1_ID;
-import static pages.LoginPage.PASSWORD;
+import static pages.CommonPage.*;
 
 public class DepartmentPage extends BasePage {
-    public final By reviewFormButton = By.xpath("//a[@class=\"md-raised md-button md-ink-ripple\"][contains(., \"Review form\")]");
-    public final By commentByManagerField = By.xpath("//*[@id=\"input_2\"]");
-    public String commentByManager = "comment_created_with_auto_test";
-    public final By rejectFormButton = By.xpath("//button[@class=\"md-raised md-primary md-button md-ink-ripple\"][contains(., \"Reject form\")]");
+    private By reviewFormButton = By.xpath("//a[@class=\"md-raised md-button md-ink-ripple\"][contains(., \"Review form\")]");
+    private By commentByManagerField = By.xpath("//*[@id=\"input_2\"]");
+    private String commentByManager = "comment_created_with_auto_test";
+    private By rejectFormButton = By.xpath("//button[@class=\"md-raised md-primary md-button md-ink-ripple\"][contains(., \"Reject form\")]");
 
-    public final By approveFormButton = By.xpath("//button[@class=\"md-raised md-primary md-button md-ink-ripple\"][contains(., \"Approve form\")]");
-    public final By approveButton = By.xpath("//md-dialog-actions[@class=\"layout-row\"]/button[contains(., \"Approve\")]");
-    public final By notificationForDmField = By.xpath("//a[@class=\"active\"]/span");
-    public String departmentURL = "http://myreview.local/app_dev.php/#/department";
-    private final By radioButtonExceedsExpectations = By.xpath("//md-radio-button[@value=\"Exceeds expectations\"]");
-    public String rejectReason = "reject reason created with auto test";
-    private final By rejectReasonField = By.xpath("//textarea[@name=\"commentFormReject\"]");
-    private final By rejectButton = By.xpath("//md-dialog[@class=\"_md md-transition-in\"]//button[contains(., \"Reject\")]");
-    private final By rejectWindow = By.xpath("//div[@class=\"md-dialog-container ng-scope\"]");
-    private final By rejectMessage = By.xpath("/html/body/header/md-toast/div/span");
-    private final By startMettingButton = By.xpath("//div[@class=\"goalsPane ng-scope\"]//button[contains(., \"Start Meeting\")][@aria-hidden=\"false\"]");
-    private final By evaluationByEmployee = By.xpath("//div[@class=\"evaluationGroup ng-scope\"][contains(., \"Evaluation by employee: \")]//md-radio-button[@id=\"radio_4\"]");
-    private final By evaluationByDm = By.xpath("//div[@class=\"evaluationGroup ng-scope\"][contains(., \"\")]//md-radio-button[@id=\"radio_8\"]");
-    private final By employeePasswordField = By.xpath("//input[@name=\"password\"]");
-    private final By submitFinalFormButton = By.xpath("//button[@class=\"md-raised md-primary md-button md-ink-ripple\"]");
-    //public String password = "Levi9Pro";
-    private final By submitButton = By.xpath("//md-dialog[@class=\"_md md-transition-in\"]//button[contains(., \"Submit\")]");
-    private final By approveMessage = By.xpath("//*[contains(text(), \"You successfully submitted the form!\")] ");
-    private final By submitFinalFormMessage = By.xpath("//*[contains(text(), \"You successfully finished Performance Review Meeting!\")] ");
-    private final By fieldIsRequiredErrorMessage = By.xpath("//div[@class=\"paneContent\"]//div[@class=\"md-input-message-animation ng-scope\"]");
-    public String reviewMeetingUrl = "http://myreview.local/app_dev.php/#/department/review-meeting/";
-    public final By departmentTabContent = By.xpath("//div[@class=\"container-fluid department\"]");
+    private By approveFormButton = By.xpath("//button[@class=\"md-raised md-primary md-button md-ink-ripple\"][contains(., \"Approve form\")]");
+    private By approveButton = By.xpath("//md-dialog-actions[@class=\"layout-row\"]/button[contains(., \"Approve\")]");
+    public By notificationForDmField = By.xpath("//a[@class=\"active\"]/span");
+//    public String departmentURL = "http://myreview.local/app_dev.php/#/department";
+    private By radioButtonExceedsExpectations = By.xpath("//md-radio-button[@value=\"Exceeds expectations\"]");
+    private By rejectReasonField = By.xpath("//textarea[@name=\"commentFormReject\"]");
+    private By rejectButton = By.xpath("//md-dialog[@class=\"_md md-transition-in\"]//button[contains(., \"Reject\")]");
+    private By rejectMessage = By.xpath("/html/body/header/md-toast/div/span");
+    private By startMettingButton = By.xpath("//div[@class=\"goalsPane ng-scope\"]//button[contains(., \"Start Meeting\")][@aria-hidden=\"false\"]");
+    private By evaluationByEmployee = By.xpath("//div[@class=\"evaluationGroup ng-scope\"][contains(., \"Evaluation by employee: \")]//md-radio-button[@id=\"radio_4\"]");
+    private By evaluationByDm = By.xpath("//div[@class=\"evaluationGroup ng-scope\"][contains(., \"\")]//md-radio-button[@id=\"radio_8\"]");
+    private By employeePasswordField = By.xpath("//input[@name=\"password\"]");
+    private By submitFinalFormButton = By.xpath("//button[@class=\"md-raised md-primary md-button md-ink-ripple\"]");
+    private By submitButton = By.xpath("//md-dialog[@class=\"_md md-transition-in\"]//button[contains(., \"Submit\")]");
+    private By approveMessage = By.xpath("//*[contains(text(), \"You successfully submitted the form!\")] ");
+    private By submitFinalFormMessage = By.xpath("//*[contains(text(), \"You successfully finished Performance Review Meeting!\")] ");
+    private String reviewMeetingUrl = "http://myreview.local/app_dev.php/#/department/review-meeting/";
+    public By departmentTabContent = By.xpath("//div[@class=\"container-fluid department\"]");
 
     public void rejectForm() throws InterruptedException {
         openUrl(departmentURL);
@@ -52,11 +49,6 @@ public class DepartmentPage extends BasePage {
         openUrl(departmentURL);
         waitForElementIsClickableAndClick(reviewFormButton);
         changeFocusToPage(1);
-
-       // highlightElementAndSendKeys(commentByManagerField, commentByManager);
-     //   waitForPresenceOfTextInElement(commentByManagerField, commentByManager);
-      //  checkElementIsNotDisplayed(fieldIsRequiredErrorMessage);
-     //   waitForElementIsClickableAndClick(radioButtonExceedsExpectations);
         waitForElementIsClickableAndClick(approveFormButton);
         waitForElementIsPresentAndClick(approveButton);
         checkElementIsDisplayed(approveMessage);

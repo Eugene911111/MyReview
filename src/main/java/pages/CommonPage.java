@@ -3,17 +3,19 @@ package pages;
 import org.openqa.selenium.By;
 
 public class CommonPage extends BasePage {
-    public final By userImgDropdown = By.xpath("//li[@class=\"btn-group dropdown\"]/a");
-    public final By aboutMyReviewButton = By.xpath("//a[@ui-sref=\"about\"]");
-    public final By formExampleButton = By.xpath("//a[@ui-sref=\"example\"]");
-    public  By sendYourFeedbackButton = By.xpath("//ul[@class=\"dropdown-menu\"]//li[contains(.,\"Send your feedback\")]");
-    private final By logOutButton = By.xpath("//ul[@class=\"dropdown-menu\"]//a[@ng-click=\"vm.logOut()\"]");
-    public final By levi9Logo = By.xpath("//img[@class=\"logo\"]");
-    public final By notesButton = By.xpath("//a[@href=\"#/notes\"]");
-    public final By formButton = By.xpath("//a[@href=\"#/form\"]");
-    public final By historyButton = By.xpath("//ul[@class=\"nav navbar-nav navbar-right ng-scope\"]//a[contains(., \"History\")]");
-    public String formTabUrl = "http://myreview.local/app_dev.php/#/form";
-    public final By departmentButton = By.xpath("//a[@href=\"#/department\"]");
+    public String formTabURL = "http://myreview.local/app_dev.php/#/form";
+    static String departmentURL = "http://myreview.local/app_dev.php/#/department";
+    private By userImgDropdown = By.xpath("//li[@class=\"btn-group dropdown\"]/a");
+    private By aboutMyReviewButton = By.xpath("//a[@ui-sref=\"about\"]");
+    private By formExampleButton = By.xpath("//a[@ui-sref=\"example\"]");
+    private By sendYourFeedbackButton = By.xpath("//ul[@class=\"dropdown-menu\"]//li[contains(.,\"Send your feedback\")]");
+    private By logOutButton = By.xpath("//ul[@class=\"dropdown-menu\"]//a[@ng-click=\"vm.logOut()\"]");
+    public By levi9Logo = By.xpath("//img[@class=\"logo\"]");
+    public By notesButton = By.xpath("//a[@href=\"#/notes\"]");
+    public By formButton = By.xpath("//a[@href=\"#/form\"]");
+    public By historyButton = By.xpath("//ul[@class=\"nav navbar-nav navbar-right ng-scope\"]//a[contains(., \"History\")]");
+    //private String formTabUrl = "http://myreview.local/app_dev.php/#/form";
+    public By departmentButton = By.xpath("//a[@href=\"#/department\"]");
 
     public void openAboutMyReviewPage() throws InterruptedException {
         waitForElementIsClickableAndClick(userImgDropdown);
@@ -31,7 +33,7 @@ public class CommonPage extends BasePage {
     }
 
     public void openFormTab() throws InterruptedException {
-        openUrl(formTabUrl);
+        openUrl(formTabURL);
     }
 
     public void openFeedbackDialogWindow() throws InterruptedException {

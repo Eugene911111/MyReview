@@ -15,9 +15,9 @@ import java.io.File;
 import java.io.IOException;
 
 import static core.Configuration.BROWSER_NAME_CHROME;
+import static core.Configuration.EPTESTERDM;
 import static helpers.sqlQueries.DELETE_GOALS_BY_ID;
 import static helpers.sqlQueries.DELETE_USER_BY_ID;
-import static pages.LoginPage.EPTESTERDM;
 
 public class BaseTestForDm {
     public WebDriver driver;
@@ -33,12 +33,12 @@ public class BaseTestForDm {
     public HistoryPage historyPage;
     public sqlQueries sqlQueries;
     private static ChromeDriverService service;
-    private static final String PATH_TO_CHROMEDRIVER_EXE = "C:\\Users\\y.holub\\IdeaProjects\\chromedriver\\chromedriver.exe";
+    private static final String PATH_TO_CHROME_DRIVER_EXE = "C:\\Users\\y.holub\\IdeaProjects\\chromedriver\\chromedriver.exe";
 
     @BeforeClass
     public static void createAndStartService() throws IOException {
         service = new ChromeDriverService.Builder()
-                .usingDriverExecutable(new File(PATH_TO_CHROMEDRIVER_EXE))
+                .usingDriverExecutable(new File(PATH_TO_CHROME_DRIVER_EXE))
                 .usingAnyFreePort()
                 .build();
         service.start();

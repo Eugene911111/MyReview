@@ -7,6 +7,6 @@ import static core.TestApi.getDriver;
 
 public class Wait {
    // public static WebDriverWait wait = new WebDriverWait();
-    public static final WebDriverWait WAIT = new WebDriverWait(getDriver(), TIME_OUT);
+    public static WebDriverWait WAIT = new WebDriverWait(getDriver(), TIME_OUT);
 
 }

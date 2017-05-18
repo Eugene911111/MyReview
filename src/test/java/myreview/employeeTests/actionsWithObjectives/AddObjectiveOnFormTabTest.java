@@ -8,7 +8,7 @@ public class AddObjectiveOnFormTabTest extends BaseTestForEmployee {
 
     @Test
     public void addObjectiveOnFormTab() throws Exception {
-        formTabPage.openUrl(formTabPage.formTabURL);
+        formTabPage.openUrl(commonPage.formTabURL);
         noteTabPage.addObjective();
         Assert.assertEquals(sqlQueries.select("goals","title", noteTabPage.currentTime), noteTabPage.currentTime);
     }

@@ -15,9 +15,9 @@ import java.io.File;
 import java.io.IOException;
 
 import static core.Configuration.BROWSER_NAME_CHROME;
+import static core.Configuration.EPTESTER_1;
 import static helpers.sqlQueries.DELETE_GOALS_BY_ID;
 import static helpers.sqlQueries.DELETE_USER_BY_ID;
-import static pages.LoginPage.EPTESTER_1;
 
 public class BaseTestForEmployee {
     public WebDriver driver;

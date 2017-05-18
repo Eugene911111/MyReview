@@ -16,6 +16,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 import static core.Configuration.TIME_OUT;
+import static core.Wait.WAIT;
 
 @Data
 public class BasePage {

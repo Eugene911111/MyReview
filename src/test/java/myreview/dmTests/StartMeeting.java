@@ -4,9 +4,7 @@ import myreview.BaseTestForDm;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static helpers.sqlQueries.EPTESTER_1_ID;
-import static helpers.sqlQueries.USER_FORMS_STATUS_APPRAISAL;
-import static helpers.sqlQueries.USER_FORMS_STATUS_APPROVED;
+import static helpers.sqlQueries.*;
 
 public class StartMeeting extends BaseTestForDm {
     private int numberOfAddedObjectives = 3;
@@ -18,6 +16,6 @@ public class StartMeeting extends BaseTestForDm {
 
         departmentPage.startMeeting();
         Assert.assertEquals(USER_FORMS_STATUS_APPRAISAL, sqlQueries.select("status", "user_forms", "user_id", EPTESTER_1_ID));
-        sqlQueries.changeStatusOfUserForm(sqlQueries.USER_FORMS_STATUS_IN_PROGRESS);
+        sqlQueries.changeStatusOfUserForm(USER_FORMS_STATUS_IN_PROGRESS);
     }
 }
