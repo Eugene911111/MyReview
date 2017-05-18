@@ -3,8 +3,9 @@ package core;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static core.Configuration.TIME_OUT;
-import static core.TestApi.getDriver;
+import static pages.BasePage.driver;
 
 public class Wait {
-    public static WebDriverWait WAIT = new WebDriverWait(getDriver(), TIME_OUT);
+    public static WebDriverWait WAIT = new WebDriverWait(driver, TIME_OUT);
+ //   private static WebDriver driver;
 }

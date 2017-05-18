@@ -7,7 +7,7 @@ import org.junit.Test;
 import static core.Configuration.*;
 
 public class NotificationForDmTest extends BaseTestForDm {
-    private final String notificationMessageText = "1";
+    private String notificationMessageText = "1";
 
     @Test
     public void checkNotificationForDm() throws Exception {

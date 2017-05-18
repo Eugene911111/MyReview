@@ -7,9 +7,7 @@ import org.junit.Test;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static core.Configuration.EPTESTER_1_ID;
-import static core.Configuration.USER_FORMS_STATUS_APPRAISAL;
-import static core.Configuration.USER_FORMS_STATUS_IN_PROGRESS;
+import static core.Configuration.*;
 
 public class SubmitForm extends BaseTestForDm {
     private int numberOfAddedObjectives = 3;

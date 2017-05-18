@@ -14,7 +14,6 @@ public class DepartmentPage extends BasePage {
     private By approveFormButton = By.xpath("//button[@class=\"md-raised md-primary md-button md-ink-ripple\"][contains(., \"Approve form\")]");
     private By approveButton = By.xpath("//md-dialog-actions[@class=\"layout-row\"]/button[contains(., \"Approve\")]");
     public By notificationForDmField = By.xpath("//a[@class=\"active\"]/span");
-    //    public String departmentURL = "http://myreview.local/app_dev.php/#/department";
     private By radioButtonExceedsExpectations = By.xpath("//md-radio-button[@value=\"Exceeds expectations\"]");
     private By rejectReasonField = By.xpath("//textarea[@name=\"commentFormReject\"]");
     private By rejectButton = By.xpath("//md-dialog[@class=\"_md md-transition-in\"]//button[contains(., \"Reject\")]");

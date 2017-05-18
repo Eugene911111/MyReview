@@ -16,11 +16,11 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 import static core.Configuration.TIME_OUT;
-import static core.Wait.WAIT;
 
 @Data
 public class BasePage {
-    static WebDriver driver;
+
+    public static WebDriver driver;
 
     public void setDriver(WebDriver driver) {
         this.driver = driver;
@@ -40,40 +40,41 @@ public class BasePage {
     }
 
     public boolean checkElementIsDisplayed(By element) throws InterruptedException {
-      //  WebDriverWait WAIT = new WebDriverWait(driver, TIME_OUT);
-        WebElement element1 = WAIT.until(ExpectedConditions.visibilityOfElementLocated(element));
+        WebDriverWait WAIT4 = new WebDriverWait(driver, TIME_OUT);
+        WebElement element1 = WAIT4.until(ExpectedConditions.visibilityOfElementLocated(element));
         return element1 != null;
     }
 
     public void checkElementIsNotDisplayed(By element) throws InterruptedException {
-        WebDriverWait wait1 = new WebDriverWait(driver, TIME_OUT);
-        wait1.until(ExpectedConditions.invisibilityOfElementLocated(element));
+        WebDriverWait WAIT4 = new WebDriverWait(driver, TIME_OUT);
+        WAIT4.until(ExpectedConditions.invisibilityOfElementLocated(element));
     }
 
     public void highlightElementAndSendKeys(By element, String keys) throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, TIME_OUT);
-        WebElement element1 = wait.until(ExpectedConditions.presenceOfElementLocated(element));
+        WebDriverWait WAIT4 = new WebDriverWait(driver, TIME_OUT);
+        WebElement element1 = WAIT4.until(ExpectedConditions.presenceOfElementLocated(element));
         WebElement toClear = element1.findElement(element);
         toClear.sendKeys(Keys.CONTROL + "a");
         element1.findElement(element).sendKeys(keys);
     }
 
     public void findElementAndSendKeys(By element, String keys) throws InterruptedException {
+        WebDriverWait WAIT4 = new WebDriverWait(driver, TIME_OUT);
         waiter(element, WebElement::isDisplayed, ExpectedConditions::visibilityOfElementLocated, TIME_OUT);
-        WebDriverWait wait = new WebDriverWait(driver, TIME_OUT);
-        WebElement element1 = wait.until(ExpectedConditions.presenceOfElementLocated(element));
+        WebElement element1 = WAIT4.until(ExpectedConditions.presenceOfElementLocated(element));
         element1.findElement(element).sendKeys(keys);
     }
 
     public void findElementClearAndSendKeys(By element, String keys) throws InterruptedException {
+        WebDriverWait WAIT4 = new WebDriverWait(driver, TIME_OUT);
         waiter(element, WebElement::clear, ExpectedConditions::visibilityOfElementLocated, TIME_OUT);
-        WebDriverWait wait = new WebDriverWait(driver, TIME_OUT);
-        WebElement element1 = wait.until(ExpectedConditions.presenceOfElementLocated(element));
+        WebElement element1 = WAIT4.until(ExpectedConditions.presenceOfElementLocated(element));
         element1.findElement(element).sendKeys(keys);
     }
 
     public void waiter(By selector, Consumer<WebElement> consumer, Function<By, ExpectedCondition<WebElement>> function, long seconds) throws InterruptedException {
-        WebElement element = new WebDriverWait(driver, (int) seconds).until(function.apply(selector));
+        WebDriverWait WAIT4 = new WebDriverWait(driver, TIME_OUT);
+        WebElement element = WAIT4.until(function.apply(selector));
         consumer.accept(element);
     }
 
@@ -97,14 +98,14 @@ public class BasePage {
 
     // for textarea and input elements
     public void waitForPresenceOfTextInElement(By element, String text) throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, TIME_OUT);
-        wait.until(ExpectedConditions.textToBePresentInElementValue(element, text));
+        WebDriverWait WAIT4 = new WebDriverWait(driver, TIME_OUT);
+        WAIT4.until(ExpectedConditions.textToBePresentInElementValue(element, text));
     }
 
     // for div elements
     public void waitForPresenceOfTextInElement1(By element, String text) throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, TIME_OUT);
-        wait.until(ExpectedConditions.textToBe(element, text));
+        WebDriverWait WAIT4 = new WebDriverWait(driver, TIME_OUT);
+        WAIT4.until(ExpectedConditions.textToBe(element, text));
     }
 }
 

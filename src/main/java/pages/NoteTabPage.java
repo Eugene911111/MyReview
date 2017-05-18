@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class NoteTabPage extends CommonPage {
-    private final By LogInFormName = By.xpath("//div[@class=\"panel-heading\"][contains(., 'Log In')]");
+    private By LogInFormName = By.xpath("//div[@class=\"panel-heading\"][contains(., 'Log In')]");
     private By addObjectiveButton = By.xpath("//button[@class=\"addGoalButton md-raised md-button md-ink-ripple\"][contains(.,\"Add objective\")]");
     private By titleField = By.xpath("//div[@class=\"md-dialog-content\"]//input[@name=\"title\"]");
     private By commentByEmployeeField = By.xpath("//div[@class=\"md-dialog-content\"]//textarea[@name=\"Comment by employee\"]");
