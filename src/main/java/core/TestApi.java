@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 public class TestApi {
 
-    private static WebDriver driver;
+    public static WebDriver driver;
 
     public static void setDriver(WebDriver driver) {
         TestApi.driver = driver;

@@ -133,5 +133,4 @@ public class sqlQueries {
     public void setDriver(WebDriver driver) {
         this.driver = driver;
     }
-
 }

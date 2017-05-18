@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 
+import static pages.LoginPage.logInFormName;
+
 public class CommonPage extends BasePage {
     public static String departmentURL = "http://myreview.local/app_dev.php/#/department";
     public static String formTabUrl = "http://myreview.local/app_dev.php/#/form";
@@ -14,9 +16,15 @@ public class CommonPage extends BasePage {
     private By logOutButton = By.xpath("//ul[@class=\"dropdown-menu\"]//a[@ng-click=\"vm.logOut()\"]");
     By levi9Logo = By.xpath("//img[@class=\"logo\"]");
     public By notesButton = By.xpath("//a[@href=\"#/notes\"]");
-    public By formButton = By.xpath("//a[@href=\"#/form\"]");
+    public static By formButton = By.xpath("//a[@href=\"#/form\"]");
     public By historyButton = By.xpath("//ul[@class=\"nav navbar-nav navbar-right ng-scope\"]//a[contains(., \"History\")]");
     public By departmentButton = By.xpath("//a[@href=\"#/department\"]");
+
+    public void logOut() throws Exception {
+        pressLogoutButton();
+        checkElementIsDisplayed(levi9Logo);
+        checkElementIsDisplayed(logInFormName);
+    }
 
     public void openAboutMyReviewPage() throws InterruptedException {
         waitForElementIsClickableAndClick(userImgDropdown);

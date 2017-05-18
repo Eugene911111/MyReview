@@ -74,7 +74,7 @@ public class BaseTestForDm {
     public void testShutDown() throws Exception {
         sqlQueries.delete1(DELETE_USER_BY_ID);
         sqlQueries.deleteGoalById(DELETE_GOALS_BY_ID);
-        noteTabPage.logOut();
+        commonPage.logOut();
         driver.close();
 
     }

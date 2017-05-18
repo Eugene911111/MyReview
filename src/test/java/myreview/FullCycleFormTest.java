@@ -19,7 +19,7 @@ public class FullCycleFormTest extends BaseTestForEmployee {
             formTabPage.sendFormToManager();
             Assert.assertEquals(USER_FORMS_STATUS_COMMITTED, sqlQueries.select("status", "user_forms", "user_id", EPTESTER_1_ID));
 
-            noteTabPage.logOut();
+            commonPage.logOut();
             loginPage.logIn(EPTESTERDM);
             departmentPage.approveForm();
             Assert.assertEquals(USER_FORMS_STATUS_APPROVED, sqlQueries.select("status", "user_forms", "user_id", EPTESTER_1_ID));
