@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import static core.Configuration.*;
-import static helpers.sqlQueries.*;
+import static pages.CommonPage.formTabUrl;
 
 public class RejectFormTest extends BaseTestForDm {
     private int numberOfObjectivesToAdd = 3;
@@ -21,7 +21,7 @@ public class RejectFormTest extends BaseTestForDm {
         //checking text of reject reason as employee
         noteTabPage.logOut();
         loginPage.logIn(EPTESTER_1);
-        formTabPage.openUrl(commonPage.formTabURL);
+        formTabPage.openUrl(formTabUrl);
         Assert.assertEquals(departmentPage.currentDate, formTabPage.getTextFromElement(formTabPage.rejectReasonField));
     }
 }

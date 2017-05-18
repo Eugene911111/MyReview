@@ -11,7 +11,6 @@ public class FormTabPage extends BasePage {
     private By sendToManagerButton = By.xpath("/html/body/div/user-form/div[1]/button[1]");
     private By sendButton = By.xpath("//md-dialog-actions[@class=\"layout-row\"]//button[contains(., \"Send\")]");
     private By formHasBeenSentMessage = By.xpath("//div[@class=\"md-whiteframe-4dp form-status\"][contains(., \"Form has been sent to manager\")]");
-    // public String formTabURL = "http://myreview.local/app_dev.php/#/form";
     public By rejectReasonField = By.xpath("//div[@class=\"rejectReason ng-binding\"]");
     public By formTabContent = By.xpath("//div[@class=\"container-fluid goalForm ng-scope\"]");
 

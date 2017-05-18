@@ -16,7 +16,6 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 import static core.Configuration.TIME_OUT;
-import static core.Wait.WAIT;
 
 @Data
 public class BasePage {
@@ -51,11 +50,9 @@ public class BasePage {
     }
 
     public void highlightElementAndSendKeys(By element, String keys) throws InterruptedException {
-        //waiter(element, WebElement::isDisplayed, ExpectedConditions::visibilityOfElementLocated, 10);
         WebDriverWait wait = new WebDriverWait(driver, TIME_OUT);
         WebElement element1 = wait.until(ExpectedConditions.presenceOfElementLocated(element));
         WebElement toClear = element1.findElement(element);
-        // ????? убрать кеys??? ->>
         toClear.sendKeys(Keys.CONTROL + "a");
         element1.findElement(element).sendKeys(keys);
     }

@@ -3,7 +3,8 @@ package myreview.employeeTests;
 import myreview.BaseTestForEmployee;
 import org.junit.Assert;
 import org.junit.Test;
-import static helpers.sqlQueries.EPTESTER_1_ID;
+
+import static core.Configuration.EPTESTER_1_ID;
 
 public class SendFeedbackTest extends BaseTestForEmployee {
 

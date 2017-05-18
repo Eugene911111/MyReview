@@ -2,8 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 
+import static core.Configuration.EPTESTER_1_ID;
 import static core.Configuration.PASSWORD;
-import static helpers.sqlQueries.EPTESTER_1_ID;
 import static pages.CommonPage.*;
 
 public class DepartmentPage extends BasePage {

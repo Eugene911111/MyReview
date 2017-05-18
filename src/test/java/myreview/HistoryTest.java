@@ -7,9 +7,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import static helpers.sqlQueries.EPTESTER_1_ID;
-import static helpers.sqlQueries.USER_FORMS_STATUS_APPRAISAL;
-import static helpers.sqlQueries.USER_FORMS_STATUS_IN_PROGRESS;
+import static core.Configuration.EPTESTER_1_ID;
+import static core.Configuration.USER_FORMS_STATUS_APPRAISAL;
+import static core.Configuration.USER_FORMS_STATUS_IN_PROGRESS;
+
 
 public class HistoryTest extends BaseTestForDm {
     private SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("dd MMMMMM yyyy", Locale.ENGLISH);

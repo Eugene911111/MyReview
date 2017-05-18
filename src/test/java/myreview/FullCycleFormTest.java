@@ -4,8 +4,7 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static core.Configuration.EPTESTERDM;
-import static helpers.sqlQueries.*;
+import static core.Configuration.*;
 
 public class FullCycleFormTest extends BaseTestForEmployee {
     private final int numberOfAddedObjectives = 3;

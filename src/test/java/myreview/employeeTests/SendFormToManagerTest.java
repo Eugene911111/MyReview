@@ -1,9 +1,10 @@
 package myreview.employeeTests;
 
 import myreview.BaseTestForEmployee;
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Test;
 
-import static helpers.sqlQueries.*;
+import static core.Configuration.*;
 
 public class SendFormToManagerTest extends BaseTestForEmployee {
     private final int numberOfAddedObjectives = 3;

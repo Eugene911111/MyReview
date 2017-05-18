@@ -4,7 +4,7 @@ import myreview.BaseTestForDm;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static helpers.sqlQueries.*;
+import static core.Configuration.*;
 
 public class ApproveFormTest extends BaseTestForDm {
     private int numberOfAddedObjectives = 3;

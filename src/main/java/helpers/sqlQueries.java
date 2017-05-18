@@ -1,26 +1,16 @@
 package helpers;
 
 import org.openqa.selenium.WebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
 
+import static core.Configuration.*;
+
 public class sqlQueries {
 
     private WebDriver driver;
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    public static  String EPTESTER_1_ID = "644E3D87-E5EC-4274-8B26-EF76C5537E93";
     private String currentDate;
-    public static final String USER_FORMS_STATUS_IN_PROGRESS = "in_progress";
-    public static final  String USER_FORMS_STATUS_APPRAISAL = "appraisal";
-    public static final String USER_FORMS_STATUS_APPROVED = "approved";
-    public static final String USER_FORMS_STATUS_COMMITTED = "committed";
-    private String myReviewDbUrl = "jdbc:mysql://127.0.0.1:3306/evaluation-pro";
-    private String myReviewDbUserName = "root";
-    private String myReviewDbUserPassword = "";
-    private String rejectReason = "reject reason created with auto test";
 
     public final static String DELETE_GOALS_BY_ID = "DELETE FROM goals WHERE id >= ?";
     public final static String DELETE_USER_BY_ID = "DELETE FROM goals WHERE id <= ? AND user_id = ?";
@@ -143,4 +133,5 @@ public class sqlQueries {
     public void setDriver(WebDriver driver) {
         this.driver = driver;
     }
+
 }
