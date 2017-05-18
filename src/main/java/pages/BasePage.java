@@ -16,6 +16,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 import static core.Configuration.TIME_OUT;
+import static core.Wait.WAIT;
 
 @Data
 public class BasePage {
@@ -39,8 +40,8 @@ public class BasePage {
     }
 
     public boolean checkElementIsDisplayed(By element) throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, TIME_OUT);
-        WebElement element1 = wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+      //  WebDriverWait WAIT = new WebDriverWait(driver, TIME_OUT);
+        WebElement element1 = WAIT.until(ExpectedConditions.visibilityOfElementLocated(element));
         return element1 != null;
     }
 

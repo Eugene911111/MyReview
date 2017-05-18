@@ -14,7 +14,7 @@ public class FormTabPage extends BasePage {
     public By rejectReasonField = By.xpath("//div[@class=\"rejectReason ng-binding\"]");
     public By formTabContent = By.xpath("//div[@class=\"container-fluid goalForm ng-scope\"]");
 
-    public void pressImportFromNotesButton() throws InterruptedException {
+    public  void pressImportFromNotesButton() throws InterruptedException {
         waitForElementIsClickableAndClick(importFromNotesButton);
         checkElementIsDisplayed(notesModalWindow);
         waitForElementIsClickableAndClick(addToFormButton);

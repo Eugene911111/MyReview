@@ -8,7 +8,7 @@ public class Configuration {
     public static final String EPTESTERDM = "eptesterdm";
     public static final String EP_ADMIN = "ep-admin";
     public static final String epdelivery1 = "epdelivery1";
-    public static String EPTESTER_1_ID = "644E3D87-E5EC-4274-8B26-EF76C5537E93";
+    public static final String EPTESTER_1_ID = "644E3D87-E5EC-4274-8B26-EF76C5537E93";
     public static final String USER_FORMS_STATUS_IN_PROGRESS = "in_progress";
     public static final String USER_FORMS_STATUS_APPRAISAL = "appraisal";
     public static final String USER_FORMS_STATUS_APPROVED = "approved";

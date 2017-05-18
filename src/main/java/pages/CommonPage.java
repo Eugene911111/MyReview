@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 public class CommonPage extends BasePage {
     public static String departmentURL = "http://myreview.local/app_dev.php/#/department";
     public static String formTabUrl = "http://myreview.local/app_dev.php/#/form";
+    public static String reviewMeetingUrl = "http://myreview.local/app_dev.php/#/department/review-meeting/";
     private By userImgDropdown = By.xpath("//li[@class=\"btn-group dropdown\"]/a");
     private By aboutMyReviewButton = By.xpath("//a[@ui-sref=\"about\"]");
     private By formExampleButton = By.xpath("//a[@ui-sref=\"example\"]");

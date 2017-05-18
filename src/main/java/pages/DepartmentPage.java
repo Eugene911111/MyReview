@@ -11,11 +11,10 @@ public class DepartmentPage extends BasePage {
     private By commentByManagerField = By.xpath("//*[@id=\"input_2\"]");
     private String commentByManager = "comment_created_with_auto_test";
     private By rejectFormButton = By.xpath("//button[@class=\"md-raised md-primary md-button md-ink-ripple\"][contains(., \"Reject form\")]");
-
     private By approveFormButton = By.xpath("//button[@class=\"md-raised md-primary md-button md-ink-ripple\"][contains(., \"Approve form\")]");
     private By approveButton = By.xpath("//md-dialog-actions[@class=\"layout-row\"]/button[contains(., \"Approve\")]");
     public By notificationForDmField = By.xpath("//a[@class=\"active\"]/span");
-//    public String departmentURL = "http://myreview.local/app_dev.php/#/department";
+    //    public String departmentURL = "http://myreview.local/app_dev.php/#/department";
     private By radioButtonExceedsExpectations = By.xpath("//md-radio-button[@value=\"Exceeds expectations\"]");
     private By rejectReasonField = By.xpath("//textarea[@name=\"commentFormReject\"]");
     private By rejectButton = By.xpath("//md-dialog[@class=\"_md md-transition-in\"]//button[contains(., \"Reject\")]");
@@ -28,7 +27,6 @@ public class DepartmentPage extends BasePage {
     private By submitButton = By.xpath("//md-dialog[@class=\"_md md-transition-in\"]//button[contains(., \"Submit\")]");
     private By approveMessage = By.xpath("//*[contains(text(), \"You successfully submitted the form!\")] ");
     private By submitFinalFormMessage = By.xpath("//*[contains(text(), \"You successfully finished Performance Review Meeting!\")] ");
-    private String reviewMeetingUrl = "http://myreview.local/app_dev.php/#/department/review-meeting/";
     public By departmentTabContent = By.xpath("//div[@class=\"container-fluid department\"]");
 
     public void rejectForm() throws InterruptedException {
