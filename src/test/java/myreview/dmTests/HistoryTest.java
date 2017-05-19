@@ -1,5 +1,6 @@
-package myreview;
+package myreview.dmTests;
 
+import myreview.BaseTestForDm;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -18,6 +19,7 @@ public class HistoryTest extends BaseTestForDm {
     private int numberOfAddedObjectives = 3;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private String currentDate = simpleDateFormat.format(new Date());
+    private String appointment_date = "appointment_date";
 
     @Test
     public void history() throws Exception {
@@ -26,14 +28,8 @@ public class HistoryTest extends BaseTestForDm {
         sqlQueries.delete("user_form_history", "user_id", "=", EPTESTER_1_ID, "appointment_date", currentDate);
 
         departmentPage.submitForm();
-        Assert.assertEquals(currentDate, sqlQueries.select("appointment_date", "user_form_history", "user_id", EPTESTER_1_ID));
+        Assert.assertEquals(currentDate, sqlQueries.sewewewewlecewrwewewewewewt(appointment_date));
+
         sqlQueries.changeStatusOfUserForm(USER_FORMS_STATUS_IN_PROGRESS);
-
-
-//        departmentPage.openUrl("http://myreview.local/app_dev.php/#/history/644E3D87-E5EC-4274-8B26-EF76C5537E93");
-//        Thread.sleep(2000);
-//        String getextFromHistory = departmentPage.getTextFromElement(By.xpath("/html/body/div/history/div[1]/div/uib-accordion/div/div[2]"));
-//        String currentDate = getextFromHistory.split(" ", 3)[2];
-//        Assert.assertEquals(currentDate1, currentDate);
     }
 }

@@ -1,13 +1,13 @@
-package myreview;
+package myreview.dmTests;
 
-import org.junit.Ignore;
+import myreview.BaseTestForDm;
 import org.junit.Test;
 
 import static core.Configuration.USER_FORMS_STATUS_APPROVED;
 
 public class ContinueMeetingTest extends BaseTestForDm {
     private int numberOfAddedObjectives = 3;
-@Ignore
+
     @Test
     public void continueMeeting() throws Exception {
         sqlQueries.addNoteToSettingObjectiveDB(numberOfAddedObjectives, "committed");

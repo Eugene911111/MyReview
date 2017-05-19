@@ -12,6 +12,8 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         ApproveFormTest.class,
+        ContinueMeetingTest.class,
+        HistoryTest.class,
         NotificationForDmTest.class,
         RejectFormTest.class,
         StartMeeting.class,

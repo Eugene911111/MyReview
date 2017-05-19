@@ -27,6 +27,8 @@ public class DepartmentPage extends BasePage {
     private By approveMessage = By.xpath("//*[contains(text(), \"You successfully submitted the form!\")] ");
     private By submitFinalFormMessage = By.xpath("//*[contains(text(), \"You successfully finished Performance Review Meeting!\")] ");
     public By departmentTabContent = By.xpath("//div[@class=\"container-fluid department\"]");
+    public By continueButton = By.xpath("/html/body/div/department/div/div/div[2]/div[2]/div[2]/div[1]/div/div[3]/div[2]/button[2]/span");
+
 
     public void rejectForm() throws InterruptedException {
         openUrl(departmentURL);
@@ -64,22 +66,11 @@ public class DepartmentPage extends BasePage {
         }
     }
 
-    // rewright this
     public void continueMeeting() throws InterruptedException {
         waitForElementIsClickableAndClick(startMettingButton);
-        for (int i = 0; i < 1; i++) {
-            try {
-                changeFocusToPage(1);
-                checkElementIsDisplayed(submitFinalFormButton);
-                driver.close();
-            } catch (IndexOutOfBoundsException ignored) {
-                System.out.println("!");
-            }
-        }
-        changeFocusToPage(0);
         driver.navigate().refresh();
-        waitForElementIsPresentAndClick(By.xpath("/html/body/div/department/div/div/div[2]/div[2]/div[2]/div[1]/div/div[3]/div[2]/button[2]"));
-        changeFocusToPage(2);
+        changeFocusToPage(0);
+        checkElementIsDisplayed(continueButton);
     }
 
     public void submitForm() throws InterruptedException {

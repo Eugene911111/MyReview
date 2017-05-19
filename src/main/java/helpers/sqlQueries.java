@@ -129,7 +129,17 @@ public class sqlQueries {
         getConnection().close();
         return selectReturn;
     }
-
+    public String sewewewewlecewrwewewewewewt(String appointment_date) throws Exception {
+        Statement stmt = getConnection().createStatement();
+        ResultSet rs;
+        String selectReturn = null;
+        rs = stmt.executeQuery("SELECT "+appointment_date+" from user_form_history where id =(SELECT MAX(id) as MAX_ID from user_form_history where user_id = '644E3D87-E5EC-4274-8B26-EF76C5537E93')");
+        while (rs.next()) {
+            selectReturn = rs.getString(appointment_date);
+        }
+        getConnection().close();
+        return selectReturn;
+    }
     public void setDriver(WebDriver driver) {
         this.driver = driver;
     }

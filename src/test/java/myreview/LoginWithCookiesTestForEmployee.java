@@ -86,12 +86,6 @@ public class LoginWithCookiesTestForEmployee extends BaseTestForEmployee {
 
 
 
-
-
-
-
-
-
 //        private SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("dd MMMMMM yyyy", Locale.ENGLISH);
 //        private String currentDate1 = simpleDateFormat1.format(new Date());
 //
