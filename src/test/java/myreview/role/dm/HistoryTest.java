@@ -9,15 +9,12 @@ import pages.DepartmentPage;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 import static core.Configuration.*;
 
 public class HistoryTest extends BaseTest {
-    private DepartmentPage departmentPage = new DepartmentPage();
-    private SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("dd MMMMMM yyyy", Locale.ENGLISH);
-    private String currentDate1 = simpleDateFormat1.format(new Date());
     private int numberOfAddedObjectives = 3;
+    private DepartmentPage departmentPage = new DepartmentPage();
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private String currentDate = simpleDateFormat.format(new Date());
     private String appointment_date = "appointment_date";

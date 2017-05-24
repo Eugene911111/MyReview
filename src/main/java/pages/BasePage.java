@@ -18,7 +18,6 @@ import static core.Wait.waitFor;
 
 public class BasePage {
 
-
     public static String currentDate;
 
     static String returnCurrentDate() throws InterruptedException {

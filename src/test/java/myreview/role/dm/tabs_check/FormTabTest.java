@@ -12,8 +12,8 @@ import static pages.BasePage.waitForElementIsClickableAndClick;
 
 public class FormTabTest extends BaseTest {
     private CommonPage commonPage = new CommonPage();
-    private Preconditions preconditions = new Preconditions();
     private FormTabPage formTabPage = new FormTabPage();
+    private Preconditions preconditions = new Preconditions();
 
 
     @Test

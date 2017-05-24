@@ -12,10 +12,11 @@ import pages.NoteTabPage;
 import static core.Configuration.EPTESTER_1;
 
 public class AddObjectiveToFormTest extends BaseTest {
+
     private int numberOfNotesToAdd = 1;
-    private NoteTabPage noteTabPage = new NoteTabPage();
     private CommonPage commonPage = new CommonPage();
     private FormTabPage formTabPage = new FormTabPage();
+    private NoteTabPage noteTabPage = new NoteTabPage();
     private Preconditions preconditions = new Preconditions();
 
     @Test

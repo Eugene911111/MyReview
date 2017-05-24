@@ -10,15 +10,16 @@ import pages.NoteTabPage;
 import static core.Configuration.EPTESTER_1;
 
 public class AddingObjectiveOnNotesTabTest extends BaseTest {
-    private Preconditions preconditions = new Preconditions();
+
     private NoteTabPage noteTabPage = new NoteTabPage();
+    private Preconditions preconditions = new Preconditions();
 
     @Test
     public void addObjectiveOnNotesTab() throws Exception {
         preconditions.precondition(EPTESTER_1);
 
         noteTabPage.addObjective();
-        Assert.assertEquals(SqlQueries.select("goals","title", noteTabPage.currentTime), noteTabPage.currentTime);
+        Assert.assertEquals(SqlQueries.select("goals", "title", noteTabPage.currentTime), noteTabPage.currentTime);
 
         preconditions.postcondition();
     }

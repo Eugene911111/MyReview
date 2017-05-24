@@ -13,11 +13,13 @@ import static core.Configuration.EPTESTER_1;
 import static pages.CommonPage.formTabUrl;
 
 public class ImportFromNotesToFormTestForEmployee extends BaseTest {
+
     private int numberOfNotedToAdd = 1;
     private String expectedTitle = "autoTestTitle";
-    private Preconditions preconditions = new Preconditions();
     private FormTabPage formTabPage = new FormTabPage();
     private NoteTabPage noteTabPage = new NoteTabPage();
+    private Preconditions preconditions = new Preconditions();
+
     @Test
     public void importFromNotesToFormTest() throws Exception {
         preconditions.precondition(EPTESTER_1);

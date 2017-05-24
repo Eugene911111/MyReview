@@ -11,9 +11,10 @@ import pages.NoteTabPage;
 import static core.Configuration.EPTESTER_1;
 
 public class CheckQuantityOfObjectivesTest extends BaseTest {
+
     private int numberOfNotesToAdd = 1;
-    private Preconditions preconditions = new Preconditions();
     private NoteTabPage noteTabPage = new NoteTabPage();
+    private Preconditions preconditions = new Preconditions();
 
     @Test
     public void checkQuantityOfObjectives() throws Exception {

@@ -12,8 +12,8 @@ import static pages.BasePage.waitForElementIsClickableAndClick;
 
 public class DepartmentTabTest extends BaseTest {
     private CommonPage commonPage = new CommonPage();
-    private DepartmentPage departmentPage = new DepartmentPage();
     private Preconditions preconditions = new Preconditions();
+    private DepartmentPage departmentPage = new DepartmentPage();
 
     @Test
     public void departmentTabTest() throws Exception {

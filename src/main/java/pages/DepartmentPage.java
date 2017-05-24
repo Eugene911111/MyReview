@@ -8,6 +8,7 @@ import static core.TestApi.getDriver;
 import static pages.CommonPage.*;
 
 public class DepartmentPage extends BasePage {
+
     private By rejectButton = By.xpath("//md-dialog[@class=\"_md md-transition-in\"]//button[contains(., \"Reject\")]");
     private By submitButton = By.xpath("//md-dialog[@class=\"_md md-transition-in\"]//button[contains(., \"Submit\")]");
     private By approveButton = By.xpath("//md-dialog-actions[@class=\"layout-row\"]/button[contains(., \"Approve\")]");

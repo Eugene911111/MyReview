@@ -11,10 +11,11 @@ import pages.FormTabPage;
 import static core.Configuration.*;
 
 public class SendFormToManagerTest extends BaseTest {
+
     private int numberOfAddedObjectives = 3;
-    private Preconditions preconditions = new Preconditions();
     private CommonPage commonPage = new CommonPage();
     private FormTabPage formTabPage = new FormTabPage();
+    private Preconditions preconditions = new Preconditions();
 
     @Test
     public void sendFormToManager() throws Exception {

@@ -13,8 +13,8 @@ import static pages.CommonPage.formTabUrl;
 
 public class AddObjectiveOnFormTabTest extends BaseTest {
 
-    private Preconditions preconditions = new Preconditions();
     private NoteTabPage noteTabPage = new NoteTabPage();
+    private Preconditions preconditions = new Preconditions();
 
     @Test
     public void addObjectiveOnFormTab() throws Exception {
@@ -22,7 +22,7 @@ public class AddObjectiveOnFormTabTest extends BaseTest {
 
         FormTabPage.openUrl(formTabUrl);
         noteTabPage.addObjective();
-        Assert.assertEquals(SqlQueries.select("goals","title", noteTabPage.currentTime), noteTabPage.currentTime);
+        Assert.assertEquals(SqlQueries.select("goals", "title", noteTabPage.currentTime), noteTabPage.currentTime);
 
         preconditions.postcondition();
     }

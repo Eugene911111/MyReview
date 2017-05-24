@@ -11,8 +11,9 @@ import pages.NoteTabPage;
 import static core.Configuration.EPTESTER_1;
 
 public class AboutMyReviewTest extends BaseTest {
-    private Preconditions preconditions = new Preconditions();
+
     private CommonPage commonPage = new CommonPage();
+    private Preconditions preconditions = new Preconditions();
     private AboutMyReviewPage aboutMyReviewPage = new AboutMyReviewPage();
 
     @Test

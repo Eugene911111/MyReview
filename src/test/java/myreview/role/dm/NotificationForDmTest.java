@@ -13,9 +13,8 @@ import static core.Configuration.USER_FORMS_STATUS_COMMITTED;
 
 public class NotificationForDmTest extends BaseTest {
     private String notificationMessageText = "1";
-    private DepartmentPage departmentPage = new DepartmentPage();
-    private BasePage basePage = new BasePage();
     private Preconditions preconditions = new Preconditions();
+    private DepartmentPage departmentPage = new DepartmentPage();
 
     @Test
     public void checkNotificationForDm() throws Exception {

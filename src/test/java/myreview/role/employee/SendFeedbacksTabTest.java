@@ -14,10 +14,11 @@ import static core.Configuration.EPTESTER_1;
 import static core.Configuration.EPTESTER_1_ID;
 
 public class SendFeedbacksTabTest extends BaseTest {
+
     private CommonPage commonPage = new CommonPage();
-    private FeedbackDialogWindowPage feedbackDialogWindowPage = new FeedbackDialogWindowPage();
-    private Preconditions preconditions = new Preconditions();
     private NoteTabPage noteTabPage = new NoteTabPage();
+    private Preconditions preconditions = new Preconditions();
+    private FeedbackDialogWindowPage feedbackDialogWindowPage = new FeedbackDialogWindowPage();
 
     @Test
     public void sendFeedbackTest() throws Exception {

@@ -14,6 +14,7 @@ public class NotesTabTest extends BaseTest {
     private CommonPage commonPage = new CommonPage();
     private NoteTabPage noteTabPage = new NoteTabPage();
     private Preconditions preconditions = new Preconditions();
+
     @Test
     public void notesTabTest() throws Exception {
         preconditions.precondition(EPTESTERDM);

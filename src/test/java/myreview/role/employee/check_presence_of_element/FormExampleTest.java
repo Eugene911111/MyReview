@@ -11,9 +11,11 @@ import pages.NoteTabPage;
 import static core.Configuration.EPTESTER_1;
 
 public class FormExampleTest extends BaseTest {
-    private Preconditions preconditions = new Preconditions();
+
     private CommonPage commonPage = new CommonPage();
     private NoteTabPage noteTabPage = new NoteTabPage();
+    private Preconditions preconditions = new Preconditions();
+
     @Test
     public void checkFormExample() throws Exception {
         preconditions.precondition(EPTESTER_1);

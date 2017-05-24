@@ -12,11 +12,12 @@ import static pages.CommonPage.formTabUrl;
 
 public class RejectFormTest extends BaseTest {
     private int numberOfObjectivesToAdd = 3;
-    private Preconditions preconditions = new Preconditions();
     private LoginPage loginPage = new LoginPage();
     private CommonPage commonPage = new CommonPage();
-    private DepartmentPage departmentPage = new DepartmentPage();
     private FormTabPage formTabPage = new FormTabPage();
+    private Preconditions preconditions = new Preconditions();
+    private DepartmentPage departmentPage = new DepartmentPage();
+
     @Test
     public void rejectFormTest() throws Exception {
         preconditions.precondition(EPTESTERDM);
