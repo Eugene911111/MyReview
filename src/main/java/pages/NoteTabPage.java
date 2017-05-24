@@ -6,10 +6,10 @@ import org.openqa.selenium.By;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static pages.CommonPage.formButton;
+import static core.TestApi.getDriver;
 
 public class NoteTabPage extends BasePage {
-   // private By LogInFormName = By.xpath("//div[@class=\"panel-heading\"][contains(., 'Log In')]");
+    // private By LogInFormName = By.xpath("//div[@class=\"panel-heading\"][contains(., 'Log In')]");
     private By addObjectiveButton = By.xpath("//button[@class=\"addGoalButton md-raised md-button md-ink-ripple\"][contains(.,\"Add objective\")]");
     private By titleField = By.xpath("//div[@class=\"md-dialog-content\"]//input[@name=\"title\"]");
     private By commentByEmployeeField = By.xpath("//div[@class=\"md-dialog-content\"]//textarea[@name=\"Comment by employee\"]");
@@ -31,14 +31,14 @@ public class NoteTabPage extends BasePage {
     public String currentTime;
     public By notesPageContent = By.xpath("//div[@class=\"container-fluid goalForm ng-scope\"]");
 
- //   public void logOut() throws Exception {
+    //   public void logOut() throws Exception {
 //        pressLogoutButton();
 //        checkElementIsDisplayed(levi9Logo);
 //        checkElementIsDisplayed(logInPage.LogInFormName);
 //    }
 
     public int objectiveCount() throws Exception {
-        return driver.findElement(By.xpath("//div[@class=\"paneContent\"]")).findElements(By.xpath("//div[@class=\"clearfix goal\"]")).size();
+        return getDriver().findElement(By.xpath("//div[@class=\"paneContent\"]")).findElements(By.xpath("//div[@class=\"clearfix goal\"]")).size();
     }
 
     public String returnCurrentTime() throws InterruptedException {
@@ -57,7 +57,7 @@ public class NoteTabPage extends BasePage {
         waitForElementIsClickableAndClick(saveButton);
         waitForPresenceOfTextInElement1(lastObjectiveTitleInList, currentTime);
         Assert.assertEquals(currentTime, getTextFromElement(lastObjectiveTitleInList));
-        checkElementIsDisplayed(formButton);
+        //  checkElementIsDisplayed(formButton);
     }
 
     public void editObjective(String titleAfterEdit, String commentAfterEdit) throws InterruptedException {

@@ -1,10 +1,10 @@
 package myreview.testSuits;
 
-import myreview.dmTests.*;
-import myreview.dmTests.tabsCheck.DepartmentTabTest;
-import myreview.dmTests.tabsCheck.FormTabTest;
-import myreview.dmTests.tabsCheck.HistoryTabTest;
-import myreview.dmTests.tabsCheck.NotesTabTest;
+import myreview.role.dm.*;
+import myreview.role.dm.tabs_check.DepartmentTabTest;
+import myreview.role.dm.tabs_check.FormTabTest;
+import myreview.role.dm.tabs_check.HistoryTabTest;
+import myreview.role.dm.tabs_check.NotesTabTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 

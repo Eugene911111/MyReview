@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 
 import static core.Configuration.EPTESTER_1_ID;
 import static core.Configuration.PASSWORD;
+import static core.TestApi.getDriver;
 import static pages.CommonPage.*;
 
 public class DepartmentPage extends BasePage {
@@ -18,7 +19,7 @@ public class DepartmentPage extends BasePage {
     private By rejectReasonField = By.xpath("//textarea[@name=\"commentFormReject\"]");
     private By rejectButton = By.xpath("//md-dialog[@class=\"_md md-transition-in\"]//button[contains(., \"Reject\")]");
     private By rejectMessage = By.xpath("/html/body/header/md-toast/div/span");
-    private By startMettingButton = By.xpath("//div[@class=\"goalsPane ng-scope\"]//button[contains(., \"Start Meeting\")][@aria-hidden=\"false\"]");
+    private By startMetingButton = By.xpath("//div[@class=\"goalsPane ng-scope\"]//button[contains(., \"Start Meeting\")][@aria-hidden=\"false\"]");
     private By evaluationByEmployee = By.xpath("//div[@class=\"evaluationGroup ng-scope\"][contains(., \"Evaluation by employee: \")]//md-radio-button[@id=\"radio_4\"]");
     private By evaluationByDm = By.xpath("//div[@class=\"evaluationGroup ng-scope\"][contains(., \"\")]//md-radio-button[@id=\"radio_8\"]");
     private By employeePasswordField = By.xpath("//input[@name=\"password\"]");
@@ -27,7 +28,8 @@ public class DepartmentPage extends BasePage {
     private By approveMessage = By.xpath("//*[contains(text(), \"You successfully submitted the form!\")] ");
     private By submitFinalFormMessage = By.xpath("//*[contains(text(), \"You successfully finished Performance Review Meeting!\")] ");
     public By departmentTabContent = By.xpath("//div[@class=\"container-fluid department\"]");
-    public By continueButton = By.xpath("/html/body/div/department/div/div/div[2]/div[2]/div[2]/div[1]/div/div[3]/div[2]/button[2]/span");
+    private By continueButton = By.xpath("/html/body/div/department/div/div/div[2]/div[2]/div[2]/div[1]/div/div[3]/div[2]/button[2]/span");
+    private String departmentURL = "http://myreview.local/app_dev.php/#/department";
 
 
     public void rejectForm() throws InterruptedException {
@@ -54,7 +56,7 @@ public class DepartmentPage extends BasePage {
     }
 
     public void startMeeting() throws InterruptedException {
-        waitForElementIsClickableAndClick(startMettingButton);
+        waitForElementIsClickableAndClick(startMetingButton);
         int i = 0;
         while (i < 1) {
             try {
@@ -66,9 +68,9 @@ public class DepartmentPage extends BasePage {
         }
     }
 
-    public void continueMeeting() throws InterruptedException {
-        waitForElementIsClickableAndClick(startMettingButton);
-        driver.navigate().refresh();
+    public  void continueMeeting() throws InterruptedException {
+        waitForElementIsClickableAndClick(startMetingButton);
+        getDriver().navigate().refresh();
         changeFocusToPage(0);
         checkElementIsDisplayed(continueButton);
     }

@@ -1,10 +1,10 @@
 package myreview.testSuits;
 
-import myreview.employeeTests.SendFeedbackTest;
-import myreview.employeeTests.SendFormToManagerTest;
-import myreview.employeeTests.actionsWithObjectives.*;
-import myreview.employeeTests.checkPresenceOfElement.AboutMyReviewTestForEmployee;
-import myreview.employeeTests.checkPresenceOfElement.FormExampleTestForEmployee;
+import myreview.role.employee.SendFeedbacksTabTest;
+import myreview.role.employee.SendFormToManagerTest;
+import myreview.role.employee.actionsWithObjectives.*;
+import myreview.role.employee.checkPresenceOfElement.AboutMyReviewTestForEmployee;
+import myreview.role.employee.checkPresenceOfElement.FormExampleTestForEmployee;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -19,7 +19,7 @@ import org.junit.runners.Suite;
         DeleteObjectiveOnNoteTabTest.class,
         EditObjectiveOnNoteTabTest.class,
         ImportFromNotesToFormTestForEmployee.class,
-        SendFeedbackTest.class,
+        SendFeedbacksTabTest.class,
         SendFormToManagerTest.class,
         AboutMyReviewTestForEmployee.class,
         FormExampleTestForEmployee.class

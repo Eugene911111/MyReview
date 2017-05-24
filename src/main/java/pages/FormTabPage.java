@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 
+import static core.TestApi.getDriver;
+
 public class FormTabPage extends BasePage {
     private By importFromNotesButton = By.xpath("//button[@class=\"addGoalButton md-raised md-button md-ink-ripple\"][contains(., \"Import from notes\")]");
     private By notesModalWindow = By.xpath("//div[@class=\"notesModal\"]");
@@ -35,7 +37,6 @@ public class FormTabPage extends BasePage {
 
     public int settingObjectiveCount() throws Exception {
         checkElementIsDisplayed(lastElementInListOfObjectives);
-        int objectiveCount = driver.findElements(lastElementInListOfObjectives).size();
-        return objectiveCount;
+        return getDriver().findElements(lastElementInListOfObjectives).size();
     }
 }

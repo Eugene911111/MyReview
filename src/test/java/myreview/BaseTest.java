@@ -10,12 +10,12 @@ import static core.TestApi.setDriver;
 public class BaseTest {
 
     @BeforeClass
-    public void setUp() {
+    public static void setUp() {
         setDriver(new ChromeDriver());
     }
 
     @AfterClass
-    public void tearDown() {
+    public static void tearDown() {
         getDriver().quit();
     }
 }

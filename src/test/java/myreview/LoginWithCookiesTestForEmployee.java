@@ -3,7 +3,7 @@ package myreview;
 
 import org.junit.Test;
 
-public class LoginWithCookiesTestForEmployee extends BaseTestForEmployee {
+public class LoginWithCookiesTestForEmployee extends BaseTest {
     @Test
     public void loginTest() throws Exception {
 // log in
@@ -64,7 +64,6 @@ public class LoginWithCookiesTestForEmployee extends BaseTestForEmployee {
 //        //  driver.get("http://myreview.local/app_dev.php/login");
 //
 //        driver.manage().deleteAllCookies();
-//        Thread.sleep(1000);
 //        Assert.assertEquals(null, driver.manage().getCookieNamed("REMEMBERME"));
 ////add cookies
 //        for (Cookie cookie : cookiesInstance1) {
@@ -73,13 +72,11 @@ public class LoginWithCookiesTestForEmployee extends BaseTestForEmployee {
 //        // driver.navigate().refresh();
 //        driver.get("http://myreview.local/app_dev.php/login");
 //// get cookies
-//        Thread.sleep(1000);
 //        Set<Cookie> cookiesInstance2 = driver.manage().getCookies();
 //        System.out.println("cookiesInstance1 = " + cookiesInstance1);
 //        System.out.println("cookiesInstance2 = " + cookiesInstance2);
 ////
 //        Assert.assertEquals(cookiesInstance1, cookiesInstance2);
-//        Thread.sleep(3000);
 //    }
 
 
@@ -91,9 +88,8 @@ public class LoginWithCookiesTestForEmployee extends BaseTestForEmployee {
 //
 //
 //        departmentPage.openUrl("http://myreview.local/app_dev.php/#/history/644E3D87-E5EC-4274-8B26-EF76C5537E93");
-//        Thread.sleep(2000);
-//        String getextFromHistory = departmentPage.getTextFromElement(By.xpath("/html/body/div/history/div[1]/div/uib-accordion/div/div[2]"));
-//        String currentDate = getextFromHistory.split(" ", 3)[2];
+//        String getTextFromHistory = departmentPage.getTextFromElement(By.xpath("/html/body/div/history/div[1]/div/uib-accordion/div/div[2]"));
+//        String currentDate = getTextFromHistory.split(" ", 3)[2];
 //        Assert.assertEquals(currentDate1, currentDate);
     }
 }

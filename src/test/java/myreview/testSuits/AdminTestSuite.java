@@ -1,12 +1,12 @@
 package myreview.testSuits;
 
-import myreview.adminTests.FeedbackTest;
+import myreview.role.admin.FeedbacksTabTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        FeedbackTest.class
+        FeedbacksTabTest.class
 
 })
 
