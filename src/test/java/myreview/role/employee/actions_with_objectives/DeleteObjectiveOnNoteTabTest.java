@@ -1,4 +1,4 @@
-package myreview.role.employee.actionsWithObjectives;
+package myreview.role.employee.actions_with_objectives;
 
 import core.Preconditions;
 import helpers.SqlQueries;
@@ -9,16 +9,18 @@ import pages.NoteTabPage;
 
 import static core.Configuration.EPTESTER_1;
 
-public class AddingObjectiveOnNotesTabTest extends BaseTest {
+public class DeleteObjectiveOnNoteTabTest extends BaseTest {
+    private int numberOfNotesToAdd = 1;
     private Preconditions preconditions = new Preconditions();
     private NoteTabPage noteTabPage = new NoteTabPage();
 
     @Test
-    public void addObjectiveOnNotesTab() throws Exception {
+    public void deleteObjectiveOnNoteTab() throws Exception {
         preconditions.precondition(EPTESTER_1);
+        SqlQueries.insert(numberOfNotesToAdd);
 
-        noteTabPage.addObjective();
-        Assert.assertEquals(SqlQueries.select("goals","title", noteTabPage.currentTime), noteTabPage.currentTime);
+        noteTabPage.deleteObjectiveFromNotes();
+        Assert.assertEquals(null, (SqlQueries.select("goals", "title", "autoTestTitle")));
 
         preconditions.postcondition();
     }

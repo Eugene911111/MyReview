@@ -21,7 +21,7 @@ public class BasePage {
 
     public static String currentDate;
 
-    public static String returnCurrentDate() throws InterruptedException {
+    static String returnCurrentDate() throws InterruptedException {
         SimpleDateFormat ft = new SimpleDateFormat("E yyyy.MM.dd 'at' hh.mm.ss a");
         currentDate = ft.format(new Date());
         return currentDate;
@@ -36,46 +36,43 @@ public class BasePage {
         return waitFor().until(ExpectedConditions.visibilityOfElementLocated(element)) != null;
     }
 
-    public static void checkElementIsNotDisplayed(By element) throws InterruptedException {
+    static void checkElementIsNotDisplayed(By element) throws InterruptedException {
         waitFor().until(ExpectedConditions.invisibilityOfElementLocated(element));
     }
 
-    public static void highlightElementAndSendKeys(By element, String keys) throws InterruptedException {
+    static void highlightElementAndSendKeys(By element, String keys) throws InterruptedException {
         WebElement element1 = waitFor().until(ExpectedConditions.presenceOfElementLocated(element));
         WebElement toClear = element1.findElement(element);
         toClear.sendKeys(Keys.CONTROL + "a");
         element1.findElement(element).sendKeys(keys);
     }
 
-    public static void findElementAndSendKeys(By element, String keys) throws InterruptedException {
-        //waiter(element, WebElement::isDisplayed, ExpectedConditions::visibilityOfElementLocated, TIME_OUT);
+    static void findElementAndSendKeys(By element, String keys) throws InterruptedException {
         WebElement element1 = waitFor().until(ExpectedConditions.presenceOfElementLocated(element));
         element1.findElement(element).sendKeys(keys);
     }
 
-    public static void findElementClearAndSendKeys(By element, String keys) throws InterruptedException {
+    static void findElementClearAndSendKeys(By element, String keys) throws InterruptedException {
         waiter(element, WebElement::clear, ExpectedConditions::visibilityOfElementLocated, TIME_OUT);
         WebElement element1 = waitFor().until(ExpectedConditions.presenceOfElementLocated(element));
         element1.findElement(element).sendKeys(keys);
     }
 
-    public static void waiter(By selector, Consumer<WebElement> consumer, Function<By, ExpectedCondition<WebElement>> function, long seconds) throws InterruptedException {
+    private static void waiter(By selector, Consumer<WebElement> consumer, Function<By, ExpectedCondition<WebElement>> function, long seconds) throws InterruptedException {
         WebElement element = waitFor().until(function.apply(selector));
         consumer.accept(element);
     }
 
     public static void waitForElementIsClickableAndClick(By byElement) throws InterruptedException {
-        // WebElement element = wait.until(ExpectedConditions.elementToBeClickable(byElement));
-        //  element.click();
         waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, TIME_OUT);
     }
 
-    public static void changeFocusToPage(int pageIndex) throws InterruptedException {
+    static void changeFocusToPage(int pageIndex) throws InterruptedException {
         ArrayList tabs = new ArrayList(getDriver().getWindowHandles());
         getDriver().switchTo().window((String) tabs.get(pageIndex));
     }
 
-    public static void waitForElementIsPresentAndClick(By byElement) throws InterruptedException {
+    static void waitForElementIsPresentAndClick(By byElement) throws InterruptedException {
         waiter(byElement, WebElement::click, ExpectedConditions::visibilityOfElementLocated, TIME_OUT);
     }
 
@@ -85,7 +82,7 @@ public class BasePage {
     }
 
     // for textarea and input elements
-    public static void waitForPresenceOfTextInElement(By element, String text) throws InterruptedException {
+    static void waitForPresenceOfTextInElement(By element, String text) throws InterruptedException {
         waitFor().until(ExpectedConditions.textToBePresentInElementValue(element, text));
     }
 

@@ -8,29 +8,28 @@ import static core.TestApi.getDriver;
 import static pages.CommonPage.*;
 
 public class DepartmentPage extends BasePage {
+    private By rejectButton = By.xpath("//md-dialog[@class=\"_md md-transition-in\"]//button[contains(., \"Reject\")]");
+    private By submitButton = By.xpath("//md-dialog[@class=\"_md md-transition-in\"]//button[contains(., \"Submit\")]");
+    private By approveButton = By.xpath("//md-dialog-actions[@class=\"layout-row\"]/button[contains(., \"Approve\")]");
+    private By rejectMessage = By.xpath("/html/body/header/md-toast/div/span");
+    private By approveMessage = By.xpath("//*[contains(text(), \"You successfully submitted the form!\")] ");
+    private By continueButton = By.xpath("/html/body/div/department/div/div/div[2]/div[2]/div[2]/div[1]/div/div[3]/div[2]/button[2]/span");
+    private By evaluationByDm = By.xpath("//div[@class=\"evaluationGroup ng-scope\"][contains(., \"\")]//md-radio-button[@id=\"radio_8\"]");
     private By reviewFormButton = By.xpath("//a[@class=\"md-raised md-button md-ink-ripple\"][contains(., \"Review form\")]");
-    private By commentByManagerField = By.xpath("//*[@id=\"input_2\"]");
-    private String commentByManager = "comment_created_with_auto_test";
     private By rejectFormButton = By.xpath("//button[@class=\"md-raised md-primary md-button md-ink-ripple\"][contains(., \"Reject form\")]");
     private By approveFormButton = By.xpath("//button[@class=\"md-raised md-primary md-button md-ink-ripple\"][contains(., \"Approve form\")]");
-    private By approveButton = By.xpath("//md-dialog-actions[@class=\"layout-row\"]/button[contains(., \"Approve\")]");
-    public By notificationForDmField = By.xpath("//a[@class=\"active\"]/span");
-    private By radioButtonExceedsExpectations = By.xpath("//md-radio-button[@value=\"Exceeds expectations\"]");
-    private By rejectReasonField = By.xpath("//textarea[@name=\"commentFormReject\"]");
-    private By rejectButton = By.xpath("//md-dialog[@class=\"_md md-transition-in\"]//button[contains(., \"Reject\")]");
-    private By rejectMessage = By.xpath("/html/body/header/md-toast/div/span");
     private By startMetingButton = By.xpath("//div[@class=\"goalsPane ng-scope\"]//button[contains(., \"Start Meeting\")][@aria-hidden=\"false\"]");
+    private By rejectReasonField = By.xpath("//textarea[@name=\"commentFormReject\"]");
     private By evaluationByEmployee = By.xpath("//div[@class=\"evaluationGroup ng-scope\"][contains(., \"Evaluation by employee: \")]//md-radio-button[@id=\"radio_4\"]");
-    private By evaluationByDm = By.xpath("//div[@class=\"evaluationGroup ng-scope\"][contains(., \"\")]//md-radio-button[@id=\"radio_8\"]");
-    private By employeePasswordField = By.xpath("//input[@name=\"password\"]");
     private By submitFinalFormButton = By.xpath("//button[@class=\"md-raised md-primary md-button md-ink-ripple\"]");
-    private By submitButton = By.xpath("//md-dialog[@class=\"_md md-transition-in\"]//button[contains(., \"Submit\")]");
-    private By approveMessage = By.xpath("//*[contains(text(), \"You successfully submitted the form!\")] ");
+    private By employeePasswordField = By.xpath("//input[@name=\"password\"]");
+    private By commentByManagerField = By.xpath("//*[@id=\"input_2\"]");
     private By submitFinalFormMessage = By.xpath("//*[contains(text(), \"You successfully finished Performance Review Meeting!\")] ");
-    public By departmentTabContent = By.xpath("//div[@class=\"container-fluid department\"]");
-    private By continueButton = By.xpath("/html/body/div/department/div/div/div[2]/div[2]/div[2]/div[1]/div/div[3]/div[2]/button[2]/span");
+    private By radioButtonExceedsExpectations = By.xpath("//md-radio-button[@value=\"Exceeds expectations\"]");
     private String departmentURL = "http://myreview.local/app_dev.php/#/department";
-
+    private String commentByManager = "comment_created_with_auto_test";
+    public By departmentTabContent = By.xpath("//div[@class=\"container-fluid department\"]");
+    public By notificationForDmField = By.xpath("//a[@class=\"active\"]/span");
 
     public void rejectForm() throws InterruptedException {
         openUrl(departmentURL);

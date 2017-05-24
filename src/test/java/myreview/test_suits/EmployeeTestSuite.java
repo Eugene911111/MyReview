@@ -1,14 +1,12 @@
-package myreview.testSuits;
+package myreview.test_suits;
 
 import myreview.role.employee.SendFeedbacksTabTest;
 import myreview.role.employee.SendFormToManagerTest;
-import myreview.role.employee.actionsWithObjectives.*;
-import myreview.role.employee.checkPresenceOfElement.AboutMyReviewTestForEmployee;
-import myreview.role.employee.checkPresenceOfElement.FormExampleTestForEmployee;
+import myreview.role.employee.actions_with_objectives.*;
+import myreview.role.employee.check_presence_of_element.AboutMyReviewTest;
+import myreview.role.employee.check_presence_of_element.FormExampleTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-
-
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
@@ -21,8 +19,8 @@ import org.junit.runners.Suite;
         ImportFromNotesToFormTestForEmployee.class,
         SendFeedbacksTabTest.class,
         SendFormToManagerTest.class,
-        AboutMyReviewTestForEmployee.class,
-        FormExampleTestForEmployee.class
+        AboutMyReviewTest.class,
+        FormExampleTest.class
 })
 
 public class EmployeeTestSuite {

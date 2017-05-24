@@ -1,4 +1,4 @@
-package myreview.role.employee.checkPresenceOfElement;
+package myreview.role.employee.check_presence_of_element;
 
 import core.Preconditions;
 import myreview.BaseTest;
@@ -10,7 +10,7 @@ import pages.NoteTabPage;
 
 import static core.Configuration.EPTESTER_1;
 
-public class FormExampleTestForEmployee extends BaseTest {
+public class FormExampleTest extends BaseTest {
     private Preconditions preconditions = new Preconditions();
     private CommonPage commonPage = new CommonPage();
     private NoteTabPage noteTabPage = new NoteTabPage();

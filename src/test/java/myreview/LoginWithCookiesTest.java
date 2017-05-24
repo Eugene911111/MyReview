@@ -3,7 +3,7 @@ package myreview;
 
 import org.junit.Test;
 
-public class LoginWithCookiesTestForEmployee extends BaseTest {
+public class LoginWithCookiesTest extends BaseTest {
     @Test
     public void loginTest() throws Exception {
 // log in

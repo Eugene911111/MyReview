@@ -1,4 +1,4 @@
-package myreview.role.employee.actionsWithObjectives;
+package myreview.role.employee.actions_with_objectives;
 
 import core.Preconditions;
 import helpers.SqlQueries;
