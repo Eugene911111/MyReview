@@ -2,11 +2,11 @@ package myreview.role.employee.check_presence_of_element;
 
 import core.Preconditions;
 import myreview.BaseTest;
-import org.junit.Assert;
-import org.junit.Test;
-import pages.BasePage;
-import pages.CommonPage;
 import pages.NoteTabPage;
+import pages.CommonPage;
+import org.junit.Assert;
+import pages.BasePage;
+import org.junit.Test;
 
 import static core.Configuration.EPTESTER_1;
 

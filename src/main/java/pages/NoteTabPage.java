@@ -1,10 +1,10 @@
 package pages;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.junit.Assert;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 import static core.TestApi.getDriver;
 

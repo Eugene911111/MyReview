@@ -1,14 +1,14 @@
 package myreview.role.employee;
 
+import pages.FeedbackDialogWindowPage;
 import core.Preconditions;
 import helpers.SqlQueries;
 import myreview.BaseTest;
-import org.junit.Assert;
-import org.junit.Test;
-import pages.BasePage;
-import pages.CommonPage;
-import pages.FeedbackDialogWindowPage;
 import pages.NoteTabPage;
+import pages.CommonPage;
+import org.junit.Assert;
+import pages.BasePage;
+import org.junit.Test;
 
 import static core.Configuration.EPTESTER_1;
 import static core.Configuration.EPTESTER_1_ID;

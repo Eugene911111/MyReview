@@ -7,8 +7,8 @@ import static core.Configuration.USER_FORMS_STATUS_IN_PROGRESS;
 import static helpers.SqlQueries.*;
 
 public class Preconditions {
-    private CommonPage commonPage = new CommonPage();
     private LoginPage loginPage = new LoginPage();
+    private CommonPage commonPage = new CommonPage();
 
     public void precondition(String userName) throws Exception {
         changeStatusOfUserForm(USER_FORMS_STATUS_IN_PROGRESS);

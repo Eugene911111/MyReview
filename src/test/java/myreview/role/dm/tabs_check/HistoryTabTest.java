@@ -11,6 +11,7 @@ import static pages.BasePage.checkElementIsDisplayed;
 import static pages.BasePage.waitForElementIsClickableAndClick;
 
 public class HistoryTabTest extends BaseTest {
+
     private CommonPage commonPage = new CommonPage();
     private HistoryPage historyPage = new HistoryPage();
     private Preconditions preconditions = new Preconditions();

@@ -3,10 +3,10 @@ package myreview.role.employee;
 import core.Preconditions;
 import helpers.SqlQueries;
 import myreview.BaseTest;
-import org.junit.Assert;
-import org.junit.Test;
-import pages.CommonPage;
 import pages.FormTabPage;
+import org.junit.Assert;
+import pages.CommonPage;
+import org.junit.Test;
 
 import static core.Configuration.*;
 

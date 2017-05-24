@@ -10,6 +10,7 @@ import static core.Configuration.*;
 import static org.junit.Assert.assertEquals;
 
 public class ApproveFormTest extends BaseTest {
+
     private int numberOfAddedObjectives = 3;
     private Preconditions preconditions = new Preconditions();
     private DepartmentPage departmentPage = new DepartmentPage();

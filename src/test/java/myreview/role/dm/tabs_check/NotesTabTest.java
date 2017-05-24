@@ -11,6 +11,7 @@ import static pages.BasePage.checkElementIsDisplayed;
 import static pages.BasePage.waitForElementIsClickableAndClick;
 
 public class NotesTabTest extends BaseTest {
+
     private CommonPage commonPage = new CommonPage();
     private NoteTabPage noteTabPage = new NoteTabPage();
     private Preconditions preconditions = new Preconditions();
