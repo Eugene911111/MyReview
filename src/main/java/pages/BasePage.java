@@ -1,10 +1,13 @@
 package pages;
 
+import core.Configuration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,12 +15,12 @@ import java.util.Date;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import static core.Configuration.TIME_OUT;
 import static core.TestApi.getDriver;
 import static core.Wait.waitFor;
 
 public class BasePage {
 
+    public Logger log = LoggerFactory.getLogger(this.getClass());
     public static String currentDate;
 
     static String returnCurrentDate() throws InterruptedException {
@@ -52,7 +55,7 @@ public class BasePage {
     }
 
     static void findElementClearAndSendKeys(By element, String keys) throws InterruptedException {
-        waiter(element, WebElement::clear, ExpectedConditions::visibilityOfElementLocated, TIME_OUT);
+        waiter(element, WebElement::clear, ExpectedConditions::visibilityOfElementLocated, Configuration.getInstance().getTimeOut());
         WebElement element1 = waitFor().until(ExpectedConditions.presenceOfElementLocated(element));
         element1.findElement(element).sendKeys(keys);
     }
@@ -63,7 +66,7 @@ public class BasePage {
     }
 
     public static void waitForElementIsClickableAndClick(By byElement) throws InterruptedException {
-        waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, TIME_OUT);
+        waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, Configuration.getInstance().getTimeOut());
     }
 
     static void changeFocusToPage(int pageIndex) throws InterruptedException {
@@ -72,21 +75,25 @@ public class BasePage {
     }
 
     static void waitForElementIsPresentAndClick(By byElement) throws InterruptedException {
-        waiter(byElement, WebElement::click, ExpectedConditions::visibilityOfElementLocated, TIME_OUT);
+        waiter(byElement, WebElement::click, ExpectedConditions::visibilityOfElementLocated, Configuration.getInstance().getTimeOut());
     }
 
     public static String getTextFromElement(By element) throws InterruptedException {
-        waiter(element, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, TIME_OUT);
+        waiter(element, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, Configuration.getInstance().getTimeOut());
         return getDriver().findElement(element).getText();
     }
 
-    // for textarea and input elements
-    static void waitForPresenceOfTextInElement(By element, String text) throws InterruptedException {
+    /**
+     * for textarea and input elements
+     */
+    static void waitForPresenceOfTextInTextAreaInputElement(By element, String text) throws InterruptedException {
         waitFor().until(ExpectedConditions.textToBePresentInElementValue(element, text));
     }
 
-    // for div elements
-    public static void waitForPresenceOfTextInElement1(By element, String text) throws InterruptedException {
+    /**
+     * for div elements
+     */
+    static void waitForPresenceOfTextInDivElement(By element, String text) throws InterruptedException {
         waitFor().until(ExpectedConditions.textToBe(element, text));
     }
 }

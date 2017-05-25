@@ -1,11 +1,10 @@
 package pages;
 
+import core.Configuration;
 import org.openqa.selenium.By;
 
-import static core.Configuration.EPTESTER_1_ID;
-import static core.Configuration.PASSWORD;
 import static core.TestApi.getDriver;
-import static pages.CommonPage.*;
+import static pages.CommonPage.reviewMeetingUrl;
 
 public class DepartmentPage extends BasePage {
 
@@ -38,10 +37,10 @@ public class DepartmentPage extends BasePage {
         changeFocusToPage(1);
         waitForElementIsClickableAndClick(radioButtonExceedsExpectations);
         highlightElementAndSendKeys(commentByManagerField, commentByManager);
-        waitForPresenceOfTextInElement(commentByManagerField, commentByManager);
+        waitForPresenceOfTextInTextAreaInputElement(commentByManagerField, commentByManager);
         waitForElementIsClickableAndClick(rejectFormButton);
         findElementClearAndSendKeys(rejectReasonField, returnCurrentDate());
-        waitForPresenceOfTextInElement(rejectReasonField, currentDate);
+        waitForPresenceOfTextInTextAreaInputElement(rejectReasonField, currentDate);
         waitForElementIsClickableAndClick(rejectButton);
         checkElementIsDisplayed(rejectMessage);
     }
@@ -75,11 +74,11 @@ public class DepartmentPage extends BasePage {
         checkElementIsDisplayed(continueButton);
     }
 
-    public void submitForm() throws InterruptedException {
-        openUrl(reviewMeetingUrl + EPTESTER_1_ID);
+    public void submitForm() throws Exception {
+        openUrl(reviewMeetingUrl + Configuration.getInstance().getEPTESTER_1_ID());
         waitForElementIsClickableAndClick(evaluationByEmployee);
         waitForElementIsClickableAndClick(evaluationByDm);
-        findElementAndSendKeys(employeePasswordField, PASSWORD);
+        findElementAndSendKeys(employeePasswordField, Configuration.getInstance().getPassword());
         waitForElementIsPresentAndClick(submitFinalFormButton);
         waitForElementIsPresentAndClick(submitButton);
         checkElementIsDisplayed(submitFinalFormMessage);

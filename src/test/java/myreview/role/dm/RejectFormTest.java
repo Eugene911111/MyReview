@@ -1,5 +1,6 @@
 package myreview.role.dm;
 
+import core.Configuration;
 import core.Preconditions;
 import helpers.SqlQueries;
 import myreview.BaseTest;
@@ -7,7 +8,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import pages.*;
 
-import static core.Configuration.*;
 import static pages.CommonPage.formTabUrl;
 
 public class RejectFormTest extends BaseTest {
@@ -20,16 +20,16 @@ public class RejectFormTest extends BaseTest {
 
     @Test
     public void rejectFormTest() throws Exception {
-        preconditions.precondition(EPTESTERDM);
+        preconditions.logInAs(Configuration.getInstance().getEptesterdm());
 
         SqlQueries.addNoteToSettingObjectiveDB(numberOfObjectivesToAdd, "committed");
-        SqlQueries.changeStatusOfUserForm(USER_FORMS_STATUS_COMMITTED);
+        SqlQueries.changeStatusOfUserForm(Configuration.getInstance().getCommitted());
 
         departmentPage.rejectForm();
-        Assert.assertEquals(USER_FORMS_STATUS_IN_PROGRESS, SqlQueries.select("status", "user_forms", "user_id", EPTESTER_1_ID));
+        Assert.assertEquals(Configuration.getInstance().getInProgress(), SqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEPTESTER_1_ID()));
 
         commonPage.logOut();
-        loginPage.logIn(EPTESTER_1);
+        loginPage.logIn(Configuration.getInstance().getEptester1());
         BasePage.openUrl(formTabUrl);
         Assert.assertEquals(DepartmentPage.currentDate, FormTabPage.getTextFromElement(formTabPage.rejectReasonField));
 

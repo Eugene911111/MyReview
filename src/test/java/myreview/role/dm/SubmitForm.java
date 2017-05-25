@@ -1,5 +1,6 @@
 package myreview.role.dm;
 
+import core.Configuration;
 import core.Preconditions;
 import helpers.SqlQueries;
 import myreview.BaseTest;
@@ -9,8 +10,6 @@ import pages.DepartmentPage;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import static core.Configuration.*;
 
 public class SubmitForm extends BaseTest {
     private int numberOfAddedObjectives = 3;
@@ -22,13 +21,13 @@ public class SubmitForm extends BaseTest {
 
     @Test
     public void submitForm() throws Exception {
-        preconditions.precondition(EPTESTERDM);
+        preconditions.logInAs(Configuration.getInstance().getEptesterdm());
         SqlQueries.addNoteToSettingObjectiveDB(numberOfAddedObjectives, "approved");
-        SqlQueries.changeStatusOfUserForm(USER_FORMS_STATUS_APPRAISAL);
-        SqlQueries.delete("user_form_history", "user_id", "=", EPTESTER_1_ID, "appointment_date", currentDate);
+        SqlQueries.changeStatusOfUserForm(Configuration.getInstance().getAppraisal());
+        SqlQueries.delete("user_form_history", "user_id", "=", Configuration.getInstance().getEPTESTER_1_ID(), "appointment_date", currentDate);
 
         departmentPage.submitForm();
-        Assert.assertEquals(USER_FORMS_STATUS_IN_PROGRESS, SqlQueries.select("status", "user_forms", "user_id", EPTESTER_1_ID));
+        Assert.assertEquals(Configuration.getInstance().getInProgress(), SqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEPTESTER_1_ID()));
 
         preconditions.postcondition();
     }

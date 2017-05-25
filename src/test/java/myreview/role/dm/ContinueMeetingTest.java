@@ -1,13 +1,12 @@
 package myreview.role.dm;
 
+import core.Configuration;
 import core.Preconditions;
 import helpers.SqlQueries;
 import myreview.BaseTest;
 import org.junit.Test;
 import pages.DepartmentPage;
 
-import static core.Configuration.EPTESTERDM;
-import static core.Configuration.USER_FORMS_STATUS_APPROVED;
 
 public class ContinueMeetingTest extends BaseTest {
 
@@ -17,10 +16,10 @@ public class ContinueMeetingTest extends BaseTest {
 
     @Test
     public void continueMeeting() throws Exception {
-        preconditions.precondition(EPTESTERDM);
+        preconditions.logInAs(Configuration.getInstance().getEptesterdm());
 
         SqlQueries.addNoteToSettingObjectiveDB(numberOfAddedObjectives, "committed");
-        SqlQueries.changeStatusOfUserForm(USER_FORMS_STATUS_APPROVED);
+        SqlQueries.changeStatusOfUserForm(Configuration.getInstance().getApproved());
 
         departmentPage.continueMeeting();
         preconditions.postcondition();

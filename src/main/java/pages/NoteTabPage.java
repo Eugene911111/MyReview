@@ -46,11 +46,11 @@ public class NoteTabPage extends BasePage {
         waitForElementIsClickableAndClick(addObjectiveButton);
         checkElementIsDisplayed(addObjectiveWindow);
         findElementAndSendKeys(commentByEmployeeField, commentByEmployee);
-        waitForPresenceOfTextInElement(commentByEmployeeField, commentByEmployee);
+        waitForPresenceOfTextInTextAreaInputElement(commentByEmployeeField, commentByEmployee);
         findElementAndSendKeys(titleField, returnCurrentTime());
-        waitForPresenceOfTextInElement(titleField, currentTime);
+        waitForPresenceOfTextInTextAreaInputElement(titleField, currentTime);
         waitForElementIsClickableAndClick(saveButton);
-        waitForPresenceOfTextInElement1(lastObjectiveTitleInList, currentTime);
+        waitForPresenceOfTextInDivElement(lastObjectiveTitleInList, currentTime);
         Assert.assertEquals(currentTime, getTextFromElement(lastObjectiveTitleInList));
         checkElementIsDisplayed(commonPage.formButton);
     }
@@ -58,11 +58,11 @@ public class NoteTabPage extends BasePage {
     public void editObjective(String titleAfterEdit, String commentAfterEdit) throws InterruptedException {
         waitForElementIsClickableAndClick(editButton);
         findElementClearAndSendKeys(commentByEmployeeField, commentAfterEdit);
-        waitForPresenceOfTextInElement(commentByEmployeeField, commentAfterEdit);
+        waitForPresenceOfTextInTextAreaInputElement(commentByEmployeeField, commentAfterEdit);
         findElementClearAndSendKeys(titleField, titleAfterEdit);
-        waitForPresenceOfTextInElement(titleField, titleAfterEdit);
+        waitForPresenceOfTextInTextAreaInputElement(titleField, titleAfterEdit);
         waitForElementIsClickableAndClick(saveButton);
-        waitForPresenceOfTextInElement1(lastTitleInList, titleAfterEdit);
+        waitForPresenceOfTextInDivElement(lastTitleInList, titleAfterEdit);
     }
 
     public void deleteObjectiveFromNotes() throws InterruptedException {

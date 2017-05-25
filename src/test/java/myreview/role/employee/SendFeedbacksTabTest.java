@@ -1,17 +1,15 @@
 package myreview.role.employee;
 
-import pages.FeedbackDialogWindowPage;
+import core.Configuration;
 import core.Preconditions;
 import helpers.SqlQueries;
 import myreview.BaseTest;
-import pages.NoteTabPage;
-import pages.CommonPage;
 import org.junit.Assert;
-import pages.BasePage;
 import org.junit.Test;
-
-import static core.Configuration.EPTESTER_1;
-import static core.Configuration.EPTESTER_1_ID;
+import pages.BasePage;
+import pages.CommonPage;
+import pages.FeedbackDialogWindowPage;
+import pages.NoteTabPage;
 
 public class SendFeedbacksTabTest extends BaseTest {
 
@@ -22,7 +20,7 @@ public class SendFeedbacksTabTest extends BaseTest {
 
     @Test
     public void sendFeedbackTest() throws Exception {
-        preconditions.precondition(EPTESTER_1);
+        preconditions.logInAs(Configuration.getInstance().getEptester1());
 
         commonPage.openFeedbackDialogWindow();
         Assert.assertTrue(BasePage.checkElementIsDisplayed(noteTabPage.feedbackDialogWindow));
@@ -30,8 +28,8 @@ public class SendFeedbacksTabTest extends BaseTest {
         feedbackDialogWindowPage.sendFeedback();
         Assert.assertEquals(FeedbackDialogWindowPage.currentDate, SqlQueries.select("feedbacks", "comment", FeedbackDialogWindowPage.currentDate));
 
-        SqlQueries.delete("notifications", "user_from_id", "=", EPTESTER_1_ID);
-        SqlQueries.delete("feedbacks", "comment", "=", FeedbackDialogWindowPage.currentDate, "author_id", EPTESTER_1_ID);
+        SqlQueries.delete("notifications", "user_from_id", "=", Configuration.getInstance().getEptester1());
+        SqlQueries.delete("feedbacks", "comment", "=", FeedbackDialogWindowPage.currentDate, "author_id",  Configuration.getInstance().getEptester1());
 
         preconditions.postcondition();
     }

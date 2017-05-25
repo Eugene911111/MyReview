@@ -1,14 +1,13 @@
 package myreview.role.employee;
 
+import core.Configuration;
 import core.Preconditions;
 import helpers.SqlQueries;
 import myreview.BaseTest;
-import pages.FormTabPage;
 import org.junit.Assert;
-import pages.CommonPage;
 import org.junit.Test;
-
-import static core.Configuration.*;
+import pages.CommonPage;
+import pages.FormTabPage;
 
 public class SendFormToManagerTest extends BaseTest {
 
@@ -19,15 +18,15 @@ public class SendFormToManagerTest extends BaseTest {
 
     @Test
     public void sendFormToManager() throws Exception {
-        preconditions.precondition(EPTESTER_1);
+        preconditions.logInAs(Configuration.getInstance().getEptester1());
 
         SqlQueries.addNoteToSettingObjectiveDB(numberOfAddedObjectives, "committed");
         SqlQueries.addEmployeeComment();
 
         commonPage.openFormTab();
         formTabPage.sendFormToManager();
-        Assert.assertEquals(USER_FORMS_STATUS_COMMITTED, SqlQueries.select("status", "user_forms", "user_id", EPTESTER_1_ID));
-        SqlQueries.changeStatusOfUserForm(USER_FORMS_STATUS_IN_PROGRESS);
+        Assert.assertEquals(Configuration.getInstance().getCommitted(), SqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEPTESTER_1_ID()));
+        SqlQueries.changeStatusOfUserForm(Configuration.getInstance().getInProgress());
 
         preconditions.postcondition();
     }

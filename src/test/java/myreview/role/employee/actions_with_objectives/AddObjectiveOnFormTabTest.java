@@ -1,5 +1,6 @@
 package myreview.role.employee.actions_with_objectives;
 
+import core.Configuration;
 import core.Preconditions;
 import helpers.SqlQueries;
 import myreview.BaseTest;
@@ -8,7 +9,6 @@ import org.junit.Test;
 import pages.FormTabPage;
 import pages.NoteTabPage;
 
-import static core.Configuration.EPTESTER_1;
 import static pages.CommonPage.formTabUrl;
 
 public class AddObjectiveOnFormTabTest extends BaseTest {
@@ -18,7 +18,7 @@ public class AddObjectiveOnFormTabTest extends BaseTest {
 
     @Test
     public void addObjectiveOnFormTab() throws Exception {
-        preconditions.precondition(EPTESTER_1);
+        preconditions.logInAs(Configuration.getInstance().getEptester1());
 
         FormTabPage.openUrl(formTabUrl);
         noteTabPage.addObjective();

@@ -7,7 +7,6 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         DmTestSuite.class,
         EmployeeTestSuite.class,
-        AdminTestSuite.class
 })
 
 public class RunAll {

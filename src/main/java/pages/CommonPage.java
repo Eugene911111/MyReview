@@ -8,8 +8,8 @@ public class CommonPage extends BasePage {
 
     private By sendYourFeedbackButton = By.xpath("//ul[@class=\"dropdown-menu\"]//li[contains(.,\"Send your feedback\")]");
     private By aboutMyReviewButton = By.xpath("//a[@ui-sref=\"about\"]");
-    private By userImgDropdown = By.xpath("//li[@class=\"btn-group dropdown\"]/a");
     private By formExampleButton = By.xpath("//a[@ui-sref=\"example\"]");
+    private By userImgDropdown = By.xpath("//li[@class=\"btn-group dropdown\"]/a");
     private By logOutButton = By.xpath("//ul[@class=\"dropdown-menu\"]//a[@ng-click=\"vm.logOut()\"]");
     private By levi9Logo = By.xpath("//img[@class=\"logo\"]");
     public By notesButton = By.xpath("//a[@href=\"#/notes\"]");

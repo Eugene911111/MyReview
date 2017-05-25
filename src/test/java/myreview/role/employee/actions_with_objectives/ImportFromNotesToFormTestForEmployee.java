@@ -1,5 +1,6 @@
 package myreview.role.employee.actions_with_objectives;
 
+import core.Configuration;
 import core.Preconditions;
 import helpers.SqlQueries;
 import myreview.BaseTest;
@@ -9,7 +10,6 @@ import pages.CommonPage;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static core.Configuration.EPTESTER_1;
 import static pages.CommonPage.formTabUrl;
 
 public class ImportFromNotesToFormTestForEmployee extends BaseTest {
@@ -22,7 +22,7 @@ public class ImportFromNotesToFormTestForEmployee extends BaseTest {
 
     @Test
     public void importFromNotesToFormTest() throws Exception {
-        preconditions.precondition(EPTESTER_1);
+        preconditions.logInAs(Configuration.getInstance().getEptester1());
         SqlQueries.insert(numberOfNotedToAdd);
 
         CommonPage.openUrl(formTabUrl);

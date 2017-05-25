@@ -1,14 +1,13 @@
 package myreview.role.employee.check_presence_of_element;
 
-import pages.AboutMyReviewPage;
+import core.Configuration;
 import core.Preconditions;
 import myreview.BaseTest;
-import pages.NoteTabPage;
 import org.junit.Assert;
-import pages.CommonPage;
 import org.junit.Test;
-
-import static core.Configuration.EPTESTER_1;
+import pages.AboutMyReviewPage;
+import pages.CommonPage;
+import pages.NoteTabPage;
 
 public class AboutMyReviewTest extends BaseTest {
 
@@ -18,7 +17,7 @@ public class AboutMyReviewTest extends BaseTest {
 
     @Test
     public void checkAboutMyReview() throws Exception {
-        preconditions.precondition(EPTESTER_1);
+        preconditions.logInAs(Configuration.getInstance().getEptester1());
 
         commonPage.openAboutMyReviewPage();
         Assert.assertTrue(NoteTabPage.checkElementIsDisplayed(aboutMyReviewPage.aboutMyReviewContent));

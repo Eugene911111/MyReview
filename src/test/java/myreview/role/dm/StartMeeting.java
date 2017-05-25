@@ -1,13 +1,12 @@
 package myreview.role.dm;
 
+import core.Configuration;
 import core.Preconditions;
 import helpers.SqlQueries;
 import myreview.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
 import pages.DepartmentPage;
-
-import static core.Configuration.*;
 
 public class StartMeeting extends BaseTest {
     private int numberOfAddedObjectives = 3;
@@ -16,12 +15,12 @@ public class StartMeeting extends BaseTest {
 
     @Test
     public void startMeeting() throws Exception {
-        preconditions.precondition(EPTESTERDM);
+        preconditions.logInAs(Configuration.getInstance().getEptesterdm());
         SqlQueries.addNoteToSettingObjectiveDB(numberOfAddedObjectives, "committed");
-        SqlQueries.changeStatusOfUserForm(USER_FORMS_STATUS_APPROVED);
+        SqlQueries.changeStatusOfUserForm(Configuration.getInstance().getApproved());
 
         departmentPage.startMeeting();
-        Assert.assertEquals(USER_FORMS_STATUS_APPRAISAL, SqlQueries.select("status", "user_forms", "user_id", EPTESTER_1_ID));
+        Assert.assertEquals(Configuration.getInstance().getAppraisal(), SqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEPTESTER_1_ID()));
 
         preconditions.postcondition();
     }
