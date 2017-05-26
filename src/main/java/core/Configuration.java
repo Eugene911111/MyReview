@@ -14,7 +14,7 @@ public class Configuration {
     private String eptesterdm;
     private String epdelivery1;
     private String myreviewdburl;
-    private String EPTESTER_1_ID;
+    private String epTester1Id;
     private String myReviewDbUserName;
     private String myReviewDbUserPassword;
     private String approved;
@@ -40,19 +40,19 @@ public class Configuration {
         try (InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("config.properties")) {
             Properties prop = new Properties();
             prop.load(input);
-            this.password = prop.getProperty("password");
-            this.epadmin = prop.getProperty("ep-admin");
-            this.eptester1 = prop.getProperty("eptester1");
-            this.eptesterdm = prop.getProperty("eptesterdm");
-            this.epdelivery1 = prop.getProperty("epdelivery1");
-            this.myreviewdburl = prop.getProperty("myreviewdburl");
-            this.EPTESTER_1_ID = prop.getProperty("EPTESTER_1_ID");
-            this.myReviewDbUserName = prop.getProperty("myReviewDbUserName");
-            this.myReviewDbUserPassword = prop.getProperty("myReviewDbUserPassword");
-            this.approved = prop.getProperty("approved");
-            this.appraisal = prop.getProperty("appraisal");
-            this.committed = prop.getProperty("committed");
-            this.inProgress = prop.getProperty("in_progress");
+            this.password = prop.getProperty("PASSWORD");
+            this.epadmin = prop.getProperty("EP_ADMIN");
+            this.eptester1 = prop.getProperty("EP_TESTER_1");
+            this.eptesterdm = prop.getProperty("EP_TESTER_DM");
+            this.epdelivery1 = prop.getProperty("EP_DELIVERY_1");
+            this.myreviewdburl = prop.getProperty("MY_REVIEW_DB_URL");
+            this.epTester1Id = prop.getProperty("EP_TESTER_1_ID");
+            this.myReviewDbUserName = prop.getProperty("DB_USERNAME");
+            this.myReviewDbUserPassword = prop.getProperty("DB_USER_PASSWORD");
+            this.approved = prop.getProperty("APPROVED");
+            this.appraisal = prop.getProperty("APPRAISAL");
+            this.committed = prop.getProperty("COMMITTED");
+            this.inProgress = prop.getProperty("IN_PROGRESS");
             this.timeOut = Integer.parseInt(prop.getProperty("TIME_OUT"));
         } catch (IOException ex) {
             basePage.log.error("Error. Can't read property file. " + ex.toString());
@@ -87,8 +87,8 @@ public class Configuration {
         return myreviewdburl;
     }
 
-    public String getEPTESTER_1_ID() {
-        return EPTESTER_1_ID;
+    public String getEpTester1Id() {
+        return epTester1Id;
     }
 
     public String getMyReviewDbUserName() {

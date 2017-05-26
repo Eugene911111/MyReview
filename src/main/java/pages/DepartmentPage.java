@@ -75,7 +75,7 @@ public class DepartmentPage extends BasePage {
     }
 
     public void submitForm() throws Exception {
-        openUrl(reviewMeetingUrl + Configuration.getInstance().getEPTESTER_1_ID());
+        openUrl(reviewMeetingUrl + Configuration.getInstance().getEpTester1Id());
         waitForElementIsClickableAndClick(evaluationByEmployee);
         waitForElementIsClickableAndClick(evaluationByDm);
         findElementAndSendKeys(employeePasswordField, Configuration.getInstance().getPassword());

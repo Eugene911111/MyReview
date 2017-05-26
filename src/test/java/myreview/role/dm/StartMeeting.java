@@ -20,7 +20,7 @@ public class StartMeeting extends BaseTest {
         SqlQueries.changeStatusOfUserForm(Configuration.getInstance().getApproved());
 
         departmentPage.startMeeting();
-        Assert.assertEquals(Configuration.getInstance().getAppraisal(), SqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEPTESTER_1_ID()));
+        Assert.assertEquals(Configuration.getInstance().getAppraisal(), SqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEpTester1Id()));
 
         preconditions.postcondition();
     }

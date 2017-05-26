@@ -25,7 +25,7 @@ public class SendFormToManagerTest extends BaseTest {
 
         commonPage.openFormTab();
         formTabPage.sendFormToManager();
-        Assert.assertEquals(Configuration.getInstance().getCommitted(), SqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEPTESTER_1_ID()));
+        Assert.assertEquals(Configuration.getInstance().getCommitted(), SqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEpTester1Id()));
         SqlQueries.changeStatusOfUserForm(Configuration.getInstance().getInProgress());
 
         preconditions.postcondition();

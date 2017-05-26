@@ -24,10 +24,10 @@ public class SubmitForm extends BaseTest {
         preconditions.logInAs(Configuration.getInstance().getEptesterdm());
         SqlQueries.addNoteToSettingObjectiveDB(numberOfAddedObjectives, "approved");
         SqlQueries.changeStatusOfUserForm(Configuration.getInstance().getAppraisal());
-        SqlQueries.delete("user_form_history", "user_id", "=", Configuration.getInstance().getEPTESTER_1_ID(), "appointment_date", currentDate);
+        SqlQueries.delete("user_form_history", "user_id", "=", Configuration.getInstance().getEpTester1Id(), "appointment_date", currentDate);
 
         departmentPage.submitForm();
-        Assert.assertEquals(Configuration.getInstance().getInProgress(), SqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEPTESTER_1_ID()));
+        Assert.assertEquals(Configuration.getInstance().getInProgress(), SqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEpTester1Id()));
 
         preconditions.postcondition();
     }

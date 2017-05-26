@@ -23,7 +23,7 @@ public class SqlQueries {
         Statement st = getConnectionToDb().createStatement();
         for (int i = 1; i <= numberOfNotes; i++) {
             st.executeUpdate("INSERT INTO goals (id, user_id, author_id, user_form_history_id, title, progress, status,created_at, updated_at, deadline, comment_employee, comment_department_manager, comment_irrelevant) " +
-                    "VALUES (" + i + ",'" + Configuration.getInstance().getEPTESTER_1_ID() + "', '" + Configuration.getInstance().getEPTESTER_1_ID() + "', NULL, 'autoTestTitle', 'new', 'note', '2017-04-27 09:53:27', '2017-04-27 09:53:27', '2017-07-27', 'comment', NULL, NULL)");
+                    "VALUES (" + i + ",'" + Configuration.getInstance().getEpTester1Id() + "', '" + Configuration.getInstance().getEpTester1Id() + "', NULL, 'autoTestTitle', 'new', 'note', '2017-04-27 09:53:27', '2017-04-27 09:53:27', '2017-07-27', 'comment', NULL, NULL)");
         }
         getConnectionToDb().close();
     }
@@ -43,7 +43,7 @@ public class SqlQueries {
             st.executeUpdate("UPDATE user_forms " +
                     " SET comment_employee = 'comment_created_with_auto_test', " +
                     "self_rating = 'Exceeds expectations'" +
-                    "WHERE user_id = '" + Configuration.getInstance().getEPTESTER_1_ID() + "'");
+                    "WHERE user_id = '" + Configuration.getInstance().getEpTester1Id() + "'");
             getConnectionToDb().close();
         } catch (Exception e) {
 
@@ -58,7 +58,7 @@ public class SqlQueries {
                 "comment_department_manager = 'comment_created_with_auto_test', " +
                 "self_rating = 'Exceeds expectations', " +
                 "manager_rating = 'Exceeds expectations' " +
-                "WHERE user_id = '" + Configuration.getInstance().getEPTESTER_1_ID() + "'");
+                "WHERE user_id = '" + Configuration.getInstance().getEpTester1Id() + "'");
         getConnectionToDb().close();
     }
 
@@ -81,7 +81,7 @@ public class SqlQueries {
         PreparedStatement preparedStmt = getConnectionToDb().prepareStatement(query);
         int deleteUserIdd = 3;
         preparedStmt.setInt(1, deleteUserIdd);
-        preparedStmt.setString(2, Configuration.getInstance().getEPTESTER_1_ID());
+        preparedStmt.setString(2, Configuration.getInstance().getEpTester1Id());
         preparedStmt.execute();
         getConnectionToDb().close();
     }
@@ -97,7 +97,7 @@ public class SqlQueries {
         Statement stmt = getConnectionToDb().createStatement();
         ResultSet rs;
         String title = null;
-        rs = stmt.executeQuery("SELECT * from " + table + " where " + columnName + " " + "=" + " '" + value + "' and author_id = '" + Configuration.getInstance().getEPTESTER_1_ID() + "'");
+        rs = stmt.executeQuery("SELECT * from " + table + " where " + columnName + " " + "=" + " '" + value + "' and author_id = '" + Configuration.getInstance().getEpTester1Id() + "'");
         while (rs.next()) {
             title = rs.getString(columnName);
         }

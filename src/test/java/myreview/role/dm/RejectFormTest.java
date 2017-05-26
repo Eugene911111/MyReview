@@ -26,7 +26,7 @@ public class RejectFormTest extends BaseTest {
         SqlQueries.changeStatusOfUserForm(Configuration.getInstance().getCommitted());
 
         departmentPage.rejectForm();
-        Assert.assertEquals(Configuration.getInstance().getInProgress(), SqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEPTESTER_1_ID()));
+        Assert.assertEquals(Configuration.getInstance().getInProgress(), SqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEpTester1Id()));
 
         commonPage.logOut();
         loginPage.logIn(Configuration.getInstance().getEptester1());
