@@ -12,6 +12,7 @@ import org.junit.Test;
 
 public class FormExampleTest extends BaseTest {
 
+    private BasePage basePage = new BasePage();
     private CommonPage commonPage = new CommonPage();
     private NoteTabPage noteTabPage = new NoteTabPage();
     private Preconditions preconditions = new Preconditions();
@@ -21,7 +22,7 @@ public class FormExampleTest extends BaseTest {
         preconditions.logInAs(Configuration.getInstance().getEptester1());
 
         commonPage.openFormExamplePage();
-        Assert.assertTrue(BasePage.checkElementIsDisplayed(noteTabPage.formExampleImg));
+        Assert.assertTrue(basePage.checkElementIsDisplayed(noteTabPage.formExampleImg));
 
         preconditions.postcondition();
     }

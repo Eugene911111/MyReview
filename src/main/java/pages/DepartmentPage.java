@@ -25,11 +25,12 @@ public class DepartmentPage extends BasePage {
     private By employeePasswordField = By.xpath("//input[@name=\"password\"]");
     private By commentByManagerField = By.xpath("//*[@id=\"input_2\"]");
     private By submitFinalFormMessage = By.xpath("//*[contains(text(), \"You successfully finished Performance Review Meeting!\")] ");
-    private By radioButtonExceedsExpectations = By.xpath("//md-radio-button[@value=\"Exceeds expectations\"]");
     private String departmentURL = "http://myreview.local/app_dev.php/#/department";
     private String commentByManager = "comment_created_with_auto_test";
+    public By departmentButton = By.xpath("//a[@ui-sref=\"department\"]");
     public By departmentTabContent = By.xpath("//div[@class=\"container-fluid department\"]");
     public By notificationForDmField = By.xpath("//a[@class=\"active\"]/span");
+    By radioButtonExceedsExpectations = By.xpath("//md-radio-button[@value=\"Exceeds expectations\"]");
 
     public void rejectForm() throws InterruptedException {
         openUrl(departmentURL);
@@ -67,7 +68,7 @@ public class DepartmentPage extends BasePage {
         }
     }
 
-    public  void continueMeeting() throws InterruptedException {
+    public void continueMeeting() throws InterruptedException {
         waitForElementIsClickableAndClick(startMetingButton);
         getDriver().navigate().refresh();
         changeFocusToPage(0);
@@ -82,5 +83,11 @@ public class DepartmentPage extends BasePage {
         waitForElementIsPresentAndClick(submitFinalFormButton);
         waitForElementIsPresentAndClick(submitButton);
         checkElementIsDisplayed(submitFinalFormMessage);
+    }
+
+    public boolean notificationIsNotDisplayed() throws Exception {
+        checkElementIsDisplayed(departmentButton);
+        checkElementIsNotDisplayed(notificationForDmField);
+        return true;
     }
 }

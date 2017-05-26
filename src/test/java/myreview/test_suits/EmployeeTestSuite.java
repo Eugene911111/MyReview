@@ -1,5 +1,6 @@
 package myreview.test_suits;
 
+import myreview.role.employee.CheckClearButtonTest;
 import myreview.role.employee.SendFeedbacksTabTest;
 import myreview.role.employee.SendFormToManagerTest;
 import myreview.role.employee.actions_with_objectives.*;
@@ -10,7 +11,6 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-
         AddingObjectiveOnNotesTabTest.class,
         AddObjectiveOnFormTabTest.class,
         AddObjectiveToFormTest.class,
@@ -21,7 +21,8 @@ import org.junit.runners.Suite;
         SendFeedbacksTabTest.class,
         SendFormToManagerTest.class,
         AboutMyReviewTest.class,
-        FormExampleTest.class
+        FormExampleTest.class,
+        CheckClearButtonTest.class
 })
 
 public class EmployeeTestSuite {

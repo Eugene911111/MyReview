@@ -1,22 +1,26 @@
 package helpers;
 
 import core.Configuration;
+import pages.BasePage;
 
 import java.sql.*;
-import java.text.SimpleDateFormat;
 
 public class SqlQueries {
 
+    private static BasePage basePage = new BasePage();
     public static String DELETE_GOALS_BY_ID = "DELETE FROM goals WHERE id >= ?";
     public static String DELETE_USER_BY_ID = "DELETE FROM goals WHERE id <= ? AND user_id = ?";
 
-    private static Connection getConnectionToDb() throws Exception {
+    private static Connection getConnectionToDb() throws SQLException {
         return DriverManager.getConnection(Configuration.getInstance().getMyreviewdburl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
     }
 
-    private static String returnCurrentDate() throws InterruptedException {
-        SimpleDateFormat ft = new SimpleDateFormat("E yyyy.MM.dd 'at' hh.mm.ss a");
-        return ft.format(new java.util.Date());
+    private static void closeConnection() throws SQLException {
+        getConnectionToDb().close();
+    }
+
+    public static Connection returnCurrentconnection(Connection connection) throws InterruptedException {
+        return connection;
     }
 
     public static void insert(int numberOfNotes) throws Exception {
@@ -32,21 +36,22 @@ public class SqlQueries {
         Statement st = getConnectionToDb().createStatement();
         for (int i = 1; i <= numberOfNotes; i++) {
             st.executeUpdate("INSERT INTO goals (id, user_id, author_id, user_form_history_id, title, progress, status,created_at, updated_at, deadline, comment_employee, comment_department_manager, comment_irrelevant) " +
-                    "VALUES (" + i + ",'" + "644E3D87-E5EC-4274-8B26-EF76C5537E93" + "', '" + "644E3D87-E5EC-4274-8B26-EF76C5537E93" + "', NULL, '" + returnCurrentDate() + "', 'new', '" + status + "', '2017-04-27 09:53:27', '2017-04-27 09:53:27', '2017-07-27', 'comment', NULL, NULL)");
+                    "VALUES (" + i + ",'" + "644E3D87-E5EC-4274-8B26-EF76C5537E93" + "', '" + "644E3D87-E5EC-4274-8B26-EF76C5537E93" + "', NULL, '" + basePage.returnCurrentDate() + "', 'new', '" + status + "', '2017-04-27 09:53:27', '2017-04-27 09:53:27', '2017-07-27', 'comment', NULL, NULL)");
         }
         getConnectionToDb().close();
     }
 
-    public static void addEmployeeComment() throws Exception {
+    public static void addEmployeeComment() throws SQLException {
+        String query = " UPDATE user_forms " +
+                " SET comment_employee = 'comment_created_with_auto_test', " +
+                " self_rating = 'Exceeds expectations' " +
+                " WHERE user_id = '" + Configuration.getInstance().getEpTester1Id() + "'";
 
-        try (Statement st = getConnectionToDb().createStatement()) {
-            st.executeUpdate("UPDATE user_forms " +
-                    " SET comment_employee = 'comment_created_with_auto_test', " +
-                    "self_rating = 'Exceeds expectations'" +
-                    "WHERE user_id = '" + Configuration.getInstance().getEpTester1Id() + "'");
-            getConnectionToDb().close();
-        } catch (Exception e) {
-
+        try (Statement stmt = getConnectionToDb().createStatement()) {
+            stmt.executeUpdate(query);
+            closeConnection();
+        } catch (SQLException e) {
+            basePage.log.error("SQLException." + e.toString());
         }
     }
 
@@ -107,9 +112,8 @@ public class SqlQueries {
 
     public static String select(String select, String table, String columnName, String value) throws Exception {
         Statement stmt = getConnectionToDb().createStatement();
-        ResultSet rs;
         String selectReturn = null;
-        rs = stmt.executeQuery("SELECT " + select + " from " + table + " where " + columnName + " " + "=" + " '" + value + "'");
+        ResultSet rs = stmt.executeQuery("SELECT " + select + " from " + table + " where " + columnName + " " + "=" + " '" + value + "'");
         while (rs.next()) {
             selectReturn = rs.getString(select);
         }
@@ -127,5 +131,19 @@ public class SqlQueries {
         }
         getConnectionToDb().close();
         return selectReturn;
+    }
+
+    public static String selectSelfRating() throws SQLException {
+        String query = "SELECT self_rating FROM user_forms where id ='" + Configuration.getInstance().getEpTester1Id() + "'";
+        try (Statement stmt = getConnectionToDb().createStatement()) {
+            String selectReturn = null;
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                selectReturn = rs.toString();
+            }
+            return selectReturn;
+        } catch (SQLException e) {
+            throw e;
+        }
     }
 }

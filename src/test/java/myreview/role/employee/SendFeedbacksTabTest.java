@@ -13,6 +13,7 @@ import pages.NoteTabPage;
 
 public class SendFeedbacksTabTest extends BaseTest {
 
+    private BasePage basePage = new BasePage();
     private CommonPage commonPage = new CommonPage();
     private NoteTabPage noteTabPage = new NoteTabPage();
     private Preconditions preconditions = new Preconditions();
@@ -23,13 +24,13 @@ public class SendFeedbacksTabTest extends BaseTest {
         preconditions.logInAs(Configuration.getInstance().getEptester1());
 
         commonPage.openFeedbackDialogWindow();
-        Assert.assertTrue(BasePage.checkElementIsDisplayed(noteTabPage.feedbackDialogWindow));
+        Assert.assertTrue(basePage.checkElementIsDisplayed(noteTabPage.feedbackDialogWindow));
 
         feedbackDialogWindowPage.sendFeedback();
-        Assert.assertEquals(FeedbackDialogWindowPage.currentDate, SqlQueries.select("feedbacks", "comment", FeedbackDialogWindowPage.currentDate));
+        Assert.assertEquals(basePage.currentDate, SqlQueries.select("feedbacks", "comment", basePage.currentDate));
 
         SqlQueries.delete("notifications", "user_from_id", "=", Configuration.getInstance().getEptester1());
-        SqlQueries.delete("feedbacks", "comment", "=", FeedbackDialogWindowPage.currentDate, "author_id",  Configuration.getInstance().getEptester1());
+        SqlQueries.delete("feedbacks", "comment", "=", basePage.currentDate, "author_id",  Configuration.getInstance().getEptester1());
 
         preconditions.postcondition();
     }

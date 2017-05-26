@@ -4,24 +4,23 @@ import core.Configuration;
 import core.Preconditions;
 import myreview.BaseTest;
 import org.junit.Test;
+import pages.BasePage;
 import pages.CommonPage;
 import pages.HistoryPage;
-
-import static pages.BasePage.checkElementIsDisplayed;
-import static pages.BasePage.waitForElementIsClickableAndClick;
 
 public class HistoryTabTest extends BaseTest {
 
     private CommonPage commonPage = new CommonPage();
     private HistoryPage historyPage = new HistoryPage();
     private Preconditions preconditions = new Preconditions();
+    private BasePage basePage = new BasePage();
 
     @Test
     public void historyTabTest() throws Exception {
         preconditions.logInAs(Configuration.getInstance().getEptesterdm());
 
-        waitForElementIsClickableAndClick(commonPage.historyButton);
-        checkElementIsDisplayed(historyPage.historyContent);
+        basePage.waitForElementIsClickableAndClick(commonPage.historyButton);
+        basePage.checkElementIsDisplayed(historyPage.historyContent);
 
         preconditions.postcondition();
     }

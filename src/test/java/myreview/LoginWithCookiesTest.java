@@ -1,9 +1,15 @@
 package myreview;
 
 
+import core.Configuration;
+import core.Preconditions;
 import org.junit.Test;
 
+import static core.TestApi.getDriver;
+
 public class LoginWithCookiesTest extends BaseTest {
+    private Preconditions preconditions = new Preconditions();
+
     @Test
     public void loginTest() throws Exception {
 // log in
@@ -55,32 +61,69 @@ public class LoginWithCookiesTest extends BaseTest {
 //        driver.get("http://myreview.local/app_dev.php/#/notes");
 //        Thread.sleep(3000);
 //        httpClient.getConnectionManager().shutdown();
-//
 
 
-//                Set < Cookie > cookiesInstance1 = driver.manage().getCookies();
-//// log out
-//        noteTabPage.logOut();
-//        //  driver.get("http://myreview.local/app_dev.php/login");
-//
-//        driver.manage().deleteAllCookies();
-//        Assert.assertEquals(null, driver.manage().getCookieNamed("REMEMBERME"));
-////add cookies
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        getDriver().manage().deleteAllCookies();
+        preconditions.logInAs(Configuration.getInstance().getEptester1());
+       // getDriver().manage().deleteAllCookies();
+
+     //   Set<Cookie> cookiesInstance1 = getDriver().manage().getCookies();
+
+        boolean isempty = getDriver().manage().getCookies().isEmpty(); // true
+        System.out.println("!!!!!!!!!!"+getDriver().manage().getCookieNamed("REMEMBERME"));
+        boolean a = getDriver().manage().getCookieNamed("REMEMBERME") == null;
+        getDriver().manage().getCookieNamed("REMEMBERME");
+        //boolean isNull =  Assert.assertEquals(null,getDriver().manage().getCookieNamed("REMEMBERME"));
+        if ((isempty) || (a)) {
+            preconditions.logInAs(Configuration.getInstance().getEptester1());
+            System.out.println("If passed. Loged in again");
+        } else  {
+            System.out.println("Cookies exist. Log in is not needed");
+        }
+      //  System.out.println(isempty);
+       // System.out.println("REMEMBERME: " + getDriver().manage().getCookieNamed("REMEMBERME"));
+        // Assert.assertEquals(null, getDriver().manage().getCookieNamed("REMEMBERME"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //        for (Cookie cookie : cookiesInstance1) {
-//            driver.manage().addCookie(cookie);
+//            getDriver().manage().addCookie(cookie);
 //        }
-//        // driver.navigate().refresh();
-//        driver.get("http://myreview.local/app_dev.php/login");
-//// get cookies
-//        Set<Cookie> cookiesInstance2 = driver.manage().getCookies();
+//        Set<Cookie> cookiesInstance2 = getDriver().manage().getCookies();
 //        System.out.println("cookiesInstance1 = " + cookiesInstance1);
 //        System.out.println("cookiesInstance2 = " + cookiesInstance2);
-////
+//
 //        Assert.assertEquals(cookiesInstance1, cookiesInstance2);
-//    }
-
-
-
+    }
 
 
 //        private SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("dd MMMMMM yyyy", Locale.ENGLISH);
@@ -91,5 +134,4 @@ public class LoginWithCookiesTest extends BaseTest {
 //        String getTextFromHistory = departmentPage.getTextFromElement(By.xpath("/html/body/div/history/div[1]/div/uib-accordion/div/div[2]"));
 //        String currentDate = getTextFromHistory.split(" ", 3)[2];
 //        Assert.assertEquals(currentDate1, currentDate);
-    }
 }

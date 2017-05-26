@@ -11,8 +11,8 @@ import pages.BasePage;
 
 
 public class CheckQuantityOfObjectivesTest extends BaseTest {
-
     private int numberOfNotesToAdd = 1;
+    private BasePage basePage = new BasePage();
     private NoteTabPage noteTabPage = new NoteTabPage();
     private Preconditions preconditions = new Preconditions();
 
@@ -21,7 +21,7 @@ public class CheckQuantityOfObjectivesTest extends BaseTest {
         preconditions.logInAs(Configuration.getInstance().getEptester1());
         SqlQueries.insert(numberOfNotesToAdd);
 
-        Assert.assertTrue(BasePage.checkElementIsDisplayed(noteTabPage.areaOfObjective));
+        Assert.assertTrue(basePage.checkElementIsDisplayed(noteTabPage.areaOfObjective));
         Assert.assertEquals(numberOfNotesToAdd, noteTabPage.objectiveCount());
 
         preconditions.postcondition();

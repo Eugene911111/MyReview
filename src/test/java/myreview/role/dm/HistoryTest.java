@@ -18,6 +18,7 @@ public class HistoryTest extends BaseTest {
     private String currentDate = simpleDateFormat.format(new Date());
     private String appointment_date = "appointment_date";
     private Preconditions preconditions = new Preconditions();
+    private SqlQueries sqlQueries = new SqlQueries();
     @Test
     public void history() throws Exception {
         preconditions.logInAs(Configuration.getInstance().getEptesterdm());
@@ -28,7 +29,6 @@ public class HistoryTest extends BaseTest {
 
         departmentPage.submitForm();
         Assert.assertEquals(currentDate, SqlQueries.sewewewewlecewrwewewewewewt(appointment_date));
-
         preconditions.postcondition();
     }
 }

@@ -16,7 +16,7 @@ public class CommonPage extends BasePage {
     public By formButton = By.xpath("//a[@href=\"#/form\"]");
     public By historyButton = By.xpath("//ul[@class=\"nav navbar-nav navbar-right ng-scope\"]//a[contains(., \"History\")]");
     public By departmentButton = By.xpath("//a[@href=\"#/department\"]");
-    public static String formTabUrl = "http://myreview.local/app_dev.php/#/form";
+    public String formTabUrl = "http://myreview.local/app_dev.php/#/form";
     public static String reviewMeetingUrl = "http://myreview.local/app_dev.php/#/department/review-meeting/";
 
     public void logOut() throws Exception {

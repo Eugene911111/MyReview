@@ -21,7 +21,7 @@ public class EditObjectiveOnNoteTabTest extends BaseTest {
 
         noteTabPage.editObjective(noteTabPage.titleAfterEdit, noteTabPage.commentAfterEdit);
         // UI check
-        Assert.assertEquals(NoteTabPage.getTextFromElement(noteTabPage.lastTitleInList), noteTabPage.titleAfterEdit);
+        Assert.assertEquals(noteTabPage.getTextFromElement(noteTabPage.lastTitleInList), noteTabPage.titleAfterEdit);
         // DB check
         Assert.assertEquals((SqlQueries.select("goals", "title", noteTabPage.titleAfterEdit)), noteTabPage.titleAfterEdit);
 

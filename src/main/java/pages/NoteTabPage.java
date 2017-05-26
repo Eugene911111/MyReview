@@ -12,6 +12,7 @@ public class NoteTabPage extends BasePage {
 
     private CommonPage commonPage = new CommonPage();
     private String commentByEmployee = "comment";
+    private String dataFormat = "E yyyy.MM.dd 'at' hh.mm.ss a";
     private By titleField = By.xpath("//div[@class=\"md-dialog-content\"]//input[@name=\"title\"]");
     private By saveButton = By.xpath("//button[@class=\"md-raised md-primary md-button md-ink-ripple\"][contains(., \"Save\")]");
     private By editButton = By.xpath("//button[@class=\"md-raised goalActionButton md-button md-ink-ripple\"][contains(.,\"Edit\")]");
@@ -37,7 +38,7 @@ public class NoteTabPage extends BasePage {
     }
 
     private String returnCurrentTime() throws InterruptedException {
-        SimpleDateFormat ft = new SimpleDateFormat("E yyyy.MM.dd 'at' hh.mm.ss a");
+        SimpleDateFormat ft = new SimpleDateFormat(dataFormat);
         currentTime = ft.format(new Date());
         return currentTime;
     }

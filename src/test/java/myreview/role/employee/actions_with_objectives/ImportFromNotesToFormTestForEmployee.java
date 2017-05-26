@@ -10,7 +10,6 @@ import pages.CommonPage;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static pages.CommonPage.formTabUrl;
 
 public class ImportFromNotesToFormTestForEmployee extends BaseTest {
 
@@ -19,15 +18,17 @@ public class ImportFromNotesToFormTestForEmployee extends BaseTest {
     private FormTabPage formTabPage = new FormTabPage();
     private NoteTabPage noteTabPage = new NoteTabPage();
     private Preconditions preconditions = new Preconditions();
+    private CommonPage commonPage = new CommonPage();
+
 
     @Test
     public void importFromNotesToFormTest() throws Exception {
         preconditions.logInAs(Configuration.getInstance().getEptester1());
         SqlQueries.insert(numberOfNotedToAdd);
 
-        CommonPage.openUrl(formTabUrl);
+        commonPage.openUrl(commonPage.formTabUrl);
         formTabPage.pressImportFromNotesButton();
-        Assert.assertEquals(expectedTitle, NoteTabPage.getTextFromElement(noteTabPage.lastObjectiveTitleInList));
+        Assert.assertEquals(expectedTitle, noteTabPage.getTextFromElement(noteTabPage.lastObjectiveTitleInList));
 
         preconditions.postcondition();
     }

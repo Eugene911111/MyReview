@@ -8,8 +8,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import pages.*;
 
-import static pages.CommonPage.formTabUrl;
-
 public class RejectFormTest extends BaseTest {
     private int numberOfObjectivesToAdd = 3;
     private LoginPage loginPage = new LoginPage();
@@ -30,8 +28,8 @@ public class RejectFormTest extends BaseTest {
 
         commonPage.logOut();
         loginPage.logIn(Configuration.getInstance().getEptester1());
-        BasePage.openUrl(formTabUrl);
-        Assert.assertEquals(DepartmentPage.currentDate, FormTabPage.getTextFromElement(formTabPage.rejectReasonField));
+        commonPage.openUrl(commonPage.formTabUrl);
+        Assert.assertEquals(formTabPage.currentDate, formTabPage.getTextFromElement(formTabPage.rejectReasonField));
 
         preconditions.postcondition();
     }
