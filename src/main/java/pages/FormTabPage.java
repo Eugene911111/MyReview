@@ -1,11 +1,13 @@
 package pages;
 
+import core.Configuration;
 import org.openqa.selenium.By;
 
 import static core.TestApi.getDriver;
 
 public class FormTabPage extends BasePage {
 
+    private DepartmentPage departmentPage = new DepartmentPage();
     private By sendButton = By.xpath("//md-dialog-actions[@class=\"layout-row\"]//button[contains(., \"Send\")]");
     private By closeButton = By.xpath("//button[@class=\"md-icon-button md-button md-ink-ripple\"]");
     private By addToFormButton = By.xpath("//button[@class=\"md-raised goalActionButton md-button md-ink-ripple\"][contains(., \"Add to form\")]");
@@ -15,11 +17,9 @@ public class FormTabPage extends BasePage {
     private By formHasBeenSentMessage = By.xpath("//div[@class=\"md-whiteframe-4dp form-status\"][contains(., \"Form has been sent to manager\")]");
     private By lastElementInListOfObjectives = By.xpath("//div[@id=\"objectives\"]//following::div[@class=\"col-xs-2 goalTitle ng-binding\"][last()]");
     private By clearButton = By.xpath("//button[@class=\"md-raised md-button md-ink-ripple\"]");
+    private By evaluationAreaTrue = By.xpath("//md-radio-button[@aria-checked=\"true\"]");
     public By rejectReasonField = By.xpath("//div[@class=\"rejectReason ng-binding\"]");
     public By formTabContent = By.xpath("//div[@class=\"container-fluid goalForm ng-scope\"]");
-    private DepartmentPage departmentPage = new DepartmentPage();
-    private CommonPage commonPage = new CommonPage();
-    private By evaluationAreaTrue = By.xpath("//md-radio-button[@aria-checked=\"true\"]");
 
     public void pressImportFromNotesButton() throws InterruptedException {
         waitForElementIsClickableAndClick(importFromNotesButton);
@@ -30,6 +30,7 @@ public class FormTabPage extends BasePage {
     }
 
     public void sendFormToManager() throws Exception {
+        openUrl(Configuration.getInstance().getFormTabUrl());
         waitForElementIsClickableAndClick(sendToManagerButton);
         checkElementIsDisplayed(sendButton);
         waitForElementIsClickableAndClick(sendButton);
@@ -42,7 +43,7 @@ public class FormTabPage extends BasePage {
     }
 
     public void clearEvaluationByEmployee() throws Exception {
-        getDriver().get(commonPage.formTabUrl);
+        getDriver().get(Configuration.getInstance().getFormTabUrl());
         waitForElementIsClickableAndClick(departmentPage.radioButtonExceedsExpectations);
         checkElementIsDisplayed(evaluationAreaTrue);
         waitForElementIsClickableAndClick(clearButton);

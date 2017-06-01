@@ -8,28 +8,34 @@ import java.util.Properties;
 
 public class Configuration {
     private BasePage basePage = new BasePage();
-    private String password;
-    private String epadmin;
-    private String eptester1;
-    private String eptesterdm;
-    private String epdelivery1;
-    private String myreviewdburl;
+    private String departmentTabUrl;
+    private String appraisal;
+    private String approved;
+    private String committed;
+    private String epAdmin;
+    private String epTester1;
+    private String epTesterDm;
     private String epTester1Id;
+    private String epDelivery1;
+    private String inProgress;
+    private String logInPageUrl;
+    private String myreviewDbUrl;
     private String myReviewDbUserName;
     private String myReviewDbUserPassword;
-    private String approved;
-    private String appraisal;
-    private String committed;
-    private String inProgress;
+    private String password;
+    private String formTabUrl;
+    private String notesTabUrl;
+    private String reviewMeetingUrl;
     private int timeOut;
 
-    private Configuration() {
+    public Configuration() {
         readFromPropertyFile();
     }
 
     private static class SingletonHelper {
 
         private static final Configuration INSTANCE = new Configuration();
+
     }
 
     public static Configuration getInstance() {
@@ -40,51 +46,72 @@ public class Configuration {
         try (InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("config.properties")) {
             Properties prop = new Properties();
             prop.load(input);
-            this.password = prop.getProperty("PASSWORD");
-            this.epadmin = prop.getProperty("EP_ADMIN");
-            this.eptester1 = prop.getProperty("EP_TESTER_1");
-            this.eptesterdm = prop.getProperty("EP_TESTER_DM");
-            this.epdelivery1 = prop.getProperty("EP_DELIVERY_1");
-            this.myreviewdburl = prop.getProperty("MY_REVIEW_DB_URL");
+            this.appraisal = prop.getProperty("APPRAISAL");
+            this.approved = prop.getProperty("APPROVED");
+            this.committed = prop.getProperty("COMMITTED");
+            this.departmentTabUrl = prop.getProperty("DEPARTMENT_TAB_URL");
+            this.epTester1 = prop.getProperty("EP_TESTER_1");
+            this.epTesterDm = prop.getProperty("EP_TESTER_DM");
+            this.epAdmin = prop.getProperty("EP_ADMIN");
             this.epTester1Id = prop.getProperty("EP_TESTER_1_ID");
+            this.epDelivery1 = prop.getProperty("EP_DELIVERY_1");
+            this.formTabUrl = prop.getProperty("FORM_TAB_URL");
+            this.inProgress = prop.getProperty("IN_PROGRESS");
+            this.logInPageUrl = prop.getProperty("LOGIN_PAGE_URL");
+            this.myreviewDbUrl = prop.getProperty("MY_REVIEW_DB_URL");
             this.myReviewDbUserName = prop.getProperty("DB_USERNAME");
             this.myReviewDbUserPassword = prop.getProperty("DB_USER_PASSWORD");
-            this.approved = prop.getProperty("APPROVED");
-            this.appraisal = prop.getProperty("APPRAISAL");
-            this.committed = prop.getProperty("COMMITTED");
-            this.inProgress = prop.getProperty("IN_PROGRESS");
+            this.password = prop.getProperty("PASSWORD");
             this.timeOut = Integer.parseInt(prop.getProperty("TIME_OUT"));
+            this.reviewMeetingUrl = prop.getProperty("REVIEW_MEETING_URL");
+            this.notesTabUrl = prop.getProperty("NOTES_TAB_URL");
         } catch (IOException ex) {
             basePage.log.error("Error. Can't read property file. " + ex.toString());
         }
     }
 
-    public int getTimeOut() {
-        return timeOut;
+    public String getNotesTabUrl() {
+        return notesTabUrl;
+    }
+
+    public String getReviewMeetingUrl() {
+        return reviewMeetingUrl;
+    }
+
+    public String getFormTabUrl() {
+        return formTabUrl;
+    }
+
+    public String getLogInPageUrl() {
+        return logInPageUrl;
+    }
+
+    public String getDepartmentTabUrl() {
+        return departmentTabUrl;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public String getEpadmin() {
-        return epadmin;
+    public String getEpAdmin() {
+        return epAdmin;
     }
 
-    public String getEptester1() {
-        return eptester1;
+    public String getEpTester1() {
+        return epTester1;
     }
 
-    public String getEptesterdm() {
-        return eptesterdm;
+    public String getEpTesterDm() {
+        return epTesterDm;
     }
 
-    public String getEpdelivery1() {
-        return epdelivery1;
+    public String getEpDelivery1() {
+        return epDelivery1;
     }
 
-    public String getMyreviewdburl() {
-        return myreviewdburl;
+    public String getMyreviewDbUrl() {
+        return myreviewDbUrl;
     }
 
     public String getEpTester1Id() {
@@ -113,5 +140,9 @@ public class Configuration {
 
     public String getInProgress() {
         return inProgress;
+    }
+
+    public int getTimeOut() {
+        return timeOut;
     }
 }

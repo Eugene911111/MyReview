@@ -1,7 +1,8 @@
 package myreview.role.employee.actions_with_objectives;
 
 import core.Configuration;
-import core.Preconditions;
+import core.PreconditionBuilder;
+import core.Postcondition;
 import helpers.SqlQueries;
 import myreview.BaseTest;
 import org.junit.Assert;
@@ -10,16 +11,20 @@ import pages.NoteTabPage;
 
 public class AddingObjectiveOnNotesTabTest extends BaseTest {
 
+    private SqlQueries sqlQueries = new SqlQueries();
     private NoteTabPage noteTabPage = new NoteTabPage();
-    private Preconditions preconditions = new Preconditions();
+    private Postcondition postcondition = new Postcondition();
+    private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
     @Test
     public void addObjectiveOnNotesTab() throws Exception {
-        preconditions.logInAs(Configuration.getInstance().getEptester1());
+        preconditionBuilder
+                .loginAs(Configuration.getInstance().getEpTester1())
+                .build();
 
         noteTabPage.addObjective();
-        Assert.assertEquals(SqlQueries.select("goals", "title", noteTabPage.currentTime), noteTabPage.currentTime);
+        Assert.assertEquals(sqlQueries.select("goals", "title", noteTabPage.currentTime), noteTabPage.currentTime);
 
-        preconditions.postcondition();
+        postcondition.logout();
     }
 }

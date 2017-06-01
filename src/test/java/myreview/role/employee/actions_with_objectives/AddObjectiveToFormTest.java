@@ -1,8 +1,8 @@
 package myreview.role.employee.actions_with_objectives;
 
 import core.Configuration;
-import core.Preconditions;
-import helpers.SqlQueries;
+import core.Postcondition;
+import core.PreconditionBuilder;
 import myreview.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
@@ -16,17 +16,20 @@ public class AddObjectiveToFormTest extends BaseTest {
     private CommonPage commonPage = new CommonPage();
     private FormTabPage formTabPage = new FormTabPage();
     private NoteTabPage noteTabPage = new NoteTabPage();
-    private Preconditions preconditions = new Preconditions();
+    private Postcondition postcondition = new Postcondition();
+    private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
     @Test
     public void addToFormTest() throws Exception {
-        preconditions.logInAs(Configuration.getInstance().getEptester1());
-        SqlQueries.insert(numberOfNotesToAdd);
+        preconditionBuilder
+                .loginAs(Configuration.getInstance().getEpTester1())
+                .insert(numberOfNotesToAdd)
+                .build();
 
         noteTabPage.addToForm();
         commonPage.openFormTab();
         Assert.assertEquals(numberOfNotesToAdd, formTabPage.settingObjectiveCount());
 
-        preconditions.postcondition();
+        postcondition.logout();
     }
 }

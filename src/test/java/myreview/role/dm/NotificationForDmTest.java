@@ -1,8 +1,8 @@
 package myreview.role.dm;
 
 import core.Configuration;
-import core.Preconditions;
-import helpers.SqlQueries;
+import core.Postcondition;
+import core.PreconditionBuilder;
 import myreview.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,26 +12,29 @@ import pages.DepartmentPage;
 public class NotificationForDmTest extends BaseTest {
     private String notificationMessageText = "1";
     private BasePage basePage = new BasePage();
-    private Preconditions preconditions = new Preconditions();
+    private Postcondition postcondition = new Postcondition();
     private DepartmentPage departmentPage = new DepartmentPage();
+    private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
     @Test
     public void checkNotificationIsDisplayed() throws Exception {
-        preconditions.logInAs(Configuration.getInstance().getEptesterdm());
-        SqlQueries.changeStatusOfUserForm(Configuration.getInstance().getCommitted());
+        preconditionBuilder.loginAs(Configuration.getInstance().getEpTesterDm())
+                .changeStatusOfUserForm(Configuration.getInstance().getCommitted())
+                .build();
 
         Assert.assertEquals(notificationMessageText, basePage.getTextFromElement(departmentPage.notificationForDmField));
 
-        preconditions.postcondition();
+        postcondition.logout();
     }
 
     @Test
     public void checkNotificationIsNotDisplayed() throws Exception {
-        preconditions.logInAs(Configuration.getInstance().getEptesterdm());
-        SqlQueries.changeStatusOfUserForm(Configuration.getInstance().getInProgress());
+        preconditionBuilder.loginAs(Configuration.getInstance().getEpTesterDm())
+                .changeStatusOfUserForm(Configuration.getInstance().getInProgress())
+                .build();
 
         Assert.assertEquals(true, departmentPage.notificationIsNotDisplayed());
 
-        preconditions.postcondition();
+        postcondition.logout();
     }
 }

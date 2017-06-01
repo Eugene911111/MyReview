@@ -1,7 +1,8 @@
 package myreview.role.employee;
 
 import core.Configuration;
-import core.Preconditions;
+import core.Postcondition;
+import core.PreconditionBuilder;
 import helpers.SqlQueries;
 import myreview.BaseTest;
 import org.junit.Assert;
@@ -15,24 +16,28 @@ public class SendFeedbacksTabTest extends BaseTest {
 
     private BasePage basePage = new BasePage();
     private CommonPage commonPage = new CommonPage();
+    private SqlQueries sqlQueries = new SqlQueries();
     private NoteTabPage noteTabPage = new NoteTabPage();
-    private Preconditions preconditions = new Preconditions();
+    private Postcondition postcondition = new Postcondition();
+    private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
     private FeedbackDialogWindowPage feedbackDialogWindowPage = new FeedbackDialogWindowPage();
 
     @Test
     public void sendFeedbackTest() throws Exception {
-        preconditions.logInAs(Configuration.getInstance().getEptester1());
+        preconditionBuilder
+                .loginAs(Configuration.getInstance().getEpTester1())
+                .build();
 
         commonPage.openFeedbackDialogWindow();
         Assert.assertTrue(basePage.checkElementIsDisplayed(noteTabPage.feedbackDialogWindow));
 
         feedbackDialogWindowPage.sendFeedback();
-        Assert.assertEquals(basePage.currentDate, SqlQueries.select("feedbacks", "comment", basePage.currentDate));
+        Assert.assertEquals(basePage.currentDate, sqlQueries.select("feedbacks", "comment", basePage.currentDate));
 
-        SqlQueries.delete("notifications", "user_from_id", "=", Configuration.getInstance().getEptester1());
-        SqlQueries.delete("feedbacks", "comment", "=", basePage.currentDate, "author_id",  Configuration.getInstance().getEptester1());
+        sqlQueries.delete("notifications", "user_from_id", "=", Configuration.getInstance().getEpTester1());
+        sqlQueries.delete("feedbacks", "comment", "=", basePage.currentDate, "author_id",  Configuration.getInstance().getEpTester1());
 
-        preconditions.postcondition();
+        postcondition.logout();
     }
 }
 

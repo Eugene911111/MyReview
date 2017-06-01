@@ -1,33 +1,33 @@
 package myreview.role.employee;
 
 import core.Configuration;
-import core.Preconditions;
+import core.Postcondition;
+import core.PreconditionBuilder;
 import helpers.SqlQueries;
 import myreview.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
-import pages.CommonPage;
 import pages.FormTabPage;
 
 public class SendFormToManagerTest extends BaseTest {
 
     private int numberOfAddedObjectives = 3;
-    private CommonPage commonPage = new CommonPage();
+    private SqlQueries sqlQueries = new SqlQueries();
     private FormTabPage formTabPage = new FormTabPage();
-    private Preconditions preconditions = new Preconditions();
+    private Postcondition postcondition = new Postcondition();
+    private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
     @Test
     public void sendFormToManager() throws Exception {
-        preconditions.logInAs(Configuration.getInstance().getEptester1());
+        preconditionBuilder
+                .loginAs(Configuration.getInstance().getEpTester1())
+                .addNoteToSettingObjectiveDB(numberOfAddedObjectives, Configuration.getInstance().getCommitted())
+                .addEmployeeComment()
+                .build();
 
-        SqlQueries.addNoteToSettingObjectiveDB(numberOfAddedObjectives, "committed");
-        SqlQueries.addEmployeeComment();
-
-        commonPage.openFormTab();
         formTabPage.sendFormToManager();
-        Assert.assertEquals(Configuration.getInstance().getCommitted(), SqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEpTester1Id()));
-        SqlQueries.changeStatusOfUserForm(Configuration.getInstance().getInProgress());
+        Assert.assertEquals(Configuration.getInstance().getCommitted(), sqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEpTester1Id()));
 
-        preconditions.postcondition();
+        postcondition.logout();
     }
 }

@@ -1,25 +1,30 @@
 package myreview.role.employee;
 
 import core.Configuration;
-import core.Preconditions;
+import core.Postcondition;
+import core.PreconditionBuilder;
+import helpers.SqlQueries;
 import myreview.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
 import pages.FormTabPage;
 
-import static helpers.SqlQueries.selectSelfRating;
-
 public class CheckClearButtonTest extends BaseTest {
-    private Preconditions preconditions = new Preconditions();
+    private SqlQueries sqlQueries = new SqlQueries();
     private FormTabPage formTabPage = new FormTabPage();
+    private Postcondition postcondition = new Postcondition();
+    private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
+    private String EpTester1 = Configuration.getInstance().getEpTester1();
 
     @Test
     public void checkClearButtonTest() throws Exception {
-        preconditions.logInAs(Configuration.getInstance().getEptester1());
+        preconditionBuilder
+                .loginAs(EpTester1)
+                .build();
 
         formTabPage.clearEvaluationByEmployee();
-        Assert.assertEquals(null, selectSelfRating());
+        Assert.assertEquals(null, sqlQueries.selectSelfRating());
 
-        preconditions.postcondition();
+        postcondition.logout();
     }
 }

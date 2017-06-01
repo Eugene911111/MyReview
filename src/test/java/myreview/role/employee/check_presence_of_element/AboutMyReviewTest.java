@@ -1,7 +1,8 @@
 package myreview.role.employee.check_presence_of_element;
 
 import core.Configuration;
-import core.Preconditions;
+import core.Postcondition;
+import core.PreconditionBuilder;
 import myreview.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,16 +14,19 @@ public class AboutMyReviewTest extends BaseTest {
 
     private BasePage basePage = new BasePage();
     private CommonPage commonPage = new CommonPage();
-    private Preconditions preconditions = new Preconditions();
+    private Postcondition postcondition = new Postcondition();
     private AboutMyReviewPage aboutMyReviewPage = new AboutMyReviewPage();
+    private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
     @Test
     public void checkAboutMyReview() throws Exception {
-        preconditions.logInAs(Configuration.getInstance().getEptester1());
+        preconditionBuilder
+                .loginAs(Configuration.getInstance().getEpTester1())
+                .build();
 
         commonPage.openAboutMyReviewPage();
         Assert.assertTrue(basePage.checkElementIsDisplayed(aboutMyReviewPage.aboutMyReviewContent));
 
-        preconditions.postcondition();
+        postcondition.logout();
     }
 }

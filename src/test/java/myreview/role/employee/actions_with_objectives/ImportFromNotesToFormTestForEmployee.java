@@ -1,35 +1,36 @@
 package myreview.role.employee.actions_with_objectives;
 
 import core.Configuration;
-import core.Preconditions;
-import helpers.SqlQueries;
+import core.Postcondition;
+import core.PreconditionBuilder;
 import myreview.BaseTest;
-import pages.NoteTabPage;
-import pages.FormTabPage;
-import pages.CommonPage;
 import org.junit.Assert;
 import org.junit.Test;
-
+import pages.CommonPage;
+import pages.FormTabPage;
+import pages.NoteTabPage;
 
 public class ImportFromNotesToFormTestForEmployee extends BaseTest {
 
-    private int numberOfNotedToAdd = 1;
+    private int numberOfNotesToAdd = 1;
     private String expectedTitle = "autoTestTitle";
+    private CommonPage commonPage = new CommonPage();
     private FormTabPage formTabPage = new FormTabPage();
     private NoteTabPage noteTabPage = new NoteTabPage();
-    private Preconditions preconditions = new Preconditions();
-    private CommonPage commonPage = new CommonPage();
-
+    private Postcondition postcondition = new Postcondition();
+    private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
     @Test
     public void importFromNotesToFormTest() throws Exception {
-        preconditions.logInAs(Configuration.getInstance().getEptester1());
-        SqlQueries.insert(numberOfNotedToAdd);
+        preconditionBuilder
+                .loginAs(Configuration.getInstance().getEpTester1())
+                .insert(numberOfNotesToAdd)
+                .build();
 
-        commonPage.openUrl(commonPage.formTabUrl);
+        commonPage.openUrl(Configuration.getInstance().getFormTabUrl());
         formTabPage.pressImportFromNotesButton();
         Assert.assertEquals(expectedTitle, noteTabPage.getTextFromElement(noteTabPage.lastObjectiveTitleInList));
 
-        preconditions.postcondition();
+        postcondition.logout();
     }
 }

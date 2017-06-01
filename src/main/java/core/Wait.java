@@ -1,6 +1,5 @@
 package core;
 
-
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static core.TestApi.getDriver;
