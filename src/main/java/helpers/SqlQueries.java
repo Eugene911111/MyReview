@@ -1,13 +1,10 @@
 package helpers;
 
 import core.Configuration;
-import pages.BasePage;
 
 import java.sql.*;
 
 public class SqlQueries {
-
-    private static BasePage basePage = new BasePage();
 
     public static Connection getConnectionToDb() throws SQLException {
         return DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
@@ -41,7 +38,6 @@ public class SqlQueries {
 
     public void delete(String tableName, String columnName, String symbol, String value, String columnName2, String value2) throws Exception {
         String query = "delete from " + tableName + " where " + columnName + " " + symbol + "'" + value + "' AND " + columnName2 + "= '" + value2 + "'";
-
         PreparedStatement statement = getConnectionToDb().prepareStatement(query);
         statement.execute();
         statement.close();

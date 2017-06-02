@@ -10,11 +10,11 @@ import org.junit.Test;
 import pages.FormTabPage;
 
 public class CheckClearButtonTest extends BaseTest {
+    private String EpTester1 = Configuration.getInstance().getEpTester1();
     private SqlQueries sqlQueries = new SqlQueries();
     private FormTabPage formTabPage = new FormTabPage();
     private Postcondition postcondition = new Postcondition();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
-    private String EpTester1 = Configuration.getInstance().getEpTester1();
 
     @Test
     public void checkClearButtonTest() throws Exception {
