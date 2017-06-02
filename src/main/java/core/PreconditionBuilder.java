@@ -4,11 +4,7 @@ import helpers.SqlQueries;
 import pages.BasePage;
 import pages.LoginPage;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import static helpers.SqlQueries.*;
+import java.sql.*;
 
 public class PreconditionBuilder {
 
@@ -40,12 +36,14 @@ public class PreconditionBuilder {
     }
 
     public PreconditionBuilder insert(int numberOfNotes) throws Exception {
-        Statement statement = getConnectionToDb().createStatement();
-        for (int i = 1; i < (numberOfNotes + 1); i++) {
+        Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
+        Statement statement = connection.createStatement();
+        for (int i = 1; i <= numberOfNotes; i++) {
             statement.executeUpdate("INSERT INTO goals (id, user_id, author_id, user_form_history_id, title, progress, status,created_at, updated_at, deadline, comment_employee, comment_department_manager, comment_irrelevant) " +
                     "VALUES (" + i + ",'" + Configuration.getInstance().getEpTester1Id() + "', '" + Configuration.getInstance().getEpTester1Id() + "', NULL, 'autoTestTitle', 'new', 'note', '2017-04-27 09:53:27', '2017-04-27 09:53:27', '2017-07-27', 'comment', NULL, NULL)");
         }
         statement.close();
+        connection.close();
         return this;
     }
 
@@ -57,9 +55,11 @@ public class PreconditionBuilder {
                 " self_rating = 'Exceeds expectations', " +
                 " manager_rating = 'Exceeds expectations' " +
                 " WHERE user_id = '" + Configuration.getInstance().getEpTester1Id() + "'";
-        Statement statement = getConnectionToDb().createStatement();
+        Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
+        Statement statement = connection.createStatement();
         statement.executeUpdate(query);
         statement.close();
+        connection.close();
         return this;
     }
 
@@ -68,9 +68,11 @@ public class PreconditionBuilder {
                 " SET comment_employee = 'comment_created_with_auto_test', " +
                 " self_rating = 'Exceeds expectations' " +
                 " WHERE user_id = '" + Configuration.getInstance().getEpTester1Id() + "'";
-        try (Statement statement = getConnectionToDb().createStatement()) {
+        Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
+        try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(query);
             statement.close();
+            connection.close();
         } catch (SQLException e) {
             basePage.log.error("SQLException." + e.toString());
         }
@@ -78,20 +80,24 @@ public class PreconditionBuilder {
     }
 
     public PreconditionBuilder addNoteToSettingObjectiveDB(int numberOfNotes, String status) throws Exception {
-        Statement statement = getConnectionToDb().createStatement();
-        for (int i = 1; i < (numberOfNotes + 1); i++) {
+        Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
+        Statement statement = connection.createStatement();
+        for (int i = 1; i <= numberOfNotes; i++) {
             statement.executeUpdate("INSERT INTO goals (id, user_id, author_id, user_form_history_id, title, progress, status,created_at, updated_at, deadline, comment_employee, comment_department_manager, comment_irrelevant) " +
                     "VALUES (" + i + ",'" + "644E3D87-E5EC-4274-8B26-EF76C5537E93" + "', '" + "644E3D87-E5EC-4274-8B26-EF76C5537E93" + "', NULL, '" + basePage.returnCurrentDate() + "', 'new', '" + status + "', '2017-04-27 09:53:27', '2017-04-27 09:53:27', '2017-07-27', 'comment', NULL, NULL)");
         }
         statement.close();
+        connection.close();
         return this;
     }
 
     public PreconditionBuilder delete(String tableName, String columnName, String symbol, String value, String columnName2, String value2) throws Exception {
         String query = "delete from " + tableName + " where " + columnName + " " + symbol + "'" + value + "' AND " + columnName2 + "= '" + value2 + "'";
-        PreparedStatement statement = getConnectionToDb().prepareStatement(query);
+        Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
+        PreparedStatement statement = connection.prepareStatement(query);
         statement.execute();
         statement.close();
+        connection.close();
         return this;
     }
 

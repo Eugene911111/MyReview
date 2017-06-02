@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 public class LoginPage extends BasePage {
 
     private By levi9Logo = By.xpath("//img[@src=\"/bundles/app/images/logo.png\"]");
-    private By loginButton = By.xpath("//div[@class=\"form-group form-group-logon\"]//input[@value=\"Login\"]");
+    private By loginButton = By.xpath("//input[@value=\"Login\"]");
     private By passwordField = By.id("password");
     private By usernameField = By.id("username");
     public By logInFormName = By.xpath("//div[@class=\"panel-heading\"][contains(., 'Log In')]");

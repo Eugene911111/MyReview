@@ -8,19 +8,19 @@ import static core.TestApi.getDriver;
 public class DepartmentPage extends BasePage {
 
     private By rejectButton = By.xpath("//md-dialog[@class=\"_md md-transition-in\"]//button[contains(., \"Reject\")]");
-    private By submitButton = By.xpath("//md-dialog[@class=\"_md md-transition-in\"]//button[contains(., \"Submit\")]");
+    private By submitButton = By.xpath("//md-dialog//button[contains(., \"Submit\")]");
     private By approveButton = By.xpath("//md-dialog-actions[@class=\"layout-row\"]/button[contains(., \"Approve\")]");
     private By rejectMessage = By.xpath("/html/body/header/md-toast/div/span");
     private By approveMessage = By.xpath("//*[contains(text(), \"You successfully submitted the form!\")] ");
     private By continueButton = By.xpath("/html/body/div/department/div/div/div[2]/div[2]/div[2]/div[1]/div/div[3]/div[2]/button[2]/span");
-    private By evaluationByDm = By.xpath("//div[@class=\"evaluationGroup ng-scope\"][contains(., \"\")]//md-radio-button[@id=\"radio_8\"]");
+    private By evaluationByDm = By.xpath("//md-radio-button[@id=\"radio_8\"]");
     private By departmentButton = By.xpath("//a[@ui-sref=\"department\"]");
-    private By reviewFormButton = By.xpath("//a[@class=\"md-raised md-button md-ink-ripple\"][contains(., \"Review form\")]");
-    private By rejectFormButton = By.xpath("//button[@class=\"md-raised md-primary md-button md-ink-ripple\"][contains(., \"Reject form\")]");
-    private By approveFormButton = By.xpath("//button[@class=\"md-raised md-primary md-button md-ink-ripple\"][contains(., \"Approve form\")]");
-    private By startMetingButton = By.xpath("//div[@class=\"goalsPane ng-scope\"]//button[contains(., \"Start Meeting\")][@aria-hidden=\"false\"]");
+    private By reviewFormButton = By.xpath("//a[contains(., \"Review form\")]");
+    private By rejectFormButton = By.xpath("//button[contains(., \"Reject form\")]");
+    private By approveFormButton = By.xpath("//button[contains(., \"Approve form\")]");
+    private By startMetingButton = By.xpath("//button[contains(., \"Start Meeting\")][@aria-hidden=\"false\"]");
     private By rejectReasonField = By.xpath("//textarea[@name=\"commentFormReject\"]");
-    private By evaluationByEmployee = By.xpath("//div[@class=\"evaluationGroup ng-scope\"][contains(., \"Evaluation by employee: \")]//md-radio-button[@id=\"radio_4\"]");
+    private By evaluationByEmployee = By.xpath("//md-radio-button[@id=\"radio_4\"]");
     private By submitFinalFormButton = By.xpath("//button[@class=\"md-raised md-primary md-button md-ink-ripple\"]");
     private By employeePasswordField = By.xpath("//input[@name=\"password\"]");
     private By commentByManagerField = By.xpath("//*[@id=\"input_2\"]");

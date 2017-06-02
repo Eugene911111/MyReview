@@ -8,12 +8,12 @@ import static core.TestApi.getDriver;
 public class FormTabPage extends BasePage {
 
     private DepartmentPage departmentPage = new DepartmentPage();
-    private By sendButton = By.xpath("//md-dialog-actions[@class=\"layout-row\"]//button[contains(., \"Send\")]");
+    private By sendButton = By.xpath("//md-dialog-actions/button[contains(., \"Send\")]");
     private By closeButton = By.xpath("//button[@class=\"md-icon-button md-button md-ink-ripple\"]");
-    private By addToFormButton = By.xpath("//button[@class=\"md-raised goalActionButton md-button md-ink-ripple\"][contains(., \"Add to form\")]");
+    private By addToFormButton = By.xpath("//md-list-item/button[contains(., \"Add to form\")]");
     private By notesModalWindow = By.xpath("//div[@class=\"notesModal\"]");
     private By sendToManagerButton = By.xpath("/html/body/div/user-form/div[1]/button[1]");
-    private By importFromNotesButton = By.xpath("//button[@class=\"addGoalButton md-raised md-button md-ink-ripple\"][contains(., \"Import from notes\")]");
+    private By importFromNotesButton = By.xpath("//button[contains(., \"Import from notes\")]");
     private By formHasBeenSentMessage = By.xpath("//div[@class=\"md-whiteframe-4dp form-status\"][contains(., \"Form has been sent to manager\")]");
     private By lastElementInListOfObjectives = By.xpath("//div[@id=\"objectives\"]//following::div[@class=\"col-xs-2 goalTitle ng-binding\"][last()]");
     private By clearButton = By.xpath("//button[@class=\"md-raised md-button md-ink-ripple\"]");
