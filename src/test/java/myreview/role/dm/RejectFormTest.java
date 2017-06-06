@@ -7,10 +7,7 @@ import helpers.SqlQueries;
 import myreview.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
-import pages.CommonPage;
-import pages.DepartmentPage;
-import pages.FormTabPage;
-import pages.LoginPage;
+import pages.*;
 
 public class RejectFormTest extends BaseTest {
     private int numberOfObjectivesToAdd = 3;
@@ -21,6 +18,7 @@ public class RejectFormTest extends BaseTest {
     private Postcondition postcondition = new Postcondition();
     private DepartmentPage departmentPage = new DepartmentPage();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
+    private BasePage basePage = new BasePage();
 
     @Test
     public void rejectFormTest() throws Exception {
@@ -37,7 +35,6 @@ public class RejectFormTest extends BaseTest {
         loginPage.logIn(Configuration.getInstance().getEpTester1());
         commonPage.openUrl(Configuration.getInstance().getFormTabUrl());
         Assert.assertEquals(departmentPage.currentDate, formTabPage.getTextFromElement(formTabPage.rejectReasonField));
-
         postcondition.logout();
     }
 }

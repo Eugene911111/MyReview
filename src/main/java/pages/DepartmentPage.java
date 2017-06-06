@@ -40,7 +40,7 @@ public class DepartmentPage extends BasePage {
         waitForPresenceOfTextInTextAreaInputElement(commentByManagerField, commentByManager);
         waitForElementIsClickableAndClick(rejectFormButton);
         findElementClearAndSendKeys(rejectReasonField, returnCurrentDate());
-        waitForPresenceOfTextInTextAreaInputElement(rejectReasonField, basePage.returnCurrentDate());
+        waitForPresenceOfTextInTextAreaInputElement(rejectReasonField, currentDate);
         waitForElementIsClickableAndClick(rejectButton);
         checkElementIsDisplayed(rejectMessage);
     }
