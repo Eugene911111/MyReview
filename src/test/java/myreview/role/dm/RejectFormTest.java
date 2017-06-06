@@ -39,6 +39,5 @@ public class RejectFormTest extends BaseTest {
         Assert.assertEquals(departmentPage.currentDate, formTabPage.getTextFromElement(formTabPage.rejectReasonField));
 
         postcondition.logout();
-        //9178
     }
 }
