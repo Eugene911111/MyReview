@@ -46,7 +46,6 @@ public class LoginWithCookiesTest extends BaseTest {
 
         // 01 черв. 2018 03:22:35 EEST
        //  01 черв. 2017 03.26.41 EEST
-
         //                  "01 черв. 2018 02:31:31 EEST"
        // Cookie name1 = new Cookie("REMEMBERME", "QXBwQnVuZGxlXEVudGl0eVxVc2VyOlpYQWdkR1Z6ZEdWeU1RPT06MTUyNzg1MjY5MTplNWU5ZWI3MjAzYmI5YWUwZTY4YTA3Mjc1ZmNjYjRhZTc0OWZhYTJiMDk2NTcxOTQwNjkzYjVmZTliYWVlMDYz", "myreview.local", "/", "01 черв. 2018 02:31:31 EEST");
         getDriver().manage().addCookie(name);

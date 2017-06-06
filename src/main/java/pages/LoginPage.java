@@ -15,8 +15,8 @@ public class LoginPage extends BasePage {
         openUrl(Configuration.getInstance().getLogInPageUrl());
         checkElementIsDisplayed(levi9Logo);
         checkElementIsDisplayed(logInFormName);
-        findElementAndSendKeys(usernameField, userName);
-        findElementAndSendKeys(passwordField, Configuration.getInstance().getPassword());
+        findElementClearAndSendKeys(usernameField, userName);
+        findElementClearAndSendKeys(passwordField, Configuration.getInstance().getPassword());
         waitForElementIsClickableAndClick(loginButton);
     }
 }

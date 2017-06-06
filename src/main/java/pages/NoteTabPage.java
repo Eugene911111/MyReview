@@ -12,7 +12,7 @@ public class NoteTabPage extends BasePage {
 
     private CommonPage commonPage = new CommonPage();
     private String commentByEmployee = "comment";
-    private String dataFormat = "E yyyy.MM.dd 'at' hh.mm.ss a";
+    private String dateFormat = "E yyyy.MM.dd 'at' hh.mm.ss a";
     private By titleField = By.xpath("//input[@name=\"title\"]");
     private By saveButton = By.xpath("//button[contains(., \"Save\")]");
     private By editButton = By.xpath("//button[contains(.,\"Edit\")]");
@@ -38,7 +38,7 @@ public class NoteTabPage extends BasePage {
     }
 
     private String returnCurrentTime() throws InterruptedException {
-        SimpleDateFormat ft = new SimpleDateFormat(dataFormat);
+        SimpleDateFormat ft = new SimpleDateFormat(dateFormat);
         currentTime = ft.format(new Date());
         return currentTime;
     }
@@ -46,9 +46,9 @@ public class NoteTabPage extends BasePage {
     public void addObjective() throws InterruptedException {
         waitForElementIsClickableAndClick(addObjectiveButton);
         checkElementIsDisplayed(addObjectiveWindow);
-        findElementAndSendKeys(commentByEmployeeField, commentByEmployee);
+        findElementClearAndSendKeys(commentByEmployeeField, commentByEmployee);
         waitForPresenceOfTextInTextAreaInputElement(commentByEmployeeField, commentByEmployee);
-        findElementAndSendKeys(titleField, returnCurrentTime());
+        findElementClearAndSendKeys(titleField, returnCurrentTime());
         waitForPresenceOfTextInTextAreaInputElement(titleField, currentTime);
         waitForElementIsClickableAndClick(saveButton);
         waitForPresenceOfTextInDivElement(lastObjectiveTitleInList, currentTime);

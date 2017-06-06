@@ -6,10 +6,6 @@ import java.sql.*;
 
 public class SqlQueries {
 
-//    public static Connection getConnectionToDb() throws SQLException {
-//        return DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
-//    }
-
     public void delete(String tableName, String columnName, String symbol, String value) throws Exception {
         Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
         String query = ("delete from " + tableName + " where " + columnName + " " + symbol + "'" + value + "'");
@@ -20,23 +16,10 @@ public class SqlQueries {
     }
 
     public void deleteGoalById() throws Exception {
-        String query = "DELETE FROM goals WHERE id > ? AND user_id  = '" + Configuration.getInstance().getEpTester1Id() + "'";
-        int deleteUserId = 160;
         Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
+        String query = "DELETE FROM goals WHERE author_id = ? AND user_id = ?";
         PreparedStatement statement = connection.prepareStatement(query);
-        statement.setInt(1, deleteUserId);
-        statement.execute();
-        statement.close();
-        connection.close();
-    }
-
-    public void delete1() throws Exception {
-        Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
-
-        String query = "DELETE FROM goals WHERE id <= ? AND user_id = ?";
-        PreparedStatement statement = connection.prepareStatement(query);
-        int deleteUserIdd = 3;
-        statement.setInt(1, deleteUserIdd + 1);
+        statement.setString(1, Configuration.getInstance().getEpTester1Id());
         statement.setString(2, Configuration.getInstance().getEpTester1Id());
         statement.execute();
         statement.close();
@@ -96,7 +79,6 @@ public class SqlQueries {
     public String selectSelfRating() throws Exception {
         String query = " SELECT self_rating FROM user_forms where id ='" + Configuration.getInstance().getEpTester1Id() + "'";
         Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
-
         try (Statement statement = connection.createStatement()) {
             String select = null;
             ResultSet rs = statement.executeQuery(query);

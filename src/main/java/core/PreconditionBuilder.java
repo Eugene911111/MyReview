@@ -17,7 +17,7 @@ public class PreconditionBuilder {
 
     public PreconditionBuilder loginAs(String userName) throws Exception {
         changeStatusOfUserForm(Configuration.getInstance().getInProgress());
-        sqlQueries.delete1();
+        sqlQueries.deleteGoalById();
         sqlQueries.deleteGoalById();
         loginPage.logIn(userName);
         return this;
@@ -25,7 +25,7 @@ public class PreconditionBuilder {
 
     public PreconditionBuilder sqlPreconditionsForLogIn() throws Exception {
         changeStatusOfUserForm(Configuration.getInstance().getInProgress());
-        sqlQueries.delete1();
+        sqlQueries.deleteGoalById();
         sqlQueries.deleteGoalById();
         return this;
     }
@@ -83,8 +83,8 @@ public class PreconditionBuilder {
         Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
         Statement statement = connection.createStatement();
         for (int i = 1; i <= numberOfNotes; i++) {
-            statement.executeUpdate("INSERT INTO goals (id, user_id, author_id, user_form_history_id, title, progress, status,created_at, updated_at, deadline, comment_employee, comment_department_manager, comment_irrelevant) " +
-                    "VALUES (" + i + ",'" + "644E3D87-E5EC-4274-8B26-EF76C5537E93" + "', '" + "644E3D87-E5EC-4274-8B26-EF76C5537E93" + "', NULL, '" + basePage.returnCurrentDate() + "', 'new', '" + status + "', '2017-04-27 09:53:27', '2017-04-27 09:53:27', '2017-07-27', 'comment', NULL, NULL)");
+            statement.executeUpdate(" INSERT INTO goals (id, user_id, author_id, user_form_history_id, title, progress, status,created_at, updated_at, deadline, comment_employee, comment_department_manager, comment_irrelevant) " +
+                    " VALUES (" + i + ",'" + "644E3D87-E5EC-4274-8B26-EF76C5537E93" + "', '" + "644E3D87-E5EC-4274-8B26-EF76C5537E93" + "', NULL, '" + basePage.returnCurrentDate() + "', 'started', '" + status + "', '2017-04-27 09:53:27', '2017-04-27 09:53:27', '2017-07-27', 'comment', NULL, NULL)");
         }
         statement.close();
         connection.close();

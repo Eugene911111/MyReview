@@ -29,6 +29,7 @@ public class DepartmentPage extends BasePage {
     public By departmentTabContent = By.xpath("//div[@class=\"container-fluid department\"]");
     public By notificationForDmField = By.xpath("//a[@class=\"active\"]/span");
     By radioButtonExceedsExpectations = By.xpath("//md-radio-button[@value=\"Exceeds expectations\"]");
+    private BasePage basePage = new BasePage();
 
     public void rejectForm() throws InterruptedException {
         openUrl(Configuration.getInstance().getDepartmentTabUrl());
@@ -39,7 +40,7 @@ public class DepartmentPage extends BasePage {
         waitForPresenceOfTextInTextAreaInputElement(commentByManagerField, commentByManager);
         waitForElementIsClickableAndClick(rejectFormButton);
         findElementClearAndSendKeys(rejectReasonField, returnCurrentDate());
-        waitForPresenceOfTextInTextAreaInputElement(rejectReasonField, currentDate);
+        waitForPresenceOfTextInTextAreaInputElement(rejectReasonField, basePage.returnCurrentDate());
         waitForElementIsClickableAndClick(rejectButton);
         checkElementIsDisplayed(rejectMessage);
     }
@@ -49,7 +50,7 @@ public class DepartmentPage extends BasePage {
         waitForElementIsClickableAndClick(reviewFormButton);
         changeFocusToPage(1);
         waitForElementIsClickableAndClick(approveFormButton);
-        waitForElementIsPresentAndClick(approveButton);
+        waitForElementIsClickableAndClick(approveButton);
         checkElementIsDisplayed(approveMessage);
     }
 
@@ -77,9 +78,9 @@ public class DepartmentPage extends BasePage {
         openUrl(Configuration.getInstance().getReviewMeetingUrl() + Configuration.getInstance().getEpTester1Id());
         waitForElementIsClickableAndClick(evaluationByEmployee);
         waitForElementIsClickableAndClick(evaluationByDm);
-        findElementAndSendKeys(employeePasswordField, Configuration.getInstance().getPassword());
-        waitForElementIsPresentAndClick(submitFinalFormButton);
-        waitForElementIsPresentAndClick(submitButton);
+        findElementClearAndSendKeys(employeePasswordField, Configuration.getInstance().getPassword());
+        waitForElementIsClickableAndClick(submitFinalFormButton);
+        waitForElementIsClickableAndClick(submitButton);
         checkElementIsDisplayed(submitFinalFormMessage);
     }
 

@@ -11,7 +11,7 @@ public class FeedbackDialogWindowPage extends BasePage {
 
     public void sendFeedback() throws InterruptedException {
         waitForElementIsClickableAndClick(bugRadioButton);
-        findElementAndSendKeys(commentsForFeedbackField, returnCurrentDate());
+        findElementClearAndSendKeys(commentsForFeedbackField, returnCurrentDate());
         waitForElementIsClickableAndClick(sendButton);
         checkElementIsDisplayed(notificationAfterSendingFeedback);
     }
