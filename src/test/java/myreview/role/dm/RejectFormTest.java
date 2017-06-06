@@ -22,7 +22,6 @@ public class RejectFormTest extends BaseTest {
     private DepartmentPage departmentPage = new DepartmentPage();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
-
     @Test
     public void rejectFormTest() throws Exception {
         preconditionBuilder
