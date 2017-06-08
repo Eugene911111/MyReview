@@ -25,7 +25,7 @@ public class SendFeedbacksTabTest extends BaseTest {
     @Test
     public void sendFeedbackTest() throws Exception {
         preconditionBuilder
-                .loginAs(Configuration.getInstance().getEpTester1())
+                .justLogIn(Configuration.getInstance().getEpTester1())
                 .build();
 
         commonPage.openFeedbackDialogWindow();

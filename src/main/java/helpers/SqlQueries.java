@@ -50,7 +50,7 @@ public class SqlQueries {
     }
 
     public String select(String appointment_date) throws Exception {
-        String query = " SELECT " + appointment_date + " from user_form_history where id =(SELECT MAX(id) as MAX_ID from user_form_history where user_id = '644E3D87-E5EC-4274-8B26-EF76C5537E93')";
+        String query = " SELECT " + appointment_date + " from user_form_history where id =(SELECT MAX(id) as MAX_ID from user_form_history where user_id = '" + Configuration.getInstance().getEpTester1Id() +"')";
         Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
         Statement statement = connection.createStatement();
         String select = null;

@@ -21,7 +21,7 @@ public class AboutMyReviewTest extends BaseTest {
     @Test
     public void checkAboutMyReview() throws Exception {
         preconditionBuilder
-                .loginAs(Configuration.getInstance().getEpTester1())
+                .justLogIn(Configuration.getInstance().getEpTester1())
                 .build();
 
         commonPage.openAboutMyReviewPage();

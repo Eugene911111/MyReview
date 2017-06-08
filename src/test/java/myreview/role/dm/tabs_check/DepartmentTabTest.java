@@ -19,7 +19,7 @@ public class DepartmentTabTest extends BaseTest {
 
     @Test
     public void departmentTabTest() throws Exception {
-        preconditionBuilder.loginAs(Configuration.getInstance().getEpTesterDm());
+        preconditionBuilder.justLogIn(Configuration.getInstance().getEpTesterDm());
 
         basePage.waitForElementIsClickableAndClick(commonPage.departmentButton);
         basePage.checkElementIsDisplayed(departmentPage.departmentTabContent);

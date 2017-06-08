@@ -1,6 +1,6 @@
 package myreview.test_suits;
 
-import myreview.role.employee.CheckClearButtonTest;
+import myreview.role.employee.ClearButtonTest;
 import myreview.role.employee.SendFeedbacksTabTest;
 import myreview.role.employee.SendFormToManagerTest;
 import myreview.role.employee.actions_with_objectives.*;
@@ -22,7 +22,7 @@ import org.junit.runners.Suite;
         SendFormToManagerTest.class,
         AboutMyReviewTest.class,
         FormExampleTest.class,
-        CheckClearButtonTest.class
+        ClearButtonTest.class
 })
 
 public class EmployeeTestSuite {

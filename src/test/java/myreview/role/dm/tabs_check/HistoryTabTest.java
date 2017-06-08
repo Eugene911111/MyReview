@@ -19,7 +19,7 @@ public class HistoryTabTest extends BaseTest {
 
     @Test
     public void historyTabTest() throws Exception {
-        preconditionBuilder.loginAs(Configuration.getInstance().getEpTesterDm());
+        preconditionBuilder.justLogIn(Configuration.getInstance().getEpTesterDm());
 
         basePage.waitForElementIsClickableAndClick(commonPage.historyButton);
         basePage.checkElementIsDisplayed(historyPage.historyContent);

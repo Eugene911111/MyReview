@@ -18,7 +18,6 @@ public class RejectFormTest extends BaseTest {
     private Postcondition postcondition = new Postcondition();
     private DepartmentPage departmentPage = new DepartmentPage();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
-    private BasePage basePage = new BasePage();
 
     @Test
     public void rejectFormTest() throws Exception {

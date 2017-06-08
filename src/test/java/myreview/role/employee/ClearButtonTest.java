@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import pages.FormTabPage;
 
-public class CheckClearButtonTest extends BaseTest {
+public class ClearButtonTest extends BaseTest {
     private String EpTester1 = Configuration.getInstance().getEpTester1();
     private SqlQueries sqlQueries = new SqlQueries();
     private FormTabPage formTabPage = new FormTabPage();

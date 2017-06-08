@@ -19,7 +19,7 @@ public class FormTabTest extends BaseTest {
 
     @Test
     public void formTabTest() throws Exception {
-        preconditionBuilder.loginAs(Configuration.getInstance().getEpTesterDm());
+        preconditionBuilder.justLogIn(Configuration.getInstance().getEpTesterDm());
 
         basePage.waitForElementIsClickableAndClick(commonPage.formButton);
         basePage.checkElementIsDisplayed(formTabPage.formTabContent);

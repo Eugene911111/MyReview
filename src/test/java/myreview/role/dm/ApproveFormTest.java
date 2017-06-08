@@ -26,7 +26,7 @@ public class ApproveFormTest extends BaseTest {
                 .changeStatusOfUserForm(Configuration.getInstance().getCommitted());
 
         departmentPage.approveForm();
-        assertEquals(Configuration.getInstance().getApproved(), sqlQueries.select("status", "user_forms", "user_id", "644E3D87-E5EC-4274-8B26-EF76C5537E93"));
+        assertEquals(Configuration.getInstance().getApproved(), sqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEpTester1Id()));
 
         postcondition.logout();
     }

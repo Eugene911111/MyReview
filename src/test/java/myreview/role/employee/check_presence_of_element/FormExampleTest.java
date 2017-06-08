@@ -21,7 +21,7 @@ public class FormExampleTest extends BaseTest {
     @Test
     public void checkFormExample() throws Exception {
         preconditionBuilder
-                .loginAs(Configuration.getInstance().getEpTester1())
+                .justLogIn(Configuration.getInstance().getEpTester1())
                 .build();
 
         commonPage.openFormExamplePage();

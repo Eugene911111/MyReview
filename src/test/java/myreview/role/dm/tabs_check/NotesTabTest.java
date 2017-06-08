@@ -19,7 +19,7 @@ public class NotesTabTest extends BaseTest {
 
     @Test
     public void notesTabTest() throws Exception {
-        preconditionBuilder.loginAs(Configuration.getInstance().getEpTesterDm());
+        preconditionBuilder.justLogIn(Configuration.getInstance().getEpTesterDm());
 
         basePage.waitForElementIsClickableAndClick(commonPage.notesButton);
         basePage.checkElementIsDisplayed(noteTabPage.notesPageContent);
