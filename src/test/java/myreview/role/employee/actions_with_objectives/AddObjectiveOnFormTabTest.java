@@ -7,13 +7,13 @@ import helpers.SqlQueries;
 import myreview.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
-import pages.CommonPage;
+import pages.BasePage;
 import pages.NoteTabPage;
 
 public class AddObjectiveOnFormTabTest extends BaseTest {
 
+    private BasePage basePage = new BasePage();
     private SqlQueries sqlQueries = new SqlQueries();
-    private CommonPage commonPage = new CommonPage();
     private NoteTabPage noteTabPage = new NoteTabPage();
     private Postcondition postcondition = new Postcondition();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
@@ -24,7 +24,7 @@ public class AddObjectiveOnFormTabTest extends BaseTest {
                 .loginAs(Configuration.getInstance().getEpTester1())
                 .build();
 
-        commonPage.openUrl(Configuration.getInstance().getFormTabUrl());
+        basePage.openUrl(Configuration.getInstance().getFormTabUrl());
         noteTabPage.addObjective();
         Assert.assertEquals(sqlQueries.select("goals", "title", noteTabPage.currentTime), noteTabPage.currentTime);
 

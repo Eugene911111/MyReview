@@ -22,6 +22,7 @@ public class FormTabPage extends BasePage {
     public By formTabContent = By.xpath("//div[@class=\"container-fluid goalForm ng-scope\"]");
 
     public void pressImportFromNotesButton() throws InterruptedException {
+        openUrl(Configuration.getInstance().getFormTabUrl());
         waitForElementIsClickableAndClick(importFromNotesButton);
         checkElementIsDisplayed(notesModalWindow);
         waitForElementIsClickableAndClick(addToFormButton);

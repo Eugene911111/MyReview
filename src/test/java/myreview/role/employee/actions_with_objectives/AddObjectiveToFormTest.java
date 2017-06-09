@@ -13,11 +13,13 @@ import pages.NoteTabPage;
 public class AddObjectiveToFormTest extends BaseTest {
 
     private int numberOfNotesToAdd = 1;
+    private String expectedTitle = "autoTestTitle";
     private CommonPage commonPage = new CommonPage();
     private FormTabPage formTabPage = new FormTabPage();
     private NoteTabPage noteTabPage = new NoteTabPage();
     private Postcondition postcondition = new Postcondition();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
+
 
     @Test
     public void addToFormTest() throws Exception {
@@ -28,8 +30,7 @@ public class AddObjectiveToFormTest extends BaseTest {
 
         noteTabPage.addToForm();
         commonPage.openFormTab();
-        Assert.assertEquals(numberOfNotesToAdd, formTabPage.settingObjectiveCount());
-
+        Assert.assertEquals(expectedTitle, noteTabPage.getTextFromElement(noteTabPage.lastObjectiveTitleInList));
         postcondition.logout();
     }
 }

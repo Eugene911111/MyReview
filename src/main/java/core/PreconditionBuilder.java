@@ -17,16 +17,14 @@ public class PreconditionBuilder {
 
     public PreconditionBuilder loginAs(String userName) throws Exception {
         changeStatusOfUserForm(Configuration.getInstance().getInProgress());
-        sqlQueries.deleteGoalById();
-     //   sqlQueries.deleteGoalById();
+        sqlQueries.deleteGoalsCreatedByTestUser();
         loginPage.logIn(userName);
         return this;
     }
 
     public PreconditionBuilder sqlPreconditionsForLogIn() throws Exception {
         changeStatusOfUserForm(Configuration.getInstance().getInProgress());
-        sqlQueries.deleteGoalById();
-        //sqlQueries.deleteGoalById();
+        sqlQueries.deleteGoalsCreatedByTestUser();
         return this;
     }
 

@@ -77,5 +77,6 @@ public class NoteTabPage extends BasePage {
     public void addToForm() throws InterruptedException {
         waitForElementIsClickableAndClick(addToFormButton);
         checkElementIsNotDisplayed(areaOfObjective);
+
     }
 }

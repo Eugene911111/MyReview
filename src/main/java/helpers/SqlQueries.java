@@ -15,7 +15,7 @@ public class SqlQueries {
         connection.close();
     }
 
-    public void deleteGoalById() throws Exception {
+    public void deleteGoalsCreatedByTestUser() throws Exception {
         Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
         String query = "DELETE FROM goals WHERE author_id = ? AND user_id = ?";
         PreparedStatement statement = connection.prepareStatement(query);

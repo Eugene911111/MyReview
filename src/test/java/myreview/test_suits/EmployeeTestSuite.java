@@ -17,7 +17,7 @@ import org.junit.runners.Suite;
         CheckQuantityOfObjectivesTest.class,
         DeleteObjectiveOnNoteTabTest.class,
         EditObjectiveOnNoteTabTest.class,
-        ImportFromNotesToFormTestForEmployee.class,
+        ImportFromNotesToFormTest.class,
         SendFeedbacksTabTest.class,
         SendFormToManagerTest.class,
         AboutMyReviewTest.class,

@@ -50,10 +50,10 @@ public class Configuration {
             this.approved = prop.getProperty("APPROVED");
             this.committed = prop.getProperty("COMMITTED");
             this.departmentTabUrl = prop.getProperty("DEPARTMENT_TAB_URL");
-            this.epTester1 = prop.getProperty("EP_TESTER_1");
-            this.epTesterDm = prop.getProperty("EP_TESTER_DM");
+            this.epTester1 = prop.getProperty("A_TESTER_1");
+            this.epTesterDm = prop.getProperty("A_TESTER_DM");
             this.epAdmin = prop.getProperty("EP_ADMIN");
-            this.epTester1Id = prop.getProperty("EP_TESTER_1_ID");
+            this.epTester1Id = prop.getProperty("A_TESTER_1_ID");
             this.epDelivery1 = prop.getProperty("EP_DELIVERY_1");
             this.formTabUrl = prop.getProperty("FORM_TAB_URL");
             this.inProgress = prop.getProperty("IN_PROGRESS");

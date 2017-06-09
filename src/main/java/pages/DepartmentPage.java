@@ -18,7 +18,8 @@ public class DepartmentPage extends BasePage {
     private By reviewFormButton = By.xpath("//a[contains(., \"Review form\")]");
     private By rejectFormButton = By.xpath("//button[contains(., \"Reject form\")]");
     private By approveFormButton = By.xpath("//button[contains(., \"Approve form\")]");
-    private By startMetingButton = By.xpath("//button[contains(., \"Start Meeting\")][@aria-hidden=\"false\"]");
+    private By startMeetingButton = By.xpath("//button[contains(., \"Start Meeting\")][@aria-hidden=\"false\"]");
+    private By reviewMeetingPage = By.xpath("//div[@class=\"container-fluid goalForm ng-scope\"]");
     private By rejectReasonField = By.xpath("//textarea[@name=\"commentFormReject\"]");
     private By evaluationByEmployee = By.xpath("//md-radio-button[@id=\"radio_4\"]");
     private By submitFinalFormButton = By.xpath("//button[@class=\"md-raised md-primary md-button md-ink-ripple\"]");
@@ -29,7 +30,6 @@ public class DepartmentPage extends BasePage {
     public By departmentTabContent = By.xpath("//div[@class=\"container-fluid department\"]");
     public By notificationForDmField = By.xpath("//a[@class=\"active\"]/span");
     By radioButtonExceedsExpectations = By.xpath("//md-radio-button[@value=\"Exceeds expectations\"]");
-    private BasePage basePage = new BasePage();
 
     public void rejectForm() throws InterruptedException {
         openUrl(Configuration.getInstance().getDepartmentTabUrl());
@@ -55,12 +55,12 @@ public class DepartmentPage extends BasePage {
     }
 
     public void startMeeting() throws InterruptedException {
-        waitForElementIsClickableAndClick(startMetingButton);
+        waitForElementIsClickableAndClick(startMeetingButton);
         int i = 0;
         while (i < 1) {
             try {
                 changeFocusToPage(1);
-                checkElementIsDisplayed(submitFinalFormButton);
+                checkElementIsDisplayed(reviewMeetingPage);
                 i++;
             } catch (IndexOutOfBoundsException ignored) {
             }
@@ -68,10 +68,13 @@ public class DepartmentPage extends BasePage {
     }
 
     public void continueMeeting() throws InterruptedException {
-        waitForElementIsClickableAndClick(startMetingButton);
-        getDriver().navigate().refresh();
+        waitForElementIsClickableAndClick(startMeetingButton);
         changeFocusToPage(0);
+        getDriver().navigate().refresh();
         checkElementIsDisplayed(continueButton);
+        waitForElementIsClickableAndClick(continueButton);
+        changeFocusToPage(1);
+        checkElementIsDisplayed(reviewMeetingPage);
     }
 
     public void submitForm() throws Exception {

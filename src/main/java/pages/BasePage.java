@@ -42,11 +42,6 @@ public class BasePage {
         waitFor().until(ExpectedConditions.invisibilityOfElementLocated(element));
     }
 
-    public void findElementAndSendKeys(By element, String keys) throws InterruptedException {
-        WebElement element1 = waitFor().until(ExpectedConditions.presenceOfElementLocated(element));
-        element1.findElement(element).sendKeys(keys);
-    }
-
     public void findElementClearAndSendKeys(By element, String keys) throws InterruptedException {
         waiter(element, WebElement::clear, ExpectedConditions::visibilityOfElementLocated, Configuration.getInstance().getTimeOut());
         WebElement element1 = waitFor().until(ExpectedConditions.presenceOfElementLocated(element));
@@ -65,10 +60,6 @@ public class BasePage {
     public void changeFocusToPage(int pageIndex) throws InterruptedException {
         ArrayList tabs = new ArrayList(getDriver().getWindowHandles());
         getDriver().switchTo().window((String) tabs.get(pageIndex));
-    }
-
-    public void waitForElementIsPresentAndClick(By byElement) throws InterruptedException {
-        waiter(byElement, WebElement::click, ExpectedConditions::visibilityOfElementLocated, Configuration.getInstance().getTimeOut());
     }
 
     public String getTextFromElement(By element) throws InterruptedException {

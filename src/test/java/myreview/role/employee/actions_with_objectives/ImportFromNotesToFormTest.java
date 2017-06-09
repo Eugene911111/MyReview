@@ -10,7 +10,7 @@ import pages.CommonPage;
 import pages.FormTabPage;
 import pages.NoteTabPage;
 
-public class ImportFromNotesToFormTestForEmployee extends BaseTest {
+public class ImportFromNotesToFormTest extends BaseTest {
 
     private int numberOfNotesToAdd = 1;
     private String expectedTitle = "autoTestTitle";
@@ -27,7 +27,6 @@ public class ImportFromNotesToFormTestForEmployee extends BaseTest {
                 .insert(numberOfNotesToAdd)
                 .build();
 
-        commonPage.openUrl(Configuration.getInstance().getFormTabUrl());
         formTabPage.pressImportFromNotesButton();
         Assert.assertEquals(expectedTitle, noteTabPage.getTextFromElement(noteTabPage.lastObjectiveTitleInList));
 
