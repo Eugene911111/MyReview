@@ -1,9 +1,10 @@
-package myreview.role.dm.tabs_check;
+package myreview.department_manager.tabs_check;
 
 import core.Configuration;
 import core.Postcondition;
 import core.PreconditionBuilder;
 import myreview.BaseTest;
+import org.junit.Assert;
 import org.junit.Test;
 import pages.BasePage;
 import pages.CommonPage;
@@ -19,10 +20,10 @@ public class FormTabTest extends BaseTest {
 
     @Test
     public void formTabTest() throws Exception {
-        preconditionBuilder.justLogIn(Configuration.getInstance().getEpTesterDm());
+        preconditionBuilder.justLogIn(Configuration.getInstance().getATesterDm());
 
         basePage.waitForElementIsClickableAndClick(commonPage.formButton);
-        basePage.checkElementIsDisplayed(formTabPage.formTabContent);
+        Assert.assertTrue(basePage.checkElementIsDisplayed(formTabPage.formTabContent));
 
         postcondition.logout();
     }

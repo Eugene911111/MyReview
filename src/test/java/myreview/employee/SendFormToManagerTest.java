@@ -1,4 +1,4 @@
-package myreview.role.employee;
+package myreview.employee;
 
 import core.Configuration;
 import core.Postcondition;
@@ -20,14 +20,14 @@ public class SendFormToManagerTest extends BaseTest {
     @Test
     public void sendFormToManager() throws Exception {
         preconditionBuilder
-                .loginAs(Configuration.getInstance().getEpTester1())
+                .loginAs(Configuration.getInstance().getATester1())
                 .addNoteToSettingObjectiveDB(numberOfAddedObjectives, Configuration.getInstance().getCommitted())
                 .addEmployeeComment()
                 .build();
 
         formTabPage.sendFormToManager();
-        Assert.assertEquals(Configuration.getInstance().getCommitted(), sqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEpTester1Id()));
+        Assert.assertEquals(Configuration.getInstance().getCommitted(), sqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getATester1Id()));
 
-        postcondition.logout();
+       // postcondition.logout();
     }
 }

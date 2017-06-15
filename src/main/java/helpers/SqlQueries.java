@@ -19,8 +19,8 @@ public class SqlQueries {
         Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
         String query = "DELETE FROM goals WHERE author_id = ? AND user_id = ?";
         PreparedStatement statement = connection.prepareStatement(query);
-        statement.setString(1, Configuration.getInstance().getEpTester1Id());
-        statement.setString(2, Configuration.getInstance().getEpTester1Id());
+        statement.setString(1, Configuration.getInstance().getATester1Id());
+        statement.setString(2, Configuration.getInstance().getATester1Id());
         statement.execute();
         statement.close();
         connection.close();
@@ -50,7 +50,7 @@ public class SqlQueries {
     }
 
     public String select(String appointment_date) throws Exception {
-        String query = " SELECT " + appointment_date + " from user_form_history where id =(SELECT MAX(id) as MAX_ID from user_form_history where user_id = '" + Configuration.getInstance().getEpTester1Id() +"')";
+        String query = " SELECT " + appointment_date + " from user_form_history where id =(SELECT MAX(id) as MAX_ID from user_form_history where user_id = '" + Configuration.getInstance().getATester1Id() +"')";
         Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
         Statement statement = connection.createStatement();
         String select = null;
@@ -63,7 +63,7 @@ public class SqlQueries {
     }
 
     public String select(String table, String columnName, String value) throws Exception {
-        String query = "SELECT * from " + table + " where " + columnName + " " + "=" + " '" + value + "' and author_id = '" + Configuration.getInstance().getEpTester1Id() + "'";
+        String query = "SELECT * from " + table + " where " + columnName + " " + "=" + " '" + value + "' and author_id = '" + Configuration.getInstance().getATester1Id() + "'";
         Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
         Statement statement = connection.createStatement();
         String title = null;
@@ -77,7 +77,7 @@ public class SqlQueries {
     }
 
     public String selectSelfRating() throws Exception {
-        String query = " SELECT self_rating FROM user_forms where id ='" + Configuration.getInstance().getEpTester1Id() + "'";
+        String query = " SELECT self_rating FROM user_forms where id ='" + Configuration.getInstance().getATester1Id() + "'";
         Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
         try (Statement statement = connection.createStatement()) {
             String select = null;

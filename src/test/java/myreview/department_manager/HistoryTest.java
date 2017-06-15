@@ -1,4 +1,4 @@
-package myreview.role.dm;
+package myreview.department_manager;
 
 import core.Configuration;
 import core.Postcondition;
@@ -7,6 +7,9 @@ import helpers.SqlQueries;
 import myreview.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import pages.BasePage;
+import pages.CommonPage;
 import pages.DepartmentPage;
 
 import java.text.SimpleDateFormat;
@@ -21,18 +24,28 @@ public class HistoryTest extends BaseTest {
     private String currentDate = simpleDateFormat.format(new Date());
     private Postcondition postcondition = new Postcondition();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
+    private BasePage basePage = new BasePage();
+    private CommonPage commonPage = new CommonPage();
 
     @Test
     public void history() throws Exception {
         preconditionBuilder
-                .loginAs(Configuration.getInstance().getEpTesterDm())
+                .loginAs(Configuration.getInstance().getATesterDm())
                 .addNoteToSettingObjectiveDB(numberOfAddedObjectives, Configuration.getInstance().getApproved())
                 .changeStatusOfUserForm(Configuration.getInstance().getAppraisal())
-                .delete("user_form_history", "user_id", "=", Configuration.getInstance().getEpTester1Id(), "appointment_date", currentDate);
+                .delete("user_form_history", "user_id", "=", Configuration.getInstance().getATester1Id(), "appointment_date", currentDate);
 
         departmentPage.submitForm();
         Assert.assertEquals(currentDate, sqlQueries.select(appointment_date));
-
         postcondition.logout();
+
+        preconditionBuilder
+                .justLogIn(Configuration.getInstance().getATester1());
+        basePage.waitForElementIsClickableAndClick(commonPage.historyButton);
+
+        basePage.waitForElementIsClickableAndClick(By.xpath("//div[@class=\"paneHeader ng-scope\"]"));
+basePage.checkElementIsDisplayed(By.xpath("//*[@id=\"accordiongroup-137-8999-panel\"]/div/div[2]"));
+        System.out.println("+ is pressed");
+        //  postcondition.logout();
     }
 }

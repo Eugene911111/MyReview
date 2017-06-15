@@ -1,4 +1,4 @@
-package myreview.role.dm;
+package myreview.department_manager;
 
 import core.Configuration;
 import core.PreconditionBuilder;
@@ -18,14 +18,14 @@ public class StartMeeting extends BaseTest {
 
     @Test
     public void startMeeting() throws Exception {
-        preconditionBuilder.loginAs(Configuration.getInstance().getEpTesterDm())
+        preconditionBuilder.loginAs(Configuration.getInstance().getATesterDm())
                 .addNoteToSettingObjectiveDB(numberOfAddedObjectives, Configuration.getInstance().getCommitted())
                 .changeStatusOfUserForm(Configuration.getInstance().getApproved())
                 .build();
 
-        departmentPage.startMeeting();
-        Assert.assertEquals(Configuration.getInstance().getAppraisal(), sqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEpTester1Id()));
+        departmentPage.clickElementSetPageIndexCheckElementIsDisplayed(departmentPage.startMeetingButton,1, departmentPage.reviewMeetingPage);
+        Assert.assertEquals(Configuration.getInstance().getAppraisal(), sqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getATester1Id()));
 
-        postcondition.logout();
+        //postcondition.logout();
     }
 }

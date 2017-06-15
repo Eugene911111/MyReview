@@ -12,11 +12,11 @@ public class Configuration {
     private String appraisal;
     private String approved;
     private String committed;
-    private String epAdmin;
-    private String epTester1;
-    private String epTesterDm;
-    private String epTester1Id;
-    private String epDelivery1;
+    private String aAdmin;
+    private String aTester1;
+    private String aTesterDm;
+    private String aTester1Id;
+    private String aDelivery1;
     private String inProgress;
     private String logInPageUrl;
     private String myreviewDbUrl;
@@ -50,11 +50,11 @@ public class Configuration {
             this.approved = prop.getProperty("APPROVED");
             this.committed = prop.getProperty("COMMITTED");
             this.departmentTabUrl = prop.getProperty("DEPARTMENT_TAB_URL");
-            this.epTester1 = prop.getProperty("A_TESTER_1");
-            this.epTesterDm = prop.getProperty("A_TESTER_DM");
-            this.epAdmin = prop.getProperty("EP_ADMIN");
-            this.epTester1Id = prop.getProperty("A_TESTER_1_ID");
-            this.epDelivery1 = prop.getProperty("EP_DELIVERY_1");
+            this.aTester1 = prop.getProperty("A_TESTER_1");
+            this.aTesterDm = prop.getProperty("A_TESTER_DM");
+            this.aAdmin = prop.getProperty("EP_ADMIN");
+            this.aTester1Id = prop.getProperty("A_TESTER_1_ID");
+            this.aDelivery1 = prop.getProperty("A_DELIVERY_1");
             this.formTabUrl = prop.getProperty("FORM_TAB_URL");
             this.inProgress = prop.getProperty("IN_PROGRESS");
             this.logInPageUrl = prop.getProperty("LOGIN_PAGE_URL");
@@ -95,27 +95,27 @@ public class Configuration {
     }
 
     public String getEpAdmin() {
-        return epAdmin;
+        return aAdmin;
     }
 
-    public String getEpTester1() {
-        return epTester1;
+    public String getATester1() {
+        return aTester1;
     }
 
-    public String getEpTesterDm() {
-        return epTesterDm;
+    public String getATesterDm() {
+        return aTesterDm;
     }
 
-    public String getEpDelivery1() {
-        return epDelivery1;
+    public String getADelivery1() {
+        return aDelivery1;
     }
 
     public String getMyreviewDbUrl() {
         return myreviewDbUrl;
     }
 
-    public String getEpTester1Id() {
-        return epTester1Id;
+    public String getATester1Id() {
+        return aTester1Id;
     }
 
     public String getMyReviewDbUserName() {

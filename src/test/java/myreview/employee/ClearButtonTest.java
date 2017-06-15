@@ -1,4 +1,4 @@
-package myreview.role.employee;
+package myreview.employee;
 
 import core.Configuration;
 import core.Postcondition;
@@ -10,7 +10,7 @@ import org.junit.Test;
 import pages.FormTabPage;
 
 public class ClearButtonTest extends BaseTest {
-    private String EpTester1 = Configuration.getInstance().getEpTester1();
+    private String EpTester1 = Configuration.getInstance().getATester1();
     private SqlQueries sqlQueries = new SqlQueries();
     private FormTabPage formTabPage = new FormTabPage();
     private Postcondition postcondition = new Postcondition();
@@ -25,6 +25,6 @@ public class ClearButtonTest extends BaseTest {
         formTabPage.clearEvaluationByEmployee();
         Assert.assertEquals(null, sqlQueries.selectSelfRating());
 
-        postcondition.logout();
+       // postcondition.logout();
     }
 }

@@ -1,4 +1,4 @@
-package myreview.role.dm;
+package myreview.department_manager;
 
 import core.Configuration;
 import core.Postcondition;
@@ -21,13 +21,13 @@ public class ApproveFormTest extends BaseTest {
     @Test
     public void approveForm() throws Exception {
         preconditionBuilder
-                .loginAs(Configuration.getInstance().getEpTesterDm())
+                .loginAs(Configuration.getInstance().getATesterDm())
                 .addNoteToSettingObjectiveDB(numberOfAddedObjectives, Configuration.getInstance().getCommitted())
                 .changeStatusOfUserForm(Configuration.getInstance().getCommitted());
 
         departmentPage.approveForm();
-        assertEquals(Configuration.getInstance().getApproved(), sqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEpTester1Id()));
+        assertEquals(Configuration.getInstance().getApproved(), sqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getATester1Id()));
 
-        postcondition.logout();
+     //   postcondition.logout();
     }
 }

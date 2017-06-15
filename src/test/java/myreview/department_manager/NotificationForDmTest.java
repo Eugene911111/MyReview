@@ -1,4 +1,4 @@
-package myreview.role.dm;
+package myreview.department_manager;
 
 import core.Configuration;
 import core.Postcondition;
@@ -18,7 +18,7 @@ public class NotificationForDmTest extends BaseTest {
 
     @Test
     public void checkNotificationIsDisplayed() throws Exception {
-        preconditionBuilder.loginAs(Configuration.getInstance().getEpTesterDm())
+        preconditionBuilder.loginAs(Configuration.getInstance().getATesterDm())
                 .changeStatusOfUserForm(Configuration.getInstance().getCommitted())
                 .build();
 
@@ -29,7 +29,7 @@ public class NotificationForDmTest extends BaseTest {
 
     @Test
     public void checkNotificationIsNotDisplayed() throws Exception {
-        preconditionBuilder.loginAs(Configuration.getInstance().getEpTesterDm())
+        preconditionBuilder.loginAs(Configuration.getInstance().getATesterDm())
                 .changeStatusOfUserForm(Configuration.getInstance().getInProgress())
                 .build();
 

@@ -1,4 +1,4 @@
-package myreview.role.employee.actions_with_objectives;
+package myreview.employee.actions_with_objectives;
 
 import core.Configuration;
 import core.Postcondition;
@@ -20,7 +20,7 @@ public class EditObjectiveOnNoteTabTest extends BaseTest {
     @Test
     public void checkEditOfTheObjective() throws Exception {
         preconditionBuilder
-                .loginAs(Configuration.getInstance().getEpTester1())
+                .loginAs(Configuration.getInstance().getATester1())
                 .insert(numberOfNotesToAdd)
                 .build();
 
@@ -30,6 +30,6 @@ public class EditObjectiveOnNoteTabTest extends BaseTest {
         /** DB check */
         Assert.assertEquals((sqlQueries.select("goals", "title", noteTabPage.titleAfterEdit)), noteTabPage.titleAfterEdit);
 
-        postcondition.logout();
+       // postcondition.logout();
     }
 }

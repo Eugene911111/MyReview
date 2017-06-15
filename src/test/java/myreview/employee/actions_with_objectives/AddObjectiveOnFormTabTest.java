@@ -1,4 +1,4 @@
-package myreview.role.employee.actions_with_objectives;
+package myreview.employee.actions_with_objectives;
 
 import core.Configuration;
 import core.Postcondition;
@@ -12,6 +12,7 @@ import pages.NoteTabPage;
 
 public class AddObjectiveOnFormTabTest extends BaseTest {
 
+    private int quantityOfObjectives = 1;
     private BasePage basePage = new BasePage();
     private SqlQueries sqlQueries = new SqlQueries();
     private NoteTabPage noteTabPage = new NoteTabPage();
@@ -21,13 +22,13 @@ public class AddObjectiveOnFormTabTest extends BaseTest {
     @Test
     public void addObjectiveOnFormTab() throws Exception {
         preconditionBuilder
-                .loginAs(Configuration.getInstance().getEpTester1())
+                .loginAs(Configuration.getInstance().getATester1())
                 .build();
 
         basePage.openUrl(Configuration.getInstance().getFormTabUrl());
-        noteTabPage.addObjective();
+        noteTabPage.addObjective(quantityOfObjectives);
         Assert.assertEquals(sqlQueries.select("goals", "title", noteTabPage.currentTime), noteTabPage.currentTime);
 
-        postcondition.logout();
+        //postcondition.logout();
     }
 }

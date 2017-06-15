@@ -1,9 +1,10 @@
-package myreview.role.dm.tabs_check;
+package myreview.department_manager.tabs_check;
 
 import core.Configuration;
 import core.Postcondition;
 import core.PreconditionBuilder;
 import myreview.BaseTest;
+import org.junit.Assert;
 import org.junit.Test;
 import pages.BasePage;
 import pages.CommonPage;
@@ -19,10 +20,10 @@ public class DepartmentTabTest extends BaseTest {
 
     @Test
     public void departmentTabTest() throws Exception {
-        preconditionBuilder.justLogIn(Configuration.getInstance().getEpTesterDm());
+        preconditionBuilder.justLogIn(Configuration.getInstance().getATesterDm());
 
         basePage.waitForElementIsClickableAndClick(commonPage.departmentButton);
-        basePage.checkElementIsDisplayed(departmentPage.departmentTabContent);
+        Assert.assertTrue(basePage.checkElementIsDisplayed(departmentPage.departmentTabContent));
 
         postcondition.logout();
     }

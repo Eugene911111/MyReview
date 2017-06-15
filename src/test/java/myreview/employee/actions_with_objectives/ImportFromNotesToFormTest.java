@@ -1,4 +1,4 @@
-package myreview.role.employee.actions_with_objectives;
+package myreview.employee.actions_with_objectives;
 
 import core.Configuration;
 import core.Postcondition;
@@ -23,13 +23,13 @@ public class ImportFromNotesToFormTest extends BaseTest {
     @Test
     public void importFromNotesToFormTest() throws Exception {
         preconditionBuilder
-                .loginAs(Configuration.getInstance().getEpTester1())
+                .loginAs(Configuration.getInstance().getATester1())
                 .insert(numberOfNotesToAdd)
                 .build();
 
         formTabPage.pressImportFromNotesButton();
         Assert.assertEquals(expectedTitle, noteTabPage.getTextFromElement(noteTabPage.lastObjectiveTitleInList));
 
-        postcondition.logout();
+        //postcondition.logout();
     }
 }

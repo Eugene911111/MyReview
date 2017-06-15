@@ -1,4 +1,4 @@
-package myreview.role.employee;
+package myreview.employee;
 
 import core.Configuration;
 import core.Postcondition;
@@ -25,7 +25,7 @@ public class SendFeedbacksTabTest extends BaseTest {
     @Test
     public void sendFeedbackTest() throws Exception {
         preconditionBuilder
-                .justLogIn(Configuration.getInstance().getEpTester1())
+                .justLogIn(Configuration.getInstance().getATester1())
                 .build();
 
         commonPage.openFeedbackDialogWindow();
@@ -34,10 +34,10 @@ public class SendFeedbacksTabTest extends BaseTest {
         feedbackDialogWindowPage.sendFeedback();
         Assert.assertEquals(basePage.currentDate, sqlQueries.select("feedbacks", "comment", basePage.currentDate));
 
-        sqlQueries.delete("notifications", "user_from_id", "=", Configuration.getInstance().getEpTester1());
-        sqlQueries.delete("feedbacks", "comment", "=", basePage.currentDate, "author_id",  Configuration.getInstance().getEpTester1());
+        sqlQueries.delete("notifications", "user_from_id", "=", Configuration.getInstance().getATester1());
+        sqlQueries.delete("feedbacks", "comment", "=", basePage.currentDate, "author_id",  Configuration.getInstance().getATester1());
 
-        postcondition.logout();
+        //postcondition.logout();
     }
 }
 

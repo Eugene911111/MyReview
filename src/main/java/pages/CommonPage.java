@@ -6,16 +6,16 @@ import org.openqa.selenium.By;
 public class CommonPage extends BasePage {
 
     private LoginPage loginPage = new LoginPage();
-    private By sendYourFeedbackButton = By.xpath("//li/a[contains(.,\"Send your feedback\")]");
-    private By aboutMyReviewButton = By.xpath("//a[@ui-sref=\"about\"]");
-    private By formExampleButton = By.xpath("//a[@ui-sref=\"example\"]");
-    private By userImgDropdown = By.xpath("//li[@class=\"btn-group dropdown\"]/a");
-    private By logOutButton = By.xpath("//a[@ng-click=\"vm.logOut()\"]");
-    private By levi9Logo = By.xpath("//img[@class=\"logo\"]");
-    public By formButton = By.xpath("//a[@href=\"#/form\"]");
-    public By notesButton = By.xpath("//a[@href=\"#/notes\"]");
-    public By historyButton = By.xpath("//a[contains(., \"History\")]");
-    public By departmentButton = By.xpath("//a[@href=\"#/department\"]");
+    private By sendYourFeedbackButton = By.xpath("//li/a[contains(.,'Send your feedback')]");
+    private By aboutMyReviewButton = By.xpath("//a[@ui-sref='about']");
+    private By formExampleButton = By.xpath("//a[@ui-sref='example']");
+    private By userImgDropdown = By.xpath("//li[@class='btn-group dropdown']/a");
+    private By logOutButton = By.xpath("//a[@ng-click='vm.logOut()']");
+    private By levi9Logo = By.xpath("//img[@class='logo']");
+    public By formButton = By.xpath("//a[@href='#/form']");
+    public By notesButton = By.xpath("//a[@href='#/notes']");
+    public By historyButton = By.xpath("//a[contains(., 'History')]");
+    public By departmentButton = By.xpath("//a[@href='#/department']");
 
     public void logOut() throws Exception {
         pressLogoutButton();

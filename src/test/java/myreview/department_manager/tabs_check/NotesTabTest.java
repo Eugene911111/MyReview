@@ -1,16 +1,16 @@
-package myreview.role.employee.check_presence_of_element;
+package myreview.department_manager.tabs_check;
 
 import core.Configuration;
 import core.Postcondition;
 import core.PreconditionBuilder;
 import myreview.BaseTest;
-import pages.NoteTabPage;
-import pages.CommonPage;
 import org.junit.Assert;
-import pages.BasePage;
 import org.junit.Test;
+import pages.BasePage;
+import pages.CommonPage;
+import pages.NoteTabPage;
 
-public class FormExampleTest extends BaseTest {
+public class NotesTabTest extends BaseTest {
 
     private BasePage basePage = new BasePage();
     private CommonPage commonPage = new CommonPage();
@@ -19,13 +19,11 @@ public class FormExampleTest extends BaseTest {
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
     @Test
-    public void checkFormExample() throws Exception {
-        preconditionBuilder
-                .justLogIn(Configuration.getInstance().getEpTester1())
-                .build();
+    public void notesTabTest() throws Exception {
+        preconditionBuilder.justLogIn(Configuration.getInstance().getATesterDm());
 
-        commonPage.openFormExamplePage();
-        Assert.assertTrue(basePage.checkElementIsDisplayed(noteTabPage.formExampleImg));
+        basePage.waitForElementIsClickableAndClick(commonPage.notesButton);
+        Assert.assertTrue(basePage.checkElementIsDisplayed(noteTabPage.notesPageContent));
 
         postcondition.logout();
     }

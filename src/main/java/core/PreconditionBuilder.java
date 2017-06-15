@@ -3,6 +3,7 @@ package core;
 import helpers.SqlQueries;
 import pages.BasePage;
 import pages.LoginPage;
+import pages.NoteTabPage;
 
 import java.sql.*;
 
@@ -11,14 +12,16 @@ public class PreconditionBuilder {
     private SqlQueries sqlQueries = new SqlQueries();
     private LoginPage loginPage = new LoginPage();
     private BasePage basePage = new BasePage();
+    private NoteTabPage noteTabPage = new NoteTabPage();
+
     private String login;
     private String sql;
     private int number;
 
     public PreconditionBuilder loginAs(String userName) throws Exception {
+        loginPage.logIn(userName);
         changeStatusOfUserForm(Configuration.getInstance().getInProgress());
         sqlQueries.deleteGoalsCreatedByTestUser();
-        loginPage.logIn(userName);
         return this;
     }
 
@@ -38,7 +41,7 @@ public class PreconditionBuilder {
         Statement statement = connection.createStatement();
         for (int i = 1; i <= numberOfNotes; i++) {
             statement.executeUpdate("INSERT INTO goals (user_id, author_id, user_form_history_id, title, progress, status,created_at, updated_at, deadline, comment_employee, comment_department_manager, comment_irrelevant) " +
-                    "VALUES ('" + Configuration.getInstance().getEpTester1Id() + "', '" + Configuration.getInstance().getEpTester1Id() + "', NULL, 'autoTestTitle', 'new', 'note', '2017-04-27 09:53:27', '2017-04-27 09:53:27', '2017-07-27', 'comment', NULL, NULL)");
+                    "VALUES ('" + Configuration.getInstance().getATester1Id() + "', '" + Configuration.getInstance().getATester1Id() + "', NULL, 'autoTestTitle', 'new', 'note', '2017-04-27 09:53:27', '2017-04-27 09:53:27', '2017-07-27', 'comment', NULL, NULL)");
         }
         statement.close();
         connection.close();
@@ -52,7 +55,7 @@ public class PreconditionBuilder {
                 " comment_department_manager = 'comment_created_with_auto_test', " +
                 " self_rating = 'Exceeds expectations', " +
                 " manager_rating = 'Exceeds expectations' " +
-                " WHERE user_id = '" + Configuration.getInstance().getEpTester1Id() + "'";
+                " WHERE user_id = '" + Configuration.getInstance().getATester1Id() + "'";
         Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
         Statement statement = connection.createStatement();
         statement.executeUpdate(query);
@@ -65,7 +68,7 @@ public class PreconditionBuilder {
         String query = " UPDATE user_forms " +
                 " SET comment_employee = 'comment_created_with_auto_test', " +
                 " self_rating = 'Exceeds expectations' " +
-                " WHERE user_id = '" + Configuration.getInstance().getEpTester1Id() + "'";
+                " WHERE user_id = '" + Configuration.getInstance().getATester1Id() + "'";
         Connection connection = DriverManager.getConnection(Configuration.getInstance().getMyreviewDbUrl(), Configuration.getInstance().getMyReviewDbUserName(), Configuration.getInstance().getMyReviewDbUserPassword());
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(query);
@@ -82,7 +85,7 @@ public class PreconditionBuilder {
         Statement statement = connection.createStatement();
         for (int i = 1; i <= numberOfNotes; i++) {
             statement.executeUpdate(" INSERT INTO goals (user_id, author_id, user_form_history_id, title, progress, status,created_at, updated_at, deadline, comment_employee, comment_department_manager, comment_irrelevant) " +
-                    " VALUES ('" + Configuration.getInstance().getEpTester1Id() + "', '" + Configuration.getInstance().getEpTester1Id() + "', NULL, '" + basePage.returnCurrentDate() + "', 'started', '" + status + "', '2017-04-27 09:53:27', '2017-04-27 09:53:27', '2017-07-27', 'comment', NULL, NULL)");
+                    " VALUES ('" + Configuration.getInstance().getATester1Id() + "', '" + Configuration.getInstance().getATester1Id() + "', NULL, '" + basePage.returnCurrentDate() + "', 'started', '" + status + "', '2017-04-27 09:53:27', '2017-04-27 09:53:27', '2017-07-27', 'comment', NULL, NULL)");
         }
         statement.close();
         connection.close();

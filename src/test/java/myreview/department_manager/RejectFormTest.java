@@ -1,4 +1,4 @@
-package myreview.role.dm;
+package myreview.department_manager;
 
 import core.Configuration;
 import core.Postcondition;
@@ -22,18 +22,19 @@ public class RejectFormTest extends BaseTest {
     @Test
     public void rejectFormTest() throws Exception {
         preconditionBuilder
-                .loginAs(Configuration.getInstance().getEpTesterDm())
+                .loginAs(Configuration.getInstance().getATesterDm())
                 .addNoteToSettingObjectiveDB(numberOfObjectivesToAdd, Configuration.getInstance().getCommitted())
                 .changeStatusOfUserForm(Configuration.getInstance().getCommitted())
                 .build();
 
         departmentPage.rejectForm();
-        Assert.assertEquals(Configuration.getInstance().getInProgress(), sqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getEpTester1Id()));
+        Assert.assertEquals(Configuration.getInstance().getInProgress(), sqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getATester1Id()));
 
         commonPage.logOut();
-        loginPage.logIn(Configuration.getInstance().getEpTester1());
+        loginPage.logIn(Configuration.getInstance().getATester1());
         commonPage.openUrl(Configuration.getInstance().getFormTabUrl());
         Assert.assertEquals(departmentPage.currentDate, formTabPage.getTextFromElement(formTabPage.rejectReasonField));
-        postcondition.logout();
+
+      //  postcondition.logout();
     }
 }
