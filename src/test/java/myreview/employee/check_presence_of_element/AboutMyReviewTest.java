@@ -1,11 +1,10 @@
 package myreview.employee.check_presence_of_element;
 
 import core.Configuration;
-import core.Postcondition;
 import core.PreconditionBuilder;
 import myreview.BaseTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.AboutMyReviewPage;
 import pages.BasePage;
 import pages.CommonPage;
@@ -14,7 +13,6 @@ public class AboutMyReviewTest extends BaseTest {
 
     private BasePage basePage = new BasePage();
     private CommonPage commonPage = new CommonPage();
-    private Postcondition postcondition = new Postcondition();
     private AboutMyReviewPage aboutMyReviewPage = new AboutMyReviewPage();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
@@ -26,7 +24,5 @@ public class AboutMyReviewTest extends BaseTest {
 
         commonPage.openAboutMyReviewPage();
         Assert.assertTrue(basePage.checkElementIsDisplayed(aboutMyReviewPage.aboutMyReviewContent));
-
-       // postcondition.logout();
     }
 }

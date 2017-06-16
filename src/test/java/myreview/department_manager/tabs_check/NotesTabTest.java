@@ -4,8 +4,8 @@ import core.Configuration;
 import core.Postcondition;
 import core.PreconditionBuilder;
 import myreview.BaseTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.BasePage;
 import pages.CommonPage;
 import pages.NoteTabPage;
@@ -24,7 +24,5 @@ public class NotesTabTest extends BaseTest {
 
         basePage.waitForElementIsClickableAndClick(commonPage.notesButton);
         Assert.assertTrue(basePage.checkElementIsDisplayed(noteTabPage.notesPageContent));
-
-        postcondition.logout();
     }
 }

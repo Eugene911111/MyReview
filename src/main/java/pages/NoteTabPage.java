@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.junit.Assert;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -54,7 +53,7 @@ public class NoteTabPage extends BasePage {
             waitForElementIsClickableAndClick(saveButton);
             waitForPresenceOfTextInDivElement(lastObjectiveTitleInList, currentTime);
             //TODO deletre asset from page
-            Assert.assertEquals(currentTime, getTextFromElement(lastObjectiveTitleInList));
+        //    Assert.assertEquals(currentTime, getTextFromElement(lastObjectiveTitleInList));
             checkElementIsDisplayed(commonPage.formButton);
         }
     }
@@ -80,6 +79,5 @@ public class NoteTabPage extends BasePage {
     public void addToForm() throws InterruptedException {
         waitForElementIsClickableAndClick(addToFormButton);
         checkElementIsNotDisplayed(areaOfObjective);
-
     }
 }

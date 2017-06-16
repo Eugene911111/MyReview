@@ -1,8 +1,8 @@
 package myreview;
 
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.junit.BeforeClass;
-import org.junit.AfterClass;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
 import static core.TestApi.getDriver;
 import static core.TestApi.setDriver;

@@ -5,9 +5,9 @@ import core.Postcondition;
 import core.PreconditionBuilder;
 import helpers.SqlQueries;
 import myreview.BaseTest;
-import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.BasePage;
 import pages.CommonPage;
 import pages.DepartmentPage;
@@ -42,10 +42,9 @@ public class HistoryTest extends BaseTest {
         preconditionBuilder
                 .justLogIn(Configuration.getInstance().getATester1());
         basePage.waitForElementIsClickableAndClick(commonPage.historyButton);
-
+//TODO
         basePage.waitForElementIsClickableAndClick(By.xpath("//div[@class=\"paneHeader ng-scope\"]"));
-basePage.checkElementIsDisplayed(By.xpath("//*[@id=\"accordiongroup-137-8999-panel\"]/div/div[2]"));
+        basePage.checkElementIsDisplayed(By.xpath("//*[@id=\"accordiongroup-137-8999-panel\"]/div/div[2]"));
         System.out.println("+ is pressed");
-        //  postcondition.logout();
     }
 }

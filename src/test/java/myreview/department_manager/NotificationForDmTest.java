@@ -4,8 +4,8 @@ import core.Configuration;
 import core.Postcondition;
 import core.PreconditionBuilder;
 import myreview.BaseTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.BasePage;
 import pages.DepartmentPage;
 
@@ -16,7 +16,7 @@ public class NotificationForDmTest extends BaseTest {
     private DepartmentPage departmentPage = new DepartmentPage();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
-    @Test
+    @Test(priority = 1)
     public void checkNotificationIsDisplayed() throws Exception {
         preconditionBuilder.loginAs(Configuration.getInstance().getATesterDm())
                 .changeStatusOfUserForm(Configuration.getInstance().getCommitted())
@@ -27,7 +27,7 @@ public class NotificationForDmTest extends BaseTest {
         postcondition.logout();
     }
 
-    @Test
+    @Test(priority = 2)
     public void checkNotificationIsNotDisplayed() throws Exception {
         preconditionBuilder.loginAs(Configuration.getInstance().getATesterDm())
                 .changeStatusOfUserForm(Configuration.getInstance().getInProgress())
@@ -35,6 +35,6 @@ public class NotificationForDmTest extends BaseTest {
 
         Assert.assertEquals(true, departmentPage.notificationIsNotDisplayed());
 
-        postcondition.logout();
+     //   postcondition.logout();
     }
 }

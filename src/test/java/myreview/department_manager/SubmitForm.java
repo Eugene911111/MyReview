@@ -1,12 +1,11 @@
 package myreview.department_manager;
 
 import core.Configuration;
-import core.Postcondition;
 import core.PreconditionBuilder;
 import helpers.SqlQueries;
 import myreview.BaseTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.DepartmentPage;
 
 import java.text.SimpleDateFormat;
@@ -17,7 +16,6 @@ public class SubmitForm extends BaseTest {
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private String currentDate = simpleDateFormat.format(new Date());
     private SqlQueries sqlQueries = new SqlQueries();
-    private Postcondition postcondition = new Postcondition();
     private DepartmentPage departmentPage = new DepartmentPage();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
@@ -31,7 +29,5 @@ public class SubmitForm extends BaseTest {
 
         departmentPage.submitForm();
         Assert.assertEquals(Configuration.getInstance().getInProgress(), sqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getATester1Id()));
-
-        //postcondition.logout();
     }
 }

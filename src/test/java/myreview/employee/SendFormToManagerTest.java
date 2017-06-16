@@ -1,12 +1,11 @@
 package myreview.employee;
 
 import core.Configuration;
-import core.Postcondition;
 import core.PreconditionBuilder;
 import helpers.SqlQueries;
 import myreview.BaseTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.FormTabPage;
 
 public class SendFormToManagerTest extends BaseTest {
@@ -14,7 +13,6 @@ public class SendFormToManagerTest extends BaseTest {
     private int numberOfAddedObjectives = 3;
     private SqlQueries sqlQueries = new SqlQueries();
     private FormTabPage formTabPage = new FormTabPage();
-    private Postcondition postcondition = new Postcondition();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
     @Test
@@ -27,7 +25,5 @@ public class SendFormToManagerTest extends BaseTest {
 
         formTabPage.sendFormToManager();
         Assert.assertEquals(Configuration.getInstance().getCommitted(), sqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getATester1Id()));
-
-       // postcondition.logout();
     }
 }

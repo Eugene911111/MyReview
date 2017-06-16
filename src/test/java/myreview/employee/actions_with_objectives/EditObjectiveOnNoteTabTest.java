@@ -5,8 +5,8 @@ import core.Postcondition;
 import core.PreconditionBuilder;
 import helpers.SqlQueries;
 import myreview.BaseTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.NoteTabPage;
 
 public class EditObjectiveOnNoteTabTest extends BaseTest {
@@ -29,7 +29,5 @@ public class EditObjectiveOnNoteTabTest extends BaseTest {
         Assert.assertEquals(noteTabPage.getTextFromElement(noteTabPage.lastTitleInList), noteTabPage.titleAfterEdit);
         /** DB check */
         Assert.assertEquals((sqlQueries.select("goals", "title", noteTabPage.titleAfterEdit)), noteTabPage.titleAfterEdit);
-
-       // postcondition.logout();
     }
 }

@@ -2,19 +2,18 @@ package myreview.department_manager;
 
 import core.Configuration;
 import core.PreconditionBuilder;
-import core.Postcondition;
 import helpers.SqlQueries;
 import myreview.BaseTest;
-import org.junit.Test;
+import org.testng.annotations.Test;
 import pages.DepartmentPage;
 
-import static org.junit.Assert.assertEquals;
+import static org.testng.Assert.assertEquals;
+
 
 public class ContinueMeetingTest extends BaseTest {
 
     private int numberOfAddedObjectives = 3;
     private SqlQueries sqlQueries = new SqlQueries();
-    private Postcondition postcondition = new Postcondition();
     private DepartmentPage departmentPage = new DepartmentPage();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
@@ -26,7 +25,5 @@ public class ContinueMeetingTest extends BaseTest {
 
         departmentPage.continueMeeting();
         assertEquals(Configuration.getInstance().getAppraisal(), sqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getATester1Id()));
-
-      //  postcondition.logout();
     }
 }
