@@ -9,7 +9,6 @@ import pages.DepartmentPage;
 
 import static org.testng.Assert.assertEquals;
 
-
 public class ContinueMeetingTest extends BaseTest {
 
     private int numberOfAddedObjectives = 3;

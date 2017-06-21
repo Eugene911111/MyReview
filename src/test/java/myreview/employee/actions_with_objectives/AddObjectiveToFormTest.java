@@ -16,7 +16,6 @@ public class AddObjectiveToFormTest extends BaseTest {
     private NoteTabPage noteTabPage = new NoteTabPage();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
-
     @Test
     public void addToFormTest() throws Exception {
         preconditionBuilder
