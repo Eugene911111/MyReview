@@ -2,12 +2,10 @@ package pages;
 
 import core.Configuration;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.slf4j
-        .Logger;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
@@ -20,7 +18,6 @@ import static core.TestApi.getDrivers;
 import static core.Wait.waitFor;
 
 public class BasePage {
-    WebDriver driver1 = getDrivers();
     private String dateFormat = "E yyyy.MM.dd 'at' hh.mm.ss a";
     public Logger log = LoggerFactory.getLogger(this.getClass());
     public String currentDate;

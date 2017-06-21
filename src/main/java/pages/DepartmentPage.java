@@ -21,15 +21,15 @@ public class DepartmentPage extends BasePage {
     private By commentByManagerField = By.xpath("//*[@id='input_9']");
     private By evaluationByDmMeetsExpactations = By.xpath("//md-radio-button[@id='radio_11']");
     private String commentByManager = "comment_created_with_auto_test";
-    public By submitButton = By.xpath("//md-dialog//button[contains(., 'Submit')]");
-    public By evaluationByDm = By.xpath("//md-radio-button[@id='radio_16']");
+    private By submitButton = By.xpath("//md-dialog//button[contains(., 'Submit')]");
+    private By evaluationByDm = By.xpath("//md-radio-button[@id='radio_16']");
     public By reviewMeetingPage = By.xpath("//div[@class='container-fluid goalForm ng-scope']");
     public By startMeetingButton = By.xpath("//button[contains(., 'Start Meeting')][@aria-hidden='false']");
     public By evaluationByEmployee = By.xpath("//md-radio-button[@id='radio_11']");
     public By departmentTabContent = By.xpath("//div[@class='container-fluid department']");
-    public By submitFinalFormButton = By.xpath("//button[@class='md-raised md-primary md-button md-ink-ripple']");
-    public By employeePasswordField = By.xpath("//input[@name='password']");
-    public By submitFinalFormMessage = By.xpath("//*[contains(text(), 'You successfully finished Performance Review Meeting!')] ");
+    private By submitFinalFormButton = By.xpath("//button[@class='md-raised md-primary md-button md-ink-ripple']");
+    private By employeePasswordField = By.xpath("//input[@name='password']");
+    private By submitFinalFormMessage = By.xpath("//*[contains(text(), 'You successfully finished Performance Review Meeting!')] ");
     public By notificationForDmField = By.xpath("//a[@class='active']/span");
     By radioButtonExceedsExpectations = By.xpath("//md-radio-button[@value='Exceeds expectations']");
 
