@@ -1,7 +1,6 @@
 package myreview.department_manager.tabs_check;
 
 import core.Configuration;
-import core.Postcondition;
 import core.PreconditionBuilder;
 import myreview.BaseTest;
 import org.testng.Assert;
@@ -14,7 +13,6 @@ public class DepartmentTabTest extends BaseTest {
 
     private BasePage basePage = new BasePage();
     private CommonPage commonPage = new CommonPage();
-    private Postcondition postcondition = new Postcondition();
     private DepartmentPage departmentPage = new DepartmentPage();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 

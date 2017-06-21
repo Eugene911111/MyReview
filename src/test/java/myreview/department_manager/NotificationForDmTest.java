@@ -16,7 +16,7 @@ public class NotificationForDmTest extends BaseTest {
     private DepartmentPage departmentPage = new DepartmentPage();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
-    @Test(priority = 1)
+    @Test
     public void checkNotificationIsDisplayed() throws Exception {
         preconditionBuilder.loginAs(Configuration.getInstance().getATesterDm())
                 .changeStatusOfUserForm(Configuration.getInstance().getCommitted())
@@ -27,14 +27,12 @@ public class NotificationForDmTest extends BaseTest {
         postcondition.logout();
     }
 
-    @Test(priority = 2)
+    @Test
     public void checkNotificationIsNotDisplayed() throws Exception {
         preconditionBuilder.loginAs(Configuration.getInstance().getATesterDm())
                 .changeStatusOfUserForm(Configuration.getInstance().getInProgress())
                 .build();
 
         Assert.assertEquals(true, departmentPage.notificationIsNotDisplayed());
-
-     //   postcondition.logout();
     }
 }

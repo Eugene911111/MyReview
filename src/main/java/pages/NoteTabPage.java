@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-import static core.TestApi.getDriver;
+import static core.TestApi.getDrivers;
 
 public class NoteTabPage extends BasePage {
 
@@ -33,7 +33,7 @@ public class NoteTabPage extends BasePage {
     public String currentTime;
 
     public int objectiveCount() throws Exception {
-        return getDriver().findElement(By.xpath("//div[@class='paneContent']")).findElements(By.xpath("//div[@class='clearfix goal']")).size();
+        return getDrivers().findElement(By.xpath("//div[@class='paneContent']")).findElements(By.xpath("//div[@class='clearfix goal']")).size();
     }
 
     private String returnCurrentTime() throws InterruptedException {

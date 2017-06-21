@@ -3,7 +3,8 @@ package pages;
 import core.Configuration;
 import org.openqa.selenium.By;
 
-import static core.TestApi.getDriver;
+import static core.TestApi.getDrivers;
+
 
 public class DepartmentPage extends BasePage {
 
@@ -96,7 +97,7 @@ public class DepartmentPage extends BasePage {
     public void continueMeeting() throws InterruptedException {
         waitForElementIsClickableAndClick(startMeetingButton);
         changeFocusToPage(0);
-        getDriver().navigate().refresh();
+        getDrivers().navigate().refresh();
         checkElementIsDisplayed(continueButton);
         waitForElementIsClickableAndClick(continueButton);
         changeFocusToPage(1);

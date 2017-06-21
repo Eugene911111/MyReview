@@ -2,6 +2,7 @@ package pages;
 
 import core.Configuration;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,11 +16,11 @@ import java.util.Date;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import static core.TestApi.getDriver;
+import static core.TestApi.getDrivers;
 import static core.Wait.waitFor;
 
 public class BasePage {
-
+    WebDriver driver1 = getDrivers();
     private String dateFormat = "E yyyy.MM.dd 'at' hh.mm.ss a";
     public Logger log = LoggerFactory.getLogger(this.getClass());
     public String currentDate;
@@ -31,8 +32,8 @@ public class BasePage {
     }
 
     public void openUrl(String url) {
-        getDriver().manage().window().maximize();
-        getDriver().get(url);
+        getDrivers().manage().window().maximize();
+        getDrivers().get(url);
     }
 
     public boolean checkElementIsDisplayed(By element) throws InterruptedException {
@@ -59,13 +60,13 @@ public class BasePage {
     }
 
     public void changeFocusToPage(int pageIndex) throws InterruptedException {
-        ArrayList tabs = new ArrayList(getDriver().getWindowHandles());
-        getDriver().switchTo().window((String) tabs.get(pageIndex));
+        ArrayList tabs = new ArrayList(getDrivers().getWindowHandles());
+        getDrivers().switchTo().window((String) tabs.get(pageIndex));
     }
 
     public String getTextFromElement(By element) throws InterruptedException {
         waiter(element, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, Configuration.getInstance().getTimeOut());
-        return getDriver().findElement(element).getText();
+        return getDrivers().findElement(element).getText();
     }
 
     /**

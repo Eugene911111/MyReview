@@ -2,7 +2,7 @@ package core;
 
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static core.TestApi.getDriver;
+import static core.TestApi.getDrivers;
 
 public class Wait {
 
@@ -11,6 +11,6 @@ public class Wait {
     }
 
     public static WebDriverWait waitFor(int timeout) {
-        return new WebDriverWait(getDriver(), timeout);
+        return new WebDriverWait(getDrivers(), timeout);
     }
 }

@@ -3,7 +3,8 @@ package pages;
 import core.Configuration;
 import org.openqa.selenium.By;
 
-import static core.TestApi.getDriver;
+import static core.TestApi.getDrivers;
+
 
 public class FormTabPage extends BasePage {
 
@@ -58,16 +59,16 @@ public class FormTabPage extends BasePage {
 
     public int settingObjectiveCount() throws Exception {
         checkElementIsDisplayed(lastElementInListOfObjectives);
-        return getDriver().findElements(lastElementInListOfObjectives).size();
+        return getDrivers().findElements(lastElementInListOfObjectives).size();
     }
 
     public void clearEvaluationByEmployee() throws Exception {
-        getDriver().get(Configuration.getInstance().getFormTabUrl());
+        getDrivers().get(Configuration.getInstance().getFormTabUrl());
         waitForElementIsClickableAndClick(departmentPage.radioButtonExceedsExpectations);
         checkElementIsDisplayed(evaluationAreaTrue);
         waitForElementIsClickableAndClick(clearButton);
         checkElementIsNotDisplayed(evaluationAreaTrue);
-        getDriver().navigate().refresh();
+        getDrivers().navigate().refresh();
         checkElementIsDisplayed(departmentPage.radioButtonExceedsExpectations);
         checkElementIsNotDisplayed(evaluationAreaTrue);
     }
