@@ -1,8 +1,8 @@
 package myreview.department_manager.tabs_check;
 
-import core.Configuration;
 import core.PreconditionBuilder;
 import myreview.BaseTest;
+import myreview.Data;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.BasePage;
@@ -15,9 +15,9 @@ public class FormTabTest extends BaseTest {
     private FormTabPage formTabPage = new FormTabPage();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
-    @Test
-    public void formTabTest() throws Exception {
-        preconditionBuilder.justLogIn(Configuration.getInstance().getATesterDm());
+    @Test(dataProvider = "all_users", dataProviderClass = Data.class)
+    public void formTabTest(String useName) throws Exception {
+        preconditionBuilder.justLogIn(useName);
 
         basePage.waitForElementIsClickableAndClick(commonPage.formButton);
         Assert.assertTrue(basePage.checkElementIsDisplayed(formTabPage.formTabContent));

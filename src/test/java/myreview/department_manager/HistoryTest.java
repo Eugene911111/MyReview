@@ -8,9 +8,7 @@ import myreview.BaseTest;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.BasePage;
-import pages.CommonPage;
-import pages.DepartmentPage;
+import pages.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,6 +24,8 @@ public class HistoryTest extends BaseTest {
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
     private BasePage basePage = new BasePage();
     private CommonPage commonPage = new CommonPage();
+    private LoginPage loginPage = new LoginPage();
+    private HistoryPage historyPage = new HistoryPage();
 
     @Test
     public void history() throws Exception {
@@ -39,12 +39,10 @@ public class HistoryTest extends BaseTest {
         Assert.assertEquals(currentDate, sqlQueries.select(appointment_date));
         postcondition.logout();
 
-        preconditionBuilder
-                .justLogIn(Configuration.getInstance().getATester1());
+        loginPage.logIn(Configuration.getInstance().getATester1());
         basePage.waitForElementIsClickableAndClick(commonPage.historyButton);
 //TODO
-        basePage.waitForElementIsClickableAndClick(By.xpath("//div[@class=\"paneHeader ng-scope\"]"));
-        basePage.checkElementIsDisplayed(By.xpath("//*[@id=\"accordiongroup-137-8999-panel\"]/div/div[2]"));
-        System.out.println("+ is pressed");
+        historyPage.checkThatItISPossibleToOpenAndCloseInformationAboutMeeting();
+        Assert.assertTrue(basePage.checkElementIsDisplayed(By.xpath("//div[@aria-expanded='true']//div[@class='previewReviewThin'][contains(., 'Overall')]")));
     }
 }

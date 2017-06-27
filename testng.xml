@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!--<suite name="Tab tests">-->
+<!--<suite name="RunAll" parallel="methods" thread-count="1">-->
+<suite name="RunAll" parallel="classes" thread-count="2">
+    <test name="tabs">
+        <!--<groups>-->
+        <!--<run>-->
+        <!--<include name="tabs-check"/>-->
+        <!--</run>-->
+        <!--</groups>-->
+        <classes>
+            <class name="myreview.department_manager.tabs_check.FormTabTest"/>
+            <class name="myreview.department_manager.tabs_check.HistoryTabTest"/>
+            <class name="myreview.department_manager.tabs_check.DepartmentTabTest"/>
+            <class name="myreview.department_manager.tabs_check.NotesTabTest"/>
+        </classes>
+    </test>
+    <test name="department-manager">
+        <classes>
+            <class name="myreview.department_manager.ApproveFormTest"/>
+            <class name="myreview.department_manager.ContinueMeetingTest"/>
+            <class name="myreview.department_manager.HistoryTest"/>
+            <class name="myreview.department_manager.NotificationForDmTest"/>
+            <class name="myreview.department_manager.RejectFormTest"/>
+            <class name="myreview.department_manager.StartMeeting"/>
+            <class name="myreview.department_manager.SubmitForm"/>
+        </classes>
+    </test>
+    <test name="actions-with-objectives">
+        <classes>
+            <class name="myreview.employee.actions_with_objectives.AddingObjectiveOnNotesTabTest"/>
+            <class name="myreview.employee.actions_with_objectives.AddObjectiveOnFormTabTest"/>
+            <class name="myreview.employee.actions_with_objectives.AddObjectiveToFormTest"/>
+            <class name="myreview.employee.actions_with_objectives.CheckQuantityOfObjectivesTest"/>
+            <class name="myreview.employee.actions_with_objectives.DeleteObjectiveOnNoteTabTest"/>
+            <class name="myreview.employee.actions_with_objectives.EditObjectiveOnNoteTabTest"/>
+            <class name="myreview.employee.actions_with_objectives.ImportFromNotesToFormTest"/>
+        </classes>
+    </test>
+    <test name="check_presence_of_element">
+        <classes>
+            <class name="myreview.employee.check_presence_of_element.AboutMyReviewTest"/>
+            <class name="myreview.employee.check_presence_of_element.FormExampleTest"/>
+        </classes>
+    </test>
+    <test name="common">
+        <classes>
+            <class name="myreview.employee.ClearButtonTest"/>
+            <class name="myreview.employee.FullCycleSubmitFinalFormTest"/>
+            <class name="myreview.employee.LogoutTest"/>
+            <class name="myreview.employee.SendFeedbackTest"/>
+            <class name="myreview.employee.SendFormToManagerTest"/>
+        </classes>
+    </test>
+</suite>

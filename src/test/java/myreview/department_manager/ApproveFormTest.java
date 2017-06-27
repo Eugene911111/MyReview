@@ -23,6 +23,9 @@ public class ApproveFormTest extends BaseTest {
                 .addNoteToSettingObjectiveDB(numberOfAddedObjectives, Configuration.getInstance().getCommitted())
                 .changeStatusOfUserForm(Configuration.getInstance().getCommitted());
 
+        departmentPage.pribt();
+
+
         departmentPage.approveForm();
         assertEquals(Configuration.getInstance().getApproved(), sqlQueries.select("status", "user_forms", "user_id", Configuration.getInstance().getATester1Id()));
     }

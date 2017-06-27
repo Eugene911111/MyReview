@@ -115,8 +115,8 @@ public class DepartmentPage extends BasePage {
     }
 
     public void submitFormManually() throws Exception {
-        waitForElementIsClickableAndClick(evaluationByEmployee);
-        waitForElementIsClickableAndClick(evaluationByDm);
+//        waitForElementIsClickableAndClick(evaluationByEmployee);
+//        waitForElementIsClickableAndClick(evaluationByDm);
         findElementClearAndSendKeys(employeePasswordField, Configuration.getInstance().getPassword());
         waitForElementIsClickableAndClick(submitFinalFormButton);
         waitForElementIsClickableAndClick(submitButton);

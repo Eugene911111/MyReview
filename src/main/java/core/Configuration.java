@@ -26,6 +26,9 @@ public class Configuration {
     private String formTabUrl;
     private String notesTabUrl;
     private String reviewMeetingUrl;
+    private String asm;
+    private String ahr;
+    private String ahrdm;
     private int timeOut;
 
     public Configuration() {
@@ -55,6 +58,9 @@ public class Configuration {
             this.aAdmin = prop.getProperty("EP_ADMIN");
             this.aTester1Id = prop.getProperty("A_TESTER_1_ID");
             this.aDelivery1 = prop.getProperty("A_DELIVERY_1");
+            this.asm = prop.getProperty("A_SM");
+            this.ahr = prop.getProperty("A_TM");
+            this.ahrdm = prop.getProperty("A_TM_DM");
             this.formTabUrl = prop.getProperty("FORM_TAB_URL");
             this.inProgress = prop.getProperty("IN_PROGRESS");
             this.logInPageUrl = prop.getProperty("LOGIN_PAGE_URL");
@@ -94,7 +100,7 @@ public class Configuration {
         return password;
     }
 
-    public String getEpAdmin() {
+    public String getaAdmin() {
         return aAdmin;
     }
 
@@ -108,6 +114,18 @@ public class Configuration {
 
     public String getADelivery1() {
         return aDelivery1;
+    }
+
+    public String getAsm() {
+        return asm;
+    }
+
+    public String getAhr() {
+        return ahr;
+    }
+
+    public String getAhrDm() {
+        return ahrdm;
     }
 
     public String getMyreviewDbUrl() {

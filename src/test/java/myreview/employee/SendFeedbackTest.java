@@ -11,7 +11,7 @@ import pages.CommonPage;
 import pages.FeedbackDialogWindowPage;
 import pages.NoteTabPage;
 
-public class SendFeedbacksTabTest extends BaseTest {
+public class SendFeedbackTest extends BaseTest {
 
     private BasePage basePage = new BasePage();
     private CommonPage commonPage = new CommonPage();

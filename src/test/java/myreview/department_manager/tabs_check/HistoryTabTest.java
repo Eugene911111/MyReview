@@ -1,8 +1,8 @@
 package myreview.department_manager.tabs_check;
 
-import core.Configuration;
 import core.PreconditionBuilder;
 import myreview.BaseTest;
+import myreview.Data;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.BasePage;
@@ -15,9 +15,9 @@ public class HistoryTabTest extends BaseTest {
     private HistoryPage historyPage = new HistoryPage();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
-    @Test
-    public void historyTabTest() throws Exception {
-        preconditionBuilder.justLogIn(Configuration.getInstance().getATesterDm());
+    @Test(dataProvider = "all_users", dataProviderClass = Data.class)
+    public void historyTabTest(String userName) throws Exception {
+        preconditionBuilder.justLogIn(userName);
 
         basePage.waitForElementIsClickableAndClick(commonPage.historyButton);
         Assert.assertTrue(basePage.checkElementIsDisplayed(historyPage.historyContent));

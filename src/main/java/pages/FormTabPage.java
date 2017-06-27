@@ -48,7 +48,6 @@ public class FormTabPage extends BasePage {
     public void sendFormToManagerManualy() throws Exception {
         openUrl(Configuration.getInstance().getFormTabUrl());
         noteTabPage.addObjective(quantityOfObjectives);
-
         findElementClearAndSendKeys(commentByEmployeeField, commentByManager);
         waitForElementIsClickableAndClick(evaluationByEmployee);
         waitForElementIsClickableAndClick(sendToManagerButton);

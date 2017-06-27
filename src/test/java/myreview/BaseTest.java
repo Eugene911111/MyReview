@@ -9,12 +9,12 @@ import static core.TestApi.setDrivers;
 
 public class BaseTest {
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public static void setUp() {
         setDrivers(new ChromeDriver());
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public static void tearDown() {
         getDrivers().quit();
     }

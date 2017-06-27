@@ -1,8 +1,8 @@
 package myreview.department_manager.tabs_check;
 
-import core.Configuration;
 import core.PreconditionBuilder;
 import myreview.BaseTest;
+import myreview.Data;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.BasePage;
@@ -16,9 +16,9 @@ public class NotesTabTest extends BaseTest {
     private NoteTabPage noteTabPage = new NoteTabPage();
     private PreconditionBuilder preconditionBuilder = new PreconditionBuilder();
 
-    @Test
-    public void notesTabTest() throws Exception {
-        preconditionBuilder.justLogIn(Configuration.getInstance().getATesterDm());
+    @Test(dataProvider = "all_users", dataProviderClass = Data.class)
+    public void notesTabTest(String userName) throws Exception {
+        preconditionBuilder.justLogIn(userName);
 
         basePage.waitForElementIsClickableAndClick(commonPage.notesButton);
         Assert.assertTrue(basePage.checkElementIsDisplayed(noteTabPage.notesPageContent));
