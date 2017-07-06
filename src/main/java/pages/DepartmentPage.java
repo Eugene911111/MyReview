@@ -20,9 +20,9 @@ public class DepartmentPage extends BasePage {
     private By rejectReasonField = By.xpath("//textarea[@name='commentFormReject']");
     private By commentByManagerField = By.xpath("//*[@id='input_9']");
     private By evaluationByDmMeetsExpactations = By.xpath("//md-radio-button[@id='radio_11']");
-    private String commentByManager = "comment_created_with_auto_test";
     private By submitButton = By.xpath("//md-dialog//button[contains(., 'Submit')]");
     private By evaluationByDm = By.xpath("//md-radio-button[@id='radio_16']");
+    private String commentByManager = "comment_created_with_auto_test";
     public By reviewMeetingPage = By.xpath("//div[@class='container-fluid goalForm ng-scope']");
     public By startMeetingButton = By.xpath("//button[contains(., 'Start Meeting')][@aria-hidden='false']");
     public By evaluationByEmployee = By.xpath("//md-radio-button[@id='radio_11']");
